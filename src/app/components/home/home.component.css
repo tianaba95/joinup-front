@@ -1,0 +1,9 @@
+.nav {
+    height: 16%;
+}
+
+/* resize images */
+.nav img {
+    margin-top: 0.5%;
+    width: 50px;
+}
