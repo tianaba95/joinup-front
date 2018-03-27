@@ -1,0 +1,311 @@
+<style>
+  html {
+    background: #f5f7f8;
+    font-family: system-ui;
+    -webkit-font-smoothing: antialiased;
+    padding: 20px 0;
+  }
+
+  header {
+    width: 90%;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .band {
+    width: 90%;
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+  }
+
+  @media (min-width: 30em) {
+    .band {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (min-width: 60em) {
+    .band {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .card {
+    background: white;
+    text-decoration: none;
+    color: #444;
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: 100%;
+    position: relative;
+    top: 0;
+    -webkit-transition: all .1s ease-in;
+    transition: all .1s ease-in;
+  }
+
+  .card:hover {
+    top: -2px;
+    -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .card article.card-info {
+    padding: 20px;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+
+  .card h1 {
+    font-size: 20px;
+    margin: 0;
+    color: #333;
+  }
+
+  .card p {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .card span {
+    font-size: 12px;
+    font-weight: bold;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin: 2em 0 0 0;
+  }
+
+  .card .thumb {
+    padding-bottom: 60%;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  @media (min-width: 60em) {
+    .item-1 {
+      grid-column: 1 / span 2;
+    }
+    .item-1 h1 {
+      font-size: 24px;
+    }
+  }
+
+
+
+
+  /* entire container, keeps perspective */
+
+  .flip-container {
+    perspective: 1000px;
+  }
+
+  /* flip the pane when hovered */
+
+  .flip-container:hover .flipper,
+  .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+  }
+
+  .flip-container:hover .flipper .message-container,
+  .flip-container.hover .flipper .message-container {
+    transform: rotateY(180deg);
+  }
+
+
+
+  /* flip speed goes here */
+
+  .flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+
+  /* hide back of pane during swap */
+
+  .front {
+    backface-visibility: hidden;
+  }
+
+  .back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+  }
+
+  /* front pane, placed above back */
+
+  .front {
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
+  }
+
+  /* back, initially hidden pane */
+
+  .back {
+    transform: rotateY(180deg);
+  }
+
+  a.card.flipper {
+    min-height: 30em;
+  }
+
+
+
+  .message-container {
+    padding: 1em;
+  }
+
+  .card p {
+    margin-bottom: 0.7em;
+  }
+
+  .card.flipper button {
+    width: 100%;
+  }
+
+  .infoTitle {
+    font-size: 1em !important;
+  }
+</style>
+
+<!-- Nav -->
+<nav id="nav">
+  <img class="logo" src="assets/images/logo.png" />
+  <ul class="container">
+    <li>
+      <a routerLink="/home">Home</a>
+    </li>
+  </ul>
+</nav>
+
+
+
+
+
+<div class="wrapper style1">
+  <article class="container">
+
+    <div class="tabs tabs-style-underline">
+      <nav>
+        <ul>
+          <li *ngFor="let cat of plan_category_tab" [ngClass]="{'tab-current': cat.active}">
+            <a href="javascript:void(0)" (click)="tabChanged(cat)" class="icon {{cat.icon}}">
+              <span>{{cat.name}}</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /content -->
+    </div>
+    <!-- /tabs -->
+
+
+    <!-- header>
+        <h1>Cool Articles</h1>
+      </header -->
+    <div class="row">
+      <div class="band">
+
+        <div *ngFor="let plan of my_list; let i = index" class="item-{{i+1}} flip-container" [ngClass]="{'activeCard': plan.active}"
+          (click)="carTransition(plan)" ontouchstart="this.classList.toggle('hover');">
+
+          <a class="card flipper">
+            <div class="front">
+              <div class="thumb" [style.backgroundImage]="'url('+ plan.image +')'"></div>
+              <article class="card-info">
+                <h1>{{plan.title}}</h1>
+                <p>{{plan.descriptionShort}}</p>
+                <span>{{plan.guide}}</span>
+              </article>
+            </div>
+
+            <div class="back">
+              <h3>
+                <a href="#">{{plan.title}}</a>
+              </h3>
+
+              <p>
+                <span class="guide infoTitle">GUIDE: </span>{{plan.guide}}</p>
+
+              <p class="rate">
+                <span *ngFor="let star of plan?.rate?.stars" class="fa fa-star {{star}}"></span>
+                <span class="rate">({{plan.rate?.average}})</span>
+                <span class="rate">
+                  <i class="fa fa-user" aria-hidden="true"></i>+{{plan.rate?.numVotes}}</span>
+              </p>
+
+              <p>
+                <span class="fee infoTitle">Administrative fee: </span>${{plan.fee}}</p>
+
+              <p>
+                <span class="costs infoTitle">Extra costs suggested: </span>${{plan.cost}}</p>
+
+              <p>
+                <span class="adress infoTitle">Adress: </span>{{plan.adress}}</p>
+
+              <p>
+                <span class="time infoTitle">TIME TO JOIN: </span>
+              </p>
+
+              <p>
+                <i class="fa fa-clock-o" aria-hidden="true"></i>{{plan.startingTime}} - {{plan.endingTime}}
+                <br>
+                <span style="font-weight: bold;" class="adress">{{plan.date}}</span>
+              </p>
+
+              <div>
+                <button (click)="assistPlan(plan)">
+                  {{btnEdit}}
+                </button>
+              </div>
+
+              <a href="#">View comments</a>
+
+            </div>
+
+            <!-- div class="wrapper style2 message-container">
+                <article class="message-card">
+                  <app-comment-card [commentList]="listaComentarios"></app-comment-card>
+                </article>
+              </div -->
+
+
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </article>
+
+
+</div>

@@ -1,0 +1,19 @@
+<section>
+  <ul class="posts">
+    <li *ngFor="let comment of commentList">
+      <article>
+          <a href="#" class="image">
+              <img src="https://html5up.net/uploads/demos/future-imperfect/images/pic08.jpg" alt="" />
+            </a>
+        <header>
+          <h3>
+            <a href="#">{{comment.name}}</a>
+          </h3>
+          <p>Esto es un comentario corto</p>
+          <time class="published" datetime="2015-10-20">October 20, 2015</time>
+        </header>
+
+      </article>
+    </li>
+  </ul>
+</section>

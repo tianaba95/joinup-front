@@ -1,0 +1,13 @@
+<div class="tabs tabs-style-underline">
+  <nav>
+    <ul>
+      <li *ngFor="let cat of tabList" [ngClass]="{'tab-current': cat.active}">
+        <a href="javascript:void(0)" (click)="callback(cat)" class="icon {{cat.icon}}">
+          <span>{{cat.name}}</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /content -->
+</div>
+<!-- /tabs -->

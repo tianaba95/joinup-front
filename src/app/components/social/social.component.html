@@ -1,0 +1,30 @@
+<!-- Nav -->
+<nav id="nav">
+  <img class="logo" src="assets/images/logo.png" />
+  <ul class="container">
+    <li>
+      <a routerLink="/home">Home</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="wrapper style2">
+  <!-- tabs -->
+  <div class="tabs tabs-style-underline">
+    <nav>
+      <ul>
+        <li *ngFor="let cat of plan_category_tab" [ngClass]="{'tab-current': cat.active}">
+          <a href="javascript:void(0)" (click)="tabChanged(cat)" class="icon {{cat.icon}}">
+            <span>{{cat.name}}</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <!-- /tabs -->
+
+  <article class="container">
+    <app-plan-card4 [my_list]="my_list" [listaComentarios]="listaComentarios"></app-plan-card4>
+  </article>
+
+</div>

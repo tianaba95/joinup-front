@@ -1,0 +1,292 @@
+<link rel="stylesheet" href="./assets/css/main-future.css" />
+
+<!-- Wrapper -->
+<div id="wrapper">
+  <!-- Menu -->
+  <section id="menu">
+
+  </section>
+
+  <!-- Main -->
+  <div id="main">
+
+    <!-- Post -->
+    <article class="post">
+      <header>
+        <div class="title">
+          <h2>
+            <a href="javascript:void(0)">{{plan?.title}}</a>
+          </h2>
+          <p>{{plan?.descriptionShort}}</p>
+        </div>
+        <div class="meta">
+          <time class="published" datetime="2015-11-01">{{plan?.date}}
+            <br>
+            <span>{{plan?.startingTime}} - {{plan?.endingTime}}</span>
+          </time>
+          <a href="#" class="author">
+            <span class="name">{{plan?.guide}}</span>
+            <img src="./assets/images/future/avatar.jpg" alt="" />
+          </a>
+        </div>
+      </header>
+      <a href="#" class="image featured">
+        <img src="{{plan?.image}}" alt="" />
+      </a>
+      <p>{{plan?.descriptionLong}}</p>
+
+      <div class="info-right">
+        <p class="rate" *ngIf=" plan?.rate">
+          <span *ngFor="let star of plan?.rate?.stars" class="fa fa-star {{star}}"></span>
+          <span class="rate">({{plan?.rate?.average}})</span>
+          <span class="rate">
+            <i class="fa fa-user" aria-hidden="true"></i>+{{plan?.rate?.numVotes}}</span>
+        </p>
+
+        <p>
+          <span class="fee infoTitle">Administrative fee: </span>${{plan?.fee}}
+        </p>
+
+        <p>
+          <span class="costs infoTitle">Extra costs suggested: </span>${{plan?.cost}}
+        </p>
+
+        <p>
+          <span class="adress infoTitle">Adress: </span>{{plan?.adress}}
+        </p>
+
+        <p>
+          <span class="date infoTitle">Date: </span>
+          <time class="published" datetime="2015-11-01">{{plan?.date}}
+            <span>{{plan?.startingTime}} - {{plan?.endingTime}}</span>
+          </time>
+        </p>
+
+      </div>
+
+      <footer>
+        <ul class="actions">
+          <li>
+            <a href="#" class="button big">Continue Reading</a>
+          </li>
+        </ul>
+        <ul class="stats">
+          <li>
+            <a href="#">{{plan?.category}}</a>
+          </li>
+          <li>
+            <a href="#" class="icon fa-heart">28</a>
+          </li>
+          <li>
+            <a href="#" class="icon fa-comment">128</a>
+          </li>
+        </ul>
+      </footer>
+    </article>
+
+
+    <!-- Post -->
+    <article class="post">
+      <header>
+        <div class="title">
+          <h2>
+            <a href="#">Check out the pics we took</a>
+          </h2>
+          <!-- p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p -->
+        </div>
+        <div class="meta">
+          <time class="published" datetime="2015-10-25">October 25, 2015</time>
+          <a href="#" class="author">
+            <span class="name">Jane Doe</span>
+            <img src="./assets/images/future/avatar.jpg" alt="" />
+          </a>
+        </div>
+      </header>
+      <a href="#" class="image featured">
+        <img src="./assets/images/future/pic02.jpg" alt="" />
+      </a>
+
+
+
+      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus
+        porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper.</p>
+      <footer>
+        <ul class="actions">
+          <li>
+            <a href="#" class="button big">Continue Reading</a>
+          </li>
+        </ul>
+        <ul class="stats">
+          <li>
+            <a href="#">General</a>
+          </li>
+          <li>
+            <a href="#" class="icon fa-heart">28</a>
+          </li>
+          <li>
+            <a href="#" class="icon fa-comment">128</a>
+          </li>
+        </ul>
+      </footer>
+    </article>
+
+    <!-- Post -->
+    <article class="post">
+      <header>
+        <div class="title">
+          <h2>
+            <a href="#">Euismod et accumsan</a>
+          </h2>
+          <p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+        </div>
+        <div class="meta">
+          <time class="published" datetime="2015-10-22">October 22, 2015</time>
+          <a href="#" class="author">
+            <span class="name">Jane Doe</span>
+            <img src="./assets/images/future/avatar.jpg" alt="" />
+          </a>
+        </div>
+      </header>
+      <a href="#" class="image featured">
+        <img src="./assets/images/future/pic03.jpg" alt="" />
+      </a>
+      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus
+        porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent
+        tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non
+        fringilla. Cras vehicula tellus eu ligula viverra, ac fringilla turpis suscipit. Quisque vestibulum rhoncus ligula.</p>
+      <footer>
+        <ul class="actions">
+          <li>
+            <a href="#" class="button big">Continue Reading</a>
+          </li>
+        </ul>
+        <ul class="stats">
+          <li>
+            <a href="#">General</a>
+          </li>
+          <li>
+            <a href="#" class="icon fa-heart">28</a>
+          </li>
+          <li>
+            <a href="#" class="icon fa-comment">128</a>
+          </li>
+        </ul>
+      </footer>
+    </article>
+
+    <!-- Pagination -->
+    <ul class="actions pagination">
+      <li>
+        <a href="" class="disabled button big previous">Previous Page</a>
+      </li>
+      <li>
+        <a href="#" class="button big next">Next Page</a>
+      </li>
+    </ul>
+
+  </div>
+
+  <!-- Sidebar -->
+  <section id="sidebar">
+
+    <!-- Intro -->
+    <section id="intro">
+      <a href="#" class="logo">
+        <img src="./assets/images/future/logo.jpg" alt="" />
+      </a>
+      <header>
+        <h2>Future Imperfect</h2>
+        <p>Another fine responsive site template by
+          <a href="http://html5up.net">HTML5 UP</a>
+        </p>
+      </header>
+    </section>
+
+    <!-- Mini Posts -->
+    <section>
+      <div class="mini-posts">
+
+        <!-- Mini Post -->
+        <article class="mini-post">
+          <header>
+            <h3>
+              <a href="#">Vitae sed condimentum</a>
+            </h3>
+            <time class="published" datetime="2015-10-20">October 20, 2015</time>
+            <a href="#" class="author">
+              <img src="./assets/images/future/avatar.jpg" alt="" />
+            </a>
+          </header>
+          <a href="#" class="image">
+            <img src="./assets/images/future/pic04.jpg" alt="" />
+          </a>
+        </article>
+
+
+
+      </div>
+    </section>
+
+    <!-- Posts List -->
+    <section>
+      <ul class="posts">
+        <li>
+          <article>
+            <header>
+              <h3>
+                <a href="#">Lorem ipsum fermentum ut nisl vitae</a>
+              </h3>
+              <time class="published" datetime="2015-10-20">October 20, 2015</time>
+            </header>
+            <a href="#" class="image">
+              <img src="./assets/images/future/pic08.jpg" alt="" />
+            </a>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Footer -->
+    <section id="footer">
+      <ul class="icons">
+        <li>
+          <a href="#" class="fa-twitter">
+            <span class="label">Twitter</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="fa-facebook">
+            <span class="label">Facebook</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="fa-instagram">
+            <span class="label">Instagram</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="fa-rss">
+            <span class="label">RSS</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="fa-envelope">
+            <span class="label">Email</span>
+          </a>
+        </li>
+      </ul>
+      <p class="copyright">&copy; Untitled. Design:
+        <a href="http://html5up.net">HTML5 UP</a>. Images:
+        <a href="http://unsplash.com">Unsplash</a>.</p>
+    </section>
+
+  </section>
+
+</div>
+
+<!-- Scripts -->
+<script src="./assets/js/jquery.min.js"></script>
+<script src="./assets/js/skel.min.js"></script>
+<script src="./assets/js/util.js"></script>
+<!--[if lte IE 8]><script src="./assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="./assets/js/main.js"></script>

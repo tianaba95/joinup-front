@@ -1,0 +1,83 @@
+<!-- div class="cards">
+  <div class="card">
+    <img src="http://s4c.cymru/temp/wave1.jpg">
+    <div class="card-title">
+      <a href="#" class="toggle-info btn">
+        <span class="left"></span>
+        <span class="right"></span>
+      </a>
+      <h2>
+        Card title
+        <small>Image from unsplash.com</small>
+      </h2>
+    </div>
+    <div class="card-flap flap1">
+      <div class="card-description">
+        This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available
+        etc.
+      </div>
+      <div class="card-flap flap2">
+        <div class="card-actions">
+          <a href="#" class="btn">Read more</a>
+        </div>
+      </div>
+    </div>
+  </div -->
+
+<div class="cards" [ngClass]="{showing: isShowing}">
+  <div class="card" *ngFor="let plan of my_list" (click)="clickCardArrow(plan)" [ngClass]="{show: plan.showThis}">
+    <div class="p3-view p3-view-tenth">
+      <!-- img src="http://static1.squarespace.com/static/55ac6d80e4b0a964784b2f80/t/5703eb0cb09f95f41391ea85/1459874573710/j07SfQZ.png"
+          / -->
+      <div class="thumb" [style.backgroundImage]="'url('+ plan.image +')'"></div>
+      <div class="p3-mask">
+        <h2>{{plan?.title}}</h2>
+        <p>{{plan?.date}}</p>
+        <p>{{plan?.guide}}</p>
+        <a href="javascript:void(0)" [routerLink]="['/social-detail', plan.id]" class="p3-info">Read More</a>
+      </div>
+    </div>
+    <div class="card-title">
+      <h2>
+        {{plan.title}}
+        <small>{{plan.descriptionShort}}</small>
+      </h2>
+    </div>
+    <div class="card-title bg-fafafa">
+      <a href="javascript:void(0)" class="toggle-info btn">
+        <span class="left"></span>
+        <span class="right"></span>
+      </a>
+      <p>
+        <app-comment-card [commentList]="getListaCommentarios(0,1)"></app-comment-card>
+      </p>
+    </div>
+
+    <!-- div *ngFor="let comments of getListaCommentarios(1,3); let i = index" class="card-flap flap{{i+1}}">
+      <div class="card-description">
+        This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available
+        etc.
+      </div>
+    </div -->
+
+    <div class="card-flap flap1 bg-fafafa" [ngClass]="{positionRelative: plan.showThis}">
+      <div class="card-description">
+        <app-comment-card [commentList]="getListaCommentarios(1,3)"></app-comment-card>
+      </div>
+    </div>
+
+    <!-- div class="card-flap flap1">
+      <div class="card-description">
+        This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available
+        etc.
+      </div>
+    </div -->
+
+    <div class="card-flap flap2 bg-fafafa">
+      <div class="card-actions">
+        <a href="javascript:void(0)" [routerLink]="['/social-detail', plan.id]" class="btn">Read more</a>
+      </div>
+    </div>
+
+  </div>
+</div>
