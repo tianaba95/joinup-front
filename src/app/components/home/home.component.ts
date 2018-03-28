@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
 
   slideConfig = {"slidesToShow": 3, "slidesToScroll": 3};
 
+  loginUrl = "http://localhost:4200/login";
   planes: any;
   planesRecent: any;
 
@@ -27,6 +28,11 @@ export class HomeComponent implements OnInit {
         this.planes = objects;
       }
       );
+  }
+
+  linkToUrlFunction(url){
+    console.log('link model function');
+    window.open(url);
   }
 
   initRecenttSuscribe() {

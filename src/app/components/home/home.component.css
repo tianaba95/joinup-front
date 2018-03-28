@@ -1,9 +1,21 @@
-.nav {
-    height: 16%;
+nav {
+    height: 10%;
+    display: block;
+    position: absolute;
+    min-height:60px;
 }
 
 /* resize images */
-.nav img {
+nav img {
     margin-top: 0.5%;
     width: 50px;
+}
+
+.wrapper style1 first #home{
+    background: url(/assets/images/background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: fixed;
 }

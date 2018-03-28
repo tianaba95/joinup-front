@@ -26,6 +26,8 @@ import { PlanCard3Component } from './components/commons/plan-card3/plan-card3.c
 import { PlanCard4Component } from './components/commons/plan-card4/plan-card4.component';
 import { SocialDetailComponent } from './components/social-detail/social-detail.component';
 
+import {FlexLayoutModule} from "@angular/flex-layout";
+
 export const firebaseConfig = {
   apiKey: "AIzaSyCW1ZSceJZ6DYFxHpYEaXcwofW7jQhI0WE",
   authDomain: "joinuptest-495af.firebaseapp.com",
@@ -58,6 +60,7 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     BrowserModule,
+    FlexLayoutModule,
     SlickModule.forRoot()
   ],
   providers: [
