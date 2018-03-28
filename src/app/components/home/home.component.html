@@ -1,46 +1,38 @@
 <!-- Nav -->
-<mat-toolbar color="primary">
-
-  <span>Responsive Navigation</span>
-
-  <span class="example-spacer"></span>
-
-  <a href="#" mat-button>Menu Item 1</a>
-
-  <a href="#" mat-button>Menu Item 2</a>
-
-  <a href="#" mat-button>Menu Item 3</a>
-
-  <a href="#" mat-button>Menu Item 4</a>
-
-  <a href="#" mat-button>Menu Item 5</a>
-
-  <a href="#" mat-button>Menu Item 6</a>
-
-</mat-toolbar>
-<!-- <nav id="nav">
+<nav id="nav">
   <img class="logo" src="assets/images/logo.png" />
-  <ul class="container">
-    <li>
-      <a href="javascript:void(0)" [scrollTo]="'#home'">Home</a>
-    </li>
-    <li>
-      <a href="javascript:void(0)" [scrollTo]="'#social'">Social Plans</a>
-    </li>
-    <li>
-      <a href="javascript:void(0)" [scrollTo]="'#recent'">Recent Plans</a>
-    </li>
-    <li>
-      <a href="javascript:void(0)"  [scrollTo]="'#wantguide'">I want to guide</a>
-    </li>
-    <li>
-      <a href="javascript:void(0)" [scrollTo]="'#contact'">Contact</a>
-    </li>
-    <li>
-      <a href="{{loginUrl}}" ng-click="linkToUrlFunction(loginUrl)">Login or Signup</a>
-    </li>
-  </ul>
-</nav> -->
+  <div fxShow="true" fxHide.lt-md="true">
+    <ul class="container">
+      <li>
+        <a href="javascript:void(0)" [scrollTo]="'#home'">Home</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" [scrollTo]="'#social'">Social Plans</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" [scrollTo]="'#recent'">Recent Plans</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)"  [scrollTo]="'#wantguide'">I want to guide</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" [scrollTo]="'#contact'">Contact</a>
+      </li>
+      <li>
+        <a href="{{loginUrl}}" ng-click="linkToUrlFunction(loginUrl)">Login or Signup</a>
+      </li>
+    </ul>
+  </div>
+
+  <div fxShow="true" fxHide.gt-sm="true">
+
+    <a href="#" (click)="sidenav.toggle()">Show Side Menu</a>
+
+  </div>
+
+</nav>
+
+
 
 <!-- Home -->
 <div id="home" class="wrapper style1 first" style="background: url(./assets/images/background.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">

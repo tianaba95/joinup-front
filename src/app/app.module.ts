@@ -27,6 +27,11 @@ import { PlanCard4Component } from './components/commons/plan-card4/plan-card4.c
 import { SocialDetailComponent } from './components/social-detail/social-detail.component';
 
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdlModule } from '@angular-mdl/core';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCW1ZSceJZ6DYFxHpYEaXcwofW7jQhI0WE",
@@ -61,6 +66,11 @@ export const firebaseConfig = {
     AngularFireAuthModule,
     BrowserModule,
     FlexLayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    BrowserAnimationsModule,
+    MdlModule,
     SlickModule.forRoot()
   ],
   providers: [

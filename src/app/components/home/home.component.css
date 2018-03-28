@@ -1,14 +1,17 @@
-nav {
-    height: 10%;
+#nav {
     display: block;
-    position: absolute;
-    min-height:60px;
+    position: fixed;
+    min-height: 10px;
 }
 
 /* resize images */
 nav img {
-    margin-top: 0.5%;
+    margin-top: 0.8%;
     width: 50px;
+}
+
+.container {
+    margin-top: 0.8%;
 }
 
 .wrapper style1 first #home{
