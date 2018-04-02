@@ -32,6 +32,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdlModule } from '@angular-mdl/core';
+import {MatIconModule} from '@angular/material/icon';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCW1ZSceJZ6DYFxHpYEaXcwofW7jQhI0WE",
@@ -69,6 +70,7 @@ export const firebaseConfig = {
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
+    MatIconModule,
     BrowserAnimationsModule,
     MdlModule,
     SlickModule.forRoot()

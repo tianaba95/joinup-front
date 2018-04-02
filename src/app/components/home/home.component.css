@@ -1,7 +1,7 @@
 #nav {
-    display: block;
+    display: inline-block;
     position: fixed;
-    min-height: 10px;
+    min-height: 9px;
 }
 
 /* resize images */
@@ -21,4 +21,34 @@ nav img {
     -o-background-size: cover;
     background-size: cover;
     position: fixed;
+}
+
+.example-container {
+    background: #282828;
+}
+
+.example-sidenav-content {
+  height: 100%;
+  align-items: right;
+  justify-content: right;
+  margin-top: 10px;
+  width: 30%;
+  padding-left: 70%;
+}
+
+.mat-icon-button:active {
+    background-color:#303030;
+}
+
+.example-container.example-sidenav-content.button.mat-button-focus-overlay{
+    background-color:#303030 !important;
+}
+
+
+.example-sidenav {
+  padding: 20px;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }

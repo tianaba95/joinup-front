@@ -21,13 +21,30 @@
       <li>
         <a href="{{loginUrl}}" ng-click="linkToUrlFunction(loginUrl)">Login or Signup</a>
       </li>
-    </ul>
+    </ul>   
+
   </div>
 
   <div fxShow="true" fxHide.gt-sm="true">
 
-    <a href="#" (click)="sidenav.toggle()">Show Side Menu</a>
-
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <p>Auto-resizing sidenav</p>
+      <button [scrollTo]="'#home'" mat-raised-button>Home</button>
+      <button [scrollTo]="'#social'" mat-raised-button>Social Plans</button>
+      <button [scrollTo]="'#recent'" mat-raised-button>Recent Plans</button>
+      <button [scrollTo]="'#wantguide'" mat-raised-button>I want to guide</button>
+      <button [scrollTo]="'#contact'" mat-raised-button>Contact</button>
+      <button ng-click="linkToUrlFunction(loginUrl)" mat-raised-button>Login or Signup</button>
+    </mat-drawer>
+    
+    <mat-drawer-container class="example-container" autosize>    
+      <div class="example-sidenav-content">
+        <a (click)="drawer.toggle()">
+          <mat-icon aria-label="Menu icon">menu</mat-icon>
+        </a>
+      </div>
+    
+    </mat-drawer-container>
   </div>
 
 </nav>
