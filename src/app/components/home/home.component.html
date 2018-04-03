@@ -25,18 +25,7 @@
 
   </div>
 
-  <div fxShow="true" fxHide.gt-sm="true">
-
-    <mat-drawer #drawer class="example-sidenav" mode="side">
-      <p>Auto-resizing sidenav</p>
-      <button [scrollTo]="'#home'" mat-raised-button>Home</button>
-      <button [scrollTo]="'#social'" mat-raised-button>Social Plans</button>
-      <button [scrollTo]="'#recent'" mat-raised-button>Recent Plans</button>
-      <button [scrollTo]="'#wantguide'" mat-raised-button>I want to guide</button>
-      <button [scrollTo]="'#contact'" mat-raised-button>Contact</button>
-      <button ng-click="linkToUrlFunction(loginUrl)" mat-raised-button>Login or Signup</button>
-    </mat-drawer>
-    
+  <div fxShow="true" fxHide.gt-sm="true" class="example">    
     <mat-drawer-container class="example-container" autosize>    
       <div class="example-sidenav-content">
         <a (click)="drawer.toggle()">
@@ -48,6 +37,31 @@
   </div>
 
 </nav>
+
+<mat-drawer #drawer class="example-sidenav" mode="side">
+  <ul class="container">
+    <li>
+      <a mat-button href="javascript:void(0)" [scrollTo]="'#home'">Home</a>
+    </li>
+    <li>
+      <a mat-button href="javascript:void(0)" [scrollTo]="'#social'">Social Plans</a>
+    </li>
+    <li>
+      <a mat-button href="javascript:void(0)" [scrollTo]="'#recent'">Recent Plans</a>
+    </li>
+    <li>
+      <a mat-button href="javascript:void(0)"  [scrollTo]="'#wantguide'">I want to guide</a>
+    </li>
+    <li>
+      <a mat-button href="javascript:void(0)" [scrollTo]="'#contact'">Contact</a>
+    </li>
+    <li>
+      <a mat-button href="{{loginUrl}}" ng-click="linkToUrlFunction(loginUrl)">Login or Signup</a>
+    </li>
+  </ul>
+</mat-drawer>
+
+
 
 
 
