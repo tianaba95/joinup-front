@@ -38,25 +38,25 @@
 
 </nav>
 
-<mat-drawer #drawer class="example-sidenav" mode="side">
+<mat-drawer #drawer class="example-sidenav" mode="side" fxHide.gt-sm="true">
   <ul class="container">
     <li>
-      <a mat-button href="javascript:void(0)" [scrollTo]="'#home'">Home</a>
+      <a class="aLink" href="javascript:void(0)" [scrollTo]="'#home'">Home</a>
     </li>
     <li>
-      <a mat-button href="javascript:void(0)" [scrollTo]="'#social'">Social Plans</a>
+      <a class="aLink" href="javascript:void(0)" [scrollTo]="'#social'">Social Plans</a>
     </li>
     <li>
-      <a mat-button href="javascript:void(0)" [scrollTo]="'#recent'">Recent Plans</a>
+      <a class="aLink" href="javascript:void(0)" [scrollTo]="'#recent'">Recent Plans</a>
     </li>
     <li>
-      <a mat-button href="javascript:void(0)"  [scrollTo]="'#wantguide'">I want to guide</a>
+      <a class="aLink" href="javascript:void(0)"  [scrollTo]="'#wantguide'">I want to guide</a>
     </li>
     <li>
-      <a mat-button href="javascript:void(0)" [scrollTo]="'#contact'">Contact</a>
+      <a class="aLink" href="javascript:void(0)" [scrollTo]="'#contact'">Contact</a>
     </li>
     <li>
-      <a mat-button href="{{loginUrl}}" ng-click="linkToUrlFunction(loginUrl)">Login or Signup</a>
+      <a class="aLink" href="{{loginUrl}}" ng-click="linkToUrlFunction(loginUrl)">Login or Signup</a>
     </li>
   </ul>
 </mat-drawer>
