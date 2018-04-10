@@ -34,6 +34,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdlModule } from '@angular-mdl/core';
 import {MatIconModule} from '@angular/material/icon';
 
+import { LoginComponent } from './components/authentication/login/login.component';
+import { EmailComponent } from './components/authentication/email/email.component';
+import { SignupComponent } from './components/authentication/signup/signup.component';
+import { MembersComponent } from './components/authentication/members/members.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ManageUsersService } from './services/manage-users.service';
+
 export const firebaseConfig = {
   apiKey: "AIzaSyCW1ZSceJZ6DYFxHpYEaXcwofW7jQhI0WE",
   authDomain: "joinuptest-495af.firebaseapp.com",
@@ -58,6 +65,9 @@ export const firebaseConfig = {
     TabsComponent,
     PlanCard3Component,
     PlanCard4Component,
+    LoginComponent,
+    EmailComponent,
+    SignupComponent,
     SocialDetailComponent
   ],
   imports: [
@@ -73,10 +83,13 @@ export const firebaseConfig = {
     MatIconModule,
     BrowserAnimationsModule,
     MdlModule,
+    FormsModule,
+    ReactiveFormsModule,
     SlickModule.forRoot()
   ],
   providers: [
-    SocialService
+    SocialService,
+    ManageUsersService
   ],
   bootstrap: [
     AppComponent

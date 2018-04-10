@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialService } from '../../services/social.service';
+import { ActivatedRoute } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,12 +16,14 @@ export class HomeComponent implements OnInit {
   loginUrl = "http://localhost:4200/login";
   planes: any;
   planesRecent: any;
+  userId: any;
 
-  constructor(private socialService: SocialService) { }
+  constructor(public afAuth: AngularFireAuth, private socialService: SocialService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.initPlansSuscribe();
     this.initRecenttSuscribe();
+    this.initUserSubscribe();
   }
 
   initPlansSuscribe() {
@@ -31,8 +36,13 @@ export class HomeComponent implements OnInit {
   }
 
   linkToUrlFunction(url){
-    console.log('link model function');
     window.open(url);
+  }
+
+  signout(){
+      this.afAuth.auth.signOut();
+      console.log('logged out');
+      this.router.navigateByUrl('/login');
   }
 
   initRecenttSuscribe() {
@@ -45,6 +55,11 @@ export class HomeComponent implements OnInit {
       );
   }
 
+  initUserSubscribe() {
+    this.userId = this.route.snapshot.params['id'];
+    console.log("THIS ID", this.userId);
+  }
+
   getPlansHome() {
     return this.socialService.getPlansHome();
   }
@@ -52,5 +67,4 @@ export class HomeComponent implements OnInit {
   getRecentList() {
     return this.socialService.getPlanPopularHome();
   }
-
 }

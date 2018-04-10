@@ -19,7 +19,8 @@
         <a href="javascript:void(0)" [scrollTo]="'#contact'">Contact</a>
       </li>
       <li>
-        <a href="{{loginUrl}}" ng-click="linkToUrlFunction(loginUrl)">Login or Signup</a>
+        <a *ngIf="!userId" [routerLink]="['/login']">Login or Signup</a>
+        <a *ngIf="userId" (click)="signout()">Sign Out</a>
       </li>
     </ul>   
 
@@ -56,14 +57,11 @@
       <a class="aLink" href="javascript:void(0)" [scrollTo]="'#contact'">Contact</a>
     </li>
     <li>
-      <a class="aLink" href="{{loginUrl}}" ng-click="linkToUrlFunction(loginUrl)">Login or Signup</a>
+      <a *ngIf="!userId" class="aLink" [routerLink]="['/login']">Login or Signup</a>
+      <a *ngIf="userId" class="aLink" (click)="signout()">Sign Out</a>
     </li>
   </ul>
 </mat-drawer>
-
-
-
-
 
 <!-- Home -->
 <div id="home" class="wrapper style1 first" style="background: url(./assets/images/background.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
