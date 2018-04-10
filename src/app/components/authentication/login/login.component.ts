@@ -35,7 +35,8 @@ export class LoginComponent implements OnInit {
           }
           if(this.found){
             if(this.found.rol == "User"){
-              this.linkToUrlFunction(this.redUrl, this.found.id);
+              console.log(this.found.id)
+              this.router.navigateByUrl('/home/'+this.found.id);
             } else {     
               this.router.navigateByUrl('/users');
             }

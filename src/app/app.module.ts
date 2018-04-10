@@ -33,6 +33,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdlModule } from '@angular-mdl/core';
 import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { LoginComponent } from './components/authentication/login/login.component';
 import { EmailComponent } from './components/authentication/email/email.component';
@@ -81,6 +82,7 @@ export const firebaseConfig = {
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
+    MatMenuModule,
     BrowserAnimationsModule,
     MdlModule,
     FormsModule,

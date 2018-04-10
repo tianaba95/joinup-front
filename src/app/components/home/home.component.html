@@ -22,10 +22,12 @@
         <a *ngIf="!userId" [routerLink]="['/login']">Login or Signup</a>
         <a *ngIf="userId" (click)="signout()">Sign Out</a>
       </li>
+      <li>
+        <a href="javascript:void(0)" [matMenuTriggerFor]="menu">Profile</a>
+      </li>
     </ul>   
-
   </div>
-
+   
   <div fxShow="true" fxHide.gt-sm="true" class="example">    
     <mat-drawer-container class="example-container" autosize>    
       <div class="example-sidenav-content">
@@ -38,6 +40,11 @@
   </div>
 
 </nav>
+
+<mat-menu id="theMenu" #menu="matMenu">
+    <a mat-menu-item>Profile</a>
+    <a mat-menu-item>Sign out</a>
+</mat-menu>
 
 <mat-drawer #drawer class="example-sidenav" mode="side" fxHide.gt-sm="true">
   <ul class="container">
