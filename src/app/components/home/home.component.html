@@ -23,10 +23,25 @@
         <a *ngIf="userId" (click)="signout()">Sign Out</a>
       </li>
       <li>
-        <a href="javascript:void(0)" [matMenuTriggerFor]="menu">Profile</a>
+        <mat-drawer-container *ngIf="userId" class="another-container" autosize>    
+          <div class="another-sidenav-content">
+            <a (click)="profile.toggle()">Profile</a>
+          </div> 
+        </mat-drawer-container>
       </li>
     </ul>   
   </div>
+
+  <mat-drawer #profile class="another-sidenav" mode="side">
+    <ul>
+      <li>
+        <a class="aLink" href="javascript:void(0)" [scrollTo]="'#home'">Home</a>
+      </li>
+      <li>
+        <a class="aLink" href="javascript:void(0)" [scrollTo]="'#social'">Social Plans</a>
+      </li>
+    </ul>
+  </mat-drawer>
    
   <div fxShow="true" fxHide.gt-sm="true" class="example">    
     <mat-drawer-container class="example-container" autosize>    
