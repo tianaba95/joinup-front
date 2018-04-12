@@ -15,7 +15,7 @@ const app_routes: Routes = [
     { path: 'social-detail/:id', component: SocialDetailComponent },
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
-    { path: 'login-email', component: EmailComponent },
+    { path: 'loginemail', component: EmailComponent },
 
     { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];

@@ -30,10 +30,10 @@ export class EmailComponent implements OnInit {
   }
 
   constructor(public afAuth: AngularFireAuth, private router: Router) {
-
+    console.log("what");
     this.afAuth.authState.subscribe((auth) => {
-      if (auth) {
-        this.router.navigateByUrl('/users');
+      if(auth) {
+        console.log(auth);
       }
     });
 
@@ -51,7 +51,6 @@ export class EmailComponent implements OnInit {
       this.afAuth.auth.signInWithEmailAndPassword(formData.value.email, formData.value.password)
         .then((success) => {
           console.log(success);
-          //this.router.navigate(['/demo']);
         })
         .catch(err => {
           console.log(err)

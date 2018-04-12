@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialService } from '../../services/social.service';
+import { ManageUsersService } from '../../services/manage-users.service';
+
 import { ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
@@ -18,12 +20,13 @@ export class HomeComponent implements OnInit {
   planesRecent: any;
   userId: any;
 
-  constructor(public afAuth: AngularFireAuth, private socialService: SocialService, private route: ActivatedRoute, private router: Router) { }
+  constructor(public afAuth: AngularFireAuth, private socialService: SocialService, private route: ActivatedRoute, private router: Router, private manageUserService: ManageUsersService) { }
 
   ngOnInit() {
     this.initPlansSuscribe();
     this.initRecenttSuscribe();
     this.initUserSubscribe();
+    if(this.userId){this.initUser(this.userId)}
   }
 
   initPlansSuscribe() {
@@ -34,6 +37,7 @@ export class HomeComponent implements OnInit {
       }
       );
   }
+
 
   linkToUrlFunction(url){
     window.open(url);
@@ -66,5 +70,17 @@ export class HomeComponent implements OnInit {
 
   getRecentList() {
     return this.socialService.getPlanPopularHome();
+  }
+
+
+  getUser(id) {
+    return this.manageUserService.getUser(id);
+  }
+
+  initUser(id) {
+    this.getUser(id).then(function(snapshot) {
+      var username = (snapshot.val() && snapshot.val().email) || 'Anonymous';
+      console.log(username);
+    })
   }
 }

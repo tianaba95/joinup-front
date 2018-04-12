@@ -43,6 +43,10 @@ export class ManageUsersService {
     }
   }
 
+  getUser(id){
+   return this.afDB.database.ref(`${this.modelPath}/` + id).once('value');
+  }
+
   remove(id){
     this.afDB.database.ref(`${this.modelPath}/` + id).remove();
   }

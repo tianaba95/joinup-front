@@ -34,12 +34,8 @@ export class LoginComponent implements OnInit {
             }
           }
           if(this.found){
-            if(this.found.rol == "User"){
               console.log(this.found.id)
               this.router.navigateByUrl('/home/'+this.found.id);
-            } else {     
-              this.router.navigateByUrl('/users');
-            }
           }
         }
       }
@@ -96,11 +92,26 @@ export class LoginComponent implements OnInit {
   }
 
   loginGoogle() {
+    console.log("LOG WITH FB");
+    var thisTemp = this;
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
     .then(
-      (success) => {
-      console.log(success);
-      this.router.navigate(['/users']);
+      (result) => {
+        var displayName = result.user.displayName.split(" ");
+        var email = result.user.email;
+  
+        var isit = 0;
+        for (let object of thisTemp.my_list) {
+          if(object.email == email){
+            isit = 1;
+            break;
+          }
+        }
+        // ...
+        if(isit == 0){
+          let object = { id: Date.now(), name: displayName[0], lastName: displayName[1], email: email, username: null, password: null, photo: result.user.photoURL, city: null, rol: 'User', uid: result.user.uid};
+          thisTemp.manageUsersService.merge(object, null);
+        }
     }).catch(
       (err) => {
       this.error = err;

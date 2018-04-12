@@ -33,12 +33,17 @@
   </div>
 
   <mat-drawer #profile class="another-sidenav" mode="side">
+    <header class="app-drawer-header primary-background">
+        <img src="./assets/images/user.png" class="app-avatar">
+        <span class="color-white">Nombre</span>
+        <span class="color-black">Rol</span>
+    </header>
     <ul>
-      <li>
-        <a class="aLink" href="javascript:void(0)" [scrollTo]="'#home'">Home</a>
+      <li style="width: 100%;">
+        <a href="javascript:void(0)" [scrollTo]="'#home'">Home</a>
       </li>
-      <li>
-        <a class="aLink" href="javascript:void(0)" [scrollTo]="'#social'">Social Plans</a>
+      <li style="width: 100%;">
+        <a *ngIf="userId" (click)="signout()">Sign Out</a>
       </li>
     </ul>
   </mat-drawer>
@@ -55,11 +60,6 @@
   </div>
 
 </nav>
-
-<mat-menu id="theMenu" #menu="matMenu">
-    <a mat-menu-item>Profile</a>
-    <a mat-menu-item>Sign out</a>
-</mat-menu>
 
 <mat-drawer #drawer class="example-sidenav" mode="side" fxHide.gt-sm="true">
   <ul class="container">
@@ -81,6 +81,7 @@
     <li>
       <a *ngIf="!userId" class="aLink" [routerLink]="['/login']">Login or Signup</a>
       <a *ngIf="userId" class="aLink" (click)="signout()">Sign Out</a>
+      <a *ngIf="userId">Profile</a>
     </li>
   </ul>
 </mat-drawer>
