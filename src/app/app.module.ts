@@ -41,6 +41,7 @@ import { SignupComponent } from './components/authentication/signup/signup.compo
 import { MembersComponent } from './components/authentication/members/members.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ManageUsersService } from './services/manage-users.service';
+import { ProfileComponent } from './profile/profile.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCW1ZSceJZ6DYFxHpYEaXcwofW7jQhI0WE",
@@ -69,7 +70,8 @@ export const firebaseConfig = {
     LoginComponent,
     EmailComponent,
     SignupComponent,
-    SocialDetailComponent
+    SocialDetailComponent,
+    ProfileComponent
   ],
   imports: [
     app_routing,

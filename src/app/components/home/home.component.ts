@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   planes: any;
   planesRecent: any;
   userId: any;
+  userObject: any;
 
   constructor(public afAuth: AngularFireAuth, private socialService: SocialService, private route: ActivatedRoute, private router: Router, private manageUserService: ManageUsersService) { }
 
@@ -26,7 +27,13 @@ export class HomeComponent implements OnInit {
     this.initPlansSuscribe();
     this.initRecenttSuscribe();
     this.initUserSubscribe();
-    if(this.userId){this.initUser(this.userId)}
+    if(this.userId){
+      var thisTemp = this;
+      this.initUser(thisTemp.userId).then(function(snapshot) {
+      thisTemp.userObject = (snapshot.val()) || 'Anonymous';
+      console.log(thisTemp.userObject);
+      })
+    }
   }
 
   initPlansSuscribe() {
@@ -78,9 +85,6 @@ export class HomeComponent implements OnInit {
   }
 
   initUser(id) {
-    this.getUser(id).then(function(snapshot) {
-      var username = (snapshot.val() && snapshot.val().email) || 'Anonymous';
-      console.log(username);
-    })
+    return this.getUser(id);
   }
 }

@@ -20,9 +20,6 @@
       </li>
       <li>
         <a *ngIf="!userId" [routerLink]="['/login']">Login or Signup</a>
-        <a *ngIf="userId" (click)="signout()">Sign Out</a>
-      </li>
-      <li>
         <mat-drawer-container *ngIf="userId" class="another-container" autosize>    
           <div class="another-sidenav-content">
             <a (click)="profile.toggle()">Profile</a>
@@ -34,15 +31,15 @@
 
   <mat-drawer #profile class="another-sidenav" mode="side">
     <header class="app-drawer-header primary-background">
-        <img src="./assets/images/user.png" class="app-avatar">
-        <span class="color-white">Nombre</span>
-        <span class="color-black">Rol</span>
+        <img *ngIf="userObject" src="{{userObject.photo}}" class="app-avatar">
+        <span *ngIf="userObject" class="color-white">{{userObject.name}}</span>
+        <span *ngIf="userObject" class="color-black">{{userObject.rol}}</span>
     </header>
-    <ul>
-      <li style="width: 100%;">
-        <a href="javascript:void(0)" [scrollTo]="'#home'">Home</a>
+    <ul class="theul">
+      <li>
+        <a href="javascript:void(0)" [scrollTo]="'#home'">Profile</a>
       </li>
-      <li style="width: 100%;">
+      <li>
         <a *ngIf="userId" (click)="signout()">Sign Out</a>
       </li>
     </ul>
