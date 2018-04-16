@@ -4,27 +4,23 @@
   <div fxShow="true" fxHide.lt-md="true">
     <ul class="container">
       <li>
-        <a href="javascript:void(0)" [scrollTo]="'#home'">Home</a>
+        <a pageScroll  [routerLink]="['/home', userId]" href="#home">Home</a>
       </li>
       <li>
-        <a href="javascript:void(0)" [scrollTo]="'#social'">Social Plans</a>
+        <a pageScroll [routerLink]="['/home', userId]" href="#social">Social Plans</a>
       </li>
       <li>
-        <a href="javascript:void(0)" [scrollTo]="'#recent'">Recent Plans</a>
+        <a pageScroll [routerLink]="['/home', userId]" href="#recent">Recent Plans</a>
       </li>
       <li>
-        <a href="javascript:void(0)"  [scrollTo]="'#wantguide'">I want to guide</a>
+        <a pageScroll [routerLink]="['/home', userId]" href="#wantguide">I want to guide</a>
       </li>
       <li>
-        <a href="javascript:void(0)" [scrollTo]="'#contact'">Contact</a>
+        <a pageScroll [routerLink]="['/home', userId]" href="#contact">Contact</a>
       </li>
       <li>
         <a *ngIf="!userId" [routerLink]="['/login']">Login or Signup</a>
-        <mat-drawer-container *ngIf="userId" class="another-container" autosize>    
-          <div class="another-sidenav-content">
-            <a (click)="profile.toggle()">Profile</a>
-          </div> 
-        </mat-drawer-container>
+        <a *ngIf="userId" (click)="signout()">Sign Out</a>
       </li>
     </ul>   
   </div>
@@ -61,24 +57,23 @@
 <mat-drawer #drawer class="example-sidenav" mode="side" fxHide.gt-sm="true">
   <ul class="container">
     <li>
-      <a class="aLink" href="javascript:void(0)" [scrollTo]="'#home'">Home</a>
+      <a class="aLink" pageScroll  [routerLink]="['/home', userId]" href="#home">Home</a>
     </li>
     <li>
-      <a class="aLink" href="javascript:void(0)" [scrollTo]="'#social'">Social Plans</a>
+      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#soccial">Social Plans</a>
     </li>
     <li>
-      <a class="aLink" href="javascript:void(0)" [scrollTo]="'#recent'">Recent Plans</a>
+      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#recente'">Recent Plans</a>
     </li>
     <li>
-      <a class="aLink" href="javascript:void(0)"  [scrollTo]="'#wantguide'">I want to guide</a>
+      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#wantoguide">I want to guide</a>
     </li>
     <li>
-      <a class="aLink" href="javascript:void(0)" [scrollTo]="'#contact'">Contact</a>
+      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#contact">Contact</a>
     </li>
     <li>
       <a *ngIf="!userId" class="aLink" [routerLink]="['/login']">Login or Signup</a>
       <a *ngIf="userId" class="aLink" (click)="signout()">Sign Out</a>
-      <a *ngIf="userId" [routerLink]="['/profile', userId]">Profile</a>
     </li>
   </ul>
 </mat-drawer>
@@ -88,108 +83,6 @@
   <app-slider></app-slider>
 </div>
 
-<!-- Social -->
-<div class="wrapper style2" id="soccial">
-  <article id="social">
-    <header >
-      <h2 >Our social Plans</h2>
-      <p>Join our social plans</p>
-    </header>
-    <div class="container">
-
-      <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
-        <div ngxSlickItem *ngFor="let p of planes" class="slide">
-          <article class="box style2">
-            <a href="javascript:void(0)" [routerLink]="['/social-detail', p.id]" class="image featured">
-              <div class="img-wrapper">
-                <img src="{{p.image}}" alt="" />
-              </div>
-            </a>
-            <h3>
-              <a  href="javascript:void(0)" [routerLink]="['/social-detail', p.id]">{{p.title}}</a>
-            </h3>
-            <p>{{p.descriptionShort}}</p>
-          </article>
-        </div>
-      </ngx-slick>
-    </div>
-
-    <footer>
-      <p>Want to learn more?</p>
-      <a routerLink="/social" class="button big scrolly">See all Social Plans</a>
-    </footer>
-  </article>
-</div>
-
-
-<!-- Recent -->
-<div class="wrapper style3" id="recente">
-  <article id="recent">
-    <header>
-      <h2>Here’s some stuff we made recently.</h2>
-      <p>Proin odio consequat sapien vestibulum consequat lorem dolore feugiat lorem ipsum dolore.</p>
-    </header>
-    <div class="container">
-      <div class="row">
-        <div *ngFor="let pr of planesRecent; let i = index" class="4u 12u(mobile)">
-          <article *ngIf="i < 3" class="box style2">
-            <a href="#" class="image featured">
-              <div class="img-wrapper">
-                <img src="{{pr.image}}" alt="" />
-              </div>
-            </a>
-            <h3>
-              <a href="#">{{pr.title}}</a>
-            </h3>
-            <p>{{pr.descriptionShort}}</p>
-          </article>
-        </div>
-      </div>
-
-      <div class="row">
-        <div *ngFor="let pr of planesRecent; let i = index" class="4u 12u(mobile)">
-          <article *ngIf="i >= 3" class="box style2">
-            <a href="#" class="image featured">
-              <div class="img-wrapper">
-                <img src="{{pr.image}}" alt="" />
-              </div>
-            </a>
-            <h3>
-              <a href="#">{{pr.title}}</a>
-            </h3>
-            <p>{{pr.descriptionShort}}</p>
-          </article>
-        </div>
-      </div>
-
-    </div>
-    <footer>
-      <p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
-      <a href="#contact" class="button big scrolly">View more</a>
-    </footer>
-  </article>
-</div>
-
-<!-- Want to guide -->
-<div class="wrapper style1 first" style="background: url(./assets/images/teach.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" >
-  <article class="container" id="wantguide">
-    <div class="row">
-      <div class="4u 12u(mobile)">
-
-      </div>
-      <div class="8u 12u(mobile)">
-        <header>
-          <h1 id="wantoguide">
-            <strong>Want to guide?</strong>.</h1>
-        </header>
-        <p>You can be a guide from,
-          <strong>JoinUp</strong>
-        </p>
-        <a [scrollTo]="'#contact'" class="button big scrolly">Learn more</a>
-      </div>
-    </div>
-  </article>
-</div>
 
 <!-- Contact -->
 <div class="wrapper style4">

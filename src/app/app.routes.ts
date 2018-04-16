@@ -7,6 +7,8 @@ import { SocialDetailComponent } from './components/social-detail/social-detail.
 import { LoginComponent } from './components/authentication/login/login.component';
 import { SignupComponent } from './components/authentication/signup/signup.component';
 import { EmailComponent } from './components/authentication/email/email.component';
+import { ProfileComponent } from './components/profile/profile.component';
+
 
 const app_routes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -16,6 +18,7 @@ const app_routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'loginemail', component: EmailComponent },
+    { path: 'profile/:id', component: ProfileComponent },
 
     { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];
