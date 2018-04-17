@@ -2450,6 +2450,8 @@ h2 {
 .mat-card-content {
 	display: inline-block  !important;
 	border-top: 1px solid #dedede;
+	margin: auto;
+	max-height: 30% !important;
 }
 
 h1{

@@ -84,7 +84,7 @@
 </mat-drawer>
 
 <!-- Home -->
-<div id="home" class="wrapper style1 first" style="background: url(./assets/images/background.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
+<div id="home" class="wrapper style1 first" style="background: url(./assets/images/background.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" fxLayout="row" fxLayoutAlign="start start">
   <mat-card class="a-card">
     <mat-card-content>
       <h1 class="titel" *ngIf="userObject">{{userObject.name}} {{userObject.lastName}}</h1>
@@ -108,19 +108,31 @@
               <strong class="title">Phone</strong>
               <span class="cont"><a href="tel:+12562548456">+1 256 254 84 56</a></span>
           </li>
+          <li class="clearfix">
+            <strong class="title">Gender</strong>
+            <span class="cont">F</span>
+          </li>
+          <li class="clearfix">
+            <strong class="title">Ocupation</strong>
+            <span class="cont">Student</span>
+          </li>
         </ul>
-        <p><strong class="othertitle">Objectives</strong></p>
+        <p><strong class="othertitle">Objective</strong></p>
         <p class="obj">
             The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
             A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
             bred for hunting.
         </p>
+        <p><strong class="othertitle" id="int">Interests</strong></p>
+        <p class="obj">
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        </p>
+        <p><strong class="othertitle" id="int">Activities</strong></p>
+        <p class="obj">
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        </p>
       </div>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
   </mat-card>  
 </div>
 
