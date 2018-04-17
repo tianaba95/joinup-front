@@ -10,17 +10,21 @@
         <a pageScroll [routerLink]="['/home', userId]" href="#social">Social Plans</a>
       </li>
       <li>
-        <a pageScroll [routerLink]="['/home', userId]" href="#recent">Recent Plans</a>
+        <a pageScroll [routerLink]="['/home', userId]" href="#wantguide">Recent Plans</a>
       </li>
       <li>
-        <a pageScroll [routerLink]="['/home', userId]" href="#wantguide">I want to guide</a>
+        <a pageScroll [routerLink]="['/home', userId]" href="#contact">I want to guide</a>
       </li>
       <li>
-        <a pageScroll [routerLink]="['/home', userId]" href="#contact">Contact</a>
+        <a pageScroll [routerLink]="['/home', userId]" href="#contacto">Contact</a>
       </li>
       <li>
         <a *ngIf="!userId" [routerLink]="['/login']">Login or Signup</a>
-        <a *ngIf="userId" (click)="signout()">Sign Out</a>
+        <mat-drawer-container *ngIf="userId" class="another-container" autosize>    
+          <div class="another-sidenav-content">
+            <a (click)="profile.toggle()">Me</a>
+          </div> 
+        </mat-drawer-container>
       </li>
     </ul>   
   </div>
@@ -33,7 +37,7 @@
     </header>
     <ul class="theul">
       <li>
-        <a href="javascript:void(0)" [routerLink]="['/profile', userId]">Edit Profile</a>
+        <a href="javascript:void(0)" [routerLink]="['/profile', userId]">See Profile</a>
       </li>
       <li>
         <a *ngIf="userId" (click)="signout()">Sign Out</a>
@@ -57,30 +61,67 @@
 <mat-drawer #drawer class="example-sidenav" mode="side" fxHide.gt-sm="true">
   <ul class="container">
     <li>
-      <a class="aLink" pageScroll  [routerLink]="['/home', userId]" href="#home">Home</a>
+      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#home">Home</a>
     </li>
     <li>
-      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#soccial">Social Plans</a>
+      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#social">Social Plans</a>
     </li>
     <li>
-      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#recente'">Recent Plans</a>
+      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#wantguide">Recent Plans</a>
     </li>
     <li>
-      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#wantoguide">I want to guide</a>
+      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#contact">I want to guide</a>
     </li>
     <li>
-      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#contact">Contact</a>
+      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#contacto">Contact</a>
     </li>
     <li>
       <a *ngIf="!userId" class="aLink" [routerLink]="['/login']">Login or Signup</a>
       <a *ngIf="userId" class="aLink" (click)="signout()">Sign Out</a>
+      <a *ngIf="userId" [routerLink]="['/profile', userId]">See Profile</a>
     </li>
   </ul>
 </mat-drawer>
 
 <!-- Home -->
 <div id="home" class="wrapper style1 first" style="background: url(./assets/images/background.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
-  <app-slider></app-slider>
+  <mat-card class="a-card">
+    <mat-card-content>
+      <h1 class="titel" *ngIf="userObject">{{userObject.name}} {{userObject.lastName}}</h1>
+      <h2 class="subtitl" *ngIf="userObject">{{userObject.rol}}</h2>
+      <img class="userImg" *ngIf="userObject" src="{{userObject.photo}}" alt="User picture">
+      <div class="furtherinfo">
+        <ul class="profile-list">
+          <li class="clearfix">
+              <strong class="title">Age</strong>
+              <span class="cont">29</span>
+          </li>
+          <li class="clearfix">
+              <strong class="title">Location</strong>
+              <span class="cont">Brussels</span>
+          </li>
+          <li class="clearfix">
+              <strong class="title">E-mail</strong>
+              <span class="cont"><a href="mailto:robertsmith@company.com">robertsmith@company.com</a></span>
+          </li>
+          <li class="clearfix">
+              <strong class="title">Phone</strong>
+              <span class="cont"><a href="tel:+12562548456">+1 256 254 84 56</a></span>
+          </li>
+        </ul>
+        <p><strong class="othertitle">Objectives</strong></p>
+        <p class="obj">
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+        </p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>  
 </div>
 
 

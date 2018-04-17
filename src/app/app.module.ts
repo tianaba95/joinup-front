@@ -35,6 +35,7 @@ import { MdlModule } from '@angular-mdl/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {NgxPageScrollModule} from 'ngx-page-scroll';
+import {MatCardModule} from '@angular/material/card';
 
 import { LoginComponent } from './components/authentication/login/login.component';
 import { EmailComponent } from './components/authentication/email/email.component';
@@ -86,6 +87,7 @@ export const firebaseConfig = {
     MatSidenavModule,
     MatIconModule,
     MatMenuModule,
+    MatCardModule,
     BrowserAnimationsModule,
     MdlModule,
     FormsModule,

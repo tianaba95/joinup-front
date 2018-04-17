@@ -2447,3 +2447,15 @@ h2 {
 
 /* END LOGIN */
 
+.mat-card-content {
+	display: inline-block  !important;
+	border-top: 1px solid #dedede;
+}
+
+h1{
+	font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+
+h3{
+	font-family: 'Roboto', 'Helvetica', sans-serif;
+}

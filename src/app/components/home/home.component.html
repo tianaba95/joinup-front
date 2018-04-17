@@ -22,7 +22,7 @@
         <a *ngIf="!userId" [routerLink]="['/login']">Login or Signup</a>
         <mat-drawer-container *ngIf="userId" class="another-container" autosize>    
           <div class="another-sidenav-content">
-            <a (click)="profile.toggle()">Profile</a>
+            <a (click)="profile.toggle()">Me</a>
           </div> 
         </mat-drawer-container>
       </li>
@@ -37,7 +37,7 @@
     </header>
     <ul class="theul">
       <li>
-        <a href="javascript:void(0)" [routerLink]="['/profile', userId]">Edit Profile</a>
+        <a href="javascript:void(0)" [routerLink]="['/profile', userId]">See Profile</a>
       </li>
       <li>
         <a *ngIf="userId" (click)="signout()">Sign Out</a>
@@ -78,7 +78,7 @@
     <li>
       <a *ngIf="!userId" class="aLink" [routerLink]="['/login']">Login or Signup</a>
       <a *ngIf="userId" class="aLink" (click)="signout()">Sign Out</a>
-      <a *ngIf="userId" [routerLink]="['/profile', userId]">Profile</a>
+      <a *ngIf="userId" [routerLink]="['/profile', userId]">See Profile</a>
     </li>
   </ul>
 </mat-drawer>
@@ -179,13 +179,13 @@
       </div>
       <div class="8u 12u(mobile)">
         <header>
-          <h1 id="wantoguide">
+          <h1>
             <strong>Want to guide?</strong>.</h1>
         </header>
         <p>You can be a guide from,
           <strong>JoinUp</strong>
         </p>
-        <a [scrollTo]="'#contact'" class="button big scrolly">Learn more</a>
+        <a [scrollTo]="'#contact'" class="button big scrolly" id="wantoguide">Learn more</a>
       </div>
     </div>
   </article>
@@ -237,7 +237,7 @@
           </form>
         </div>
       </div>
-      <div class="row">
+      <div class="row" id="contacto">
         <div class="12u">
           <hr />
           <h3>Find me on ...</h3>

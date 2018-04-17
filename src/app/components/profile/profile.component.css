@@ -157,3 +157,108 @@ mat-drawer a.aLink.active:before {
 .color-black{
     color: #FFFFF0;
 }
+
+.a-card {
+    max-width: 62%;
+    margin: auto;
+    display: table;
+  }
+
+.userImg {
+    margin-left: 40%;
+    background-size: cover;
+    width: 50%;
+    top: -1em;
+    display: table-column;
+    align-self: right;
+    position: relative;
+}
+
+.titel{
+    font-size: 36px;
+    font-weight: 700;
+    margin: auto;
+    float: left;
+    top:2em;
+    left: 1em;
+    color: #333333;
+    display: table-cell;
+    position: relative;
+}
+
+.subtitl{
+    float: left;
+    display: table-cell;
+    position: relative;
+    top: 6em;
+    left: -11.4em;
+    margin:auto;
+    color: #333333;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.furtherinfo{
+    width: 40%;
+    position: relative;
+    top:-24em;
+    left: 1em;
+    display: table-cell;
+    float: left;
+    border-top: 1px solid #dedede;
+}
+
+.profile-list{
+    margin: auto;
+    padding-top: 10px;
+    padding-left: 10px;
+    list-style: none;   
+}
+
+.profile-list .title{
+    display:block;
+    width: 120px;
+    float: left;
+    color: #333333;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 20px;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.profile-list .cont{
+    display:block;
+    float: left;
+    color: #9da0a7;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+}
+
+.othertitle{
+    display:block;
+    width: 100%;
+    top: 0.2em;
+    left: 0.8em;
+    float: left;
+    color: #333333;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 20px;
+    text-transform: uppercase;
+    text-align: left;
+    position: relative;
+}
+
+.obj{
+    text-align: justify;
+    text-justify: inter-word;
+    display:block;
+    width: 90%;
+    position: relative;
+    left: 0.8em;
+    text-indent: 10%;
+}
+
