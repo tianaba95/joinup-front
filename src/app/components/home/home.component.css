@@ -90,21 +90,6 @@ mat-drawer a.aLink.active:before {
     background: #484848;
 }
 
-.another-container {
-    background: #282828;
-    top: 0.7%;
-    width: 7%;
-    right: 21%;
-    position: absolute;
-}
-
-.another-sidenav-content {
-  height: 70%;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
 .another-sidenav {
     width: 13%;
     height: 60%;

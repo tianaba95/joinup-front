@@ -20,11 +20,7 @@
       </li>
       <li>
         <a *ngIf="!userId" [routerLink]="['/login']">Login or Signup</a>
-        <mat-drawer-container *ngIf="userId" class="another-container" autosize>    
-          <div class="another-sidenav-content">
-            <a (click)="profile.toggle()">Me</a>
-          </div> 
-        </mat-drawer-container>
+        <a *ngIf="userId" (click)="profile.toggle()">Me</a>     
       </li>
     </ul>   
   </div>
@@ -34,13 +30,18 @@
         <img *ngIf="userObject" src="{{userObject.photo}}" class="app-avatar">
         <span *ngIf="userObject" class="color-white">{{userObject.name}}</span>
         <span *ngIf="userObject" class="color-black">{{userObject.rol}}</span>
-    </header>
+        <span *ngIf="userObject" class="color-black">Lv4</span>
+        <span *ngIf="userObject" class="credit">Credit: $0.00</span>
+      </header>
     <ul class="theul">
       <li>
         <a href="javascript:void(0)" [routerLink]="['/profile', userId]">See Profile</a>
       </li>
       <li>
         <a *ngIf="userId" (click)="signout()">Sign Out</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" [routerLink]="['/profile', userId]">See Activities</a>
       </li>
     </ul>
   </mat-drawer>
@@ -84,13 +85,14 @@
 </mat-drawer>
 
 <!-- Home -->
-<div id="home" class="wrapper style1 first" style="background: url(./assets/images/background.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" fxLayout="row" fxLayoutAlign="start start">
-  <mat-card class="a-card">
-    <mat-card-content>
-      <h1 class="titel" *ngIf="userObject">{{userObject.name}} {{userObject.lastName}}</h1>
-      <h2 class="subtitl" *ngIf="userObject">{{userObject.rol}}</h2>
-      <img class="userImg" *ngIf="userObject" src="{{userObject.photo}}" alt="User picture">
-      <div class="furtherinfo">
+<div id="home" class="wrapper style1 first" style="background: url(./assets/images/background.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch">
+  <mat-card class="a-card" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch">
+    <mat-card-content ngClass.xs="mccsm" ngClass.sm="mccpeq">
+      <h1 class="titel" ngClass.md="tclass1" ngClass.sm="tclass2" ngClass.xs="tclass3" *ngIf="userObject">{{userObject.name}} {{userObject.lastName}}</h1>
+      <h2 class="subtitl" ngClass.md="stclass1" ngClass.sm="stclass2" ngClass.xs="stclass3" *ngIf="userObject">{{userObject.rol}}</h2>
+      <mat-icon class="edit" ngClass.md="edit1" ngClass.sm="edit2" ngClass.xs="edit3">mode edit</mat-icon>
+      <img class="userImg" ngClass.xs="peqimg" *ngIf="userObject" src="{{userObject.photo}}" alt="User picture">
+      <div class="furtherinfo" ngClass.md="class1" ngClass.xs="class3" ngClass.sm="class2">
         <ul class="profile-list">
           <li class="clearfix">
               <strong class="title">Age</strong>
@@ -116,6 +118,10 @@
             <strong class="title">Ocupation</strong>
             <span class="cont">Student</span>
           </li>
+          <li class="clearfix">
+            <strong class="title">Credit</strong>
+            <span class="cont">$0.00</span>
+          </li>
         </ul>
         <p><strong class="othertitle">Objective</strong></p>
         <p class="obj">
@@ -127,7 +133,7 @@
         <p class="obj">
             The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         </p>
-        <p><strong class="othertitle" id="int">Activities</strong></p>
+        <p><strong class="othertitle" id="int">Activity Types</strong></p>
         <p class="obj">
             The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         </p>

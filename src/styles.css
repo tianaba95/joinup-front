@@ -1845,7 +1845,7 @@
 				-webkit-transition: background-color .2s ease-in-out;
 				-ms-transition: background-color .2s ease-in-out;
 				transition: background-color .2s ease-in-out;
-				padding: 0.2em 1em 0.2em 1em;
+				padding: 0.2em 1em 0.2em 0.8em;
 				margin: 0.6em 0.2em 0.6em 0.2em;
 				font-weight: 600;
 				border-radius: 8px;
@@ -2451,7 +2451,16 @@ h2 {
 	display: inline-block  !important;
 	border-top: 1px solid #dedede;
 	margin: auto;
+	margin-bottom: -18em !important;
 	max-height: 30% !important;
+}
+
+.mat-card-content.mccsm{
+	margin-bottom: 5em !important;
+}
+
+.mat-card-content.mccpeq{
+	margin-bottom: -12em !important;
 }
 
 h1{
@@ -2460,4 +2469,8 @@ h1{
 
 h3{
 	font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+
+.another-container.anothercontentsm{
+    right: 15%;
 }
