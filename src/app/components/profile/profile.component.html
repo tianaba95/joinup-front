@@ -90,7 +90,7 @@
     <mat-card-content ngClass.xs="mccsm" ngClass.sm="mccpeq">
       <h1 class="titel" ngClass.md="tclass1" ngClass.sm="tclass2" ngClass.xs="tclass3" *ngIf="userObject">{{userObject.name}} {{userObject.lastName}}</h1>
       <h2 class="subtitl" ngClass.md="stclass1" ngClass.sm="stclass2" ngClass.xs="stclass3" *ngIf="userObject">{{userObject.rol}}</h2>
-      <mat-icon class="edit" ngClass.md="edit1" ngClass.sm="edit2" ngClass.xs="edit3">mode edit</mat-icon>
+      <a href="#"><mat-icon class="edit" ngClass.md="edit1" ngClass.sm="edit2" ngClass.xs="edit3">mode edit</mat-icon></a>
       <img class="userImg" ngClass.xs="peqimg" *ngIf="userObject" src="{{userObject.photo}}" alt="User picture">
       <div class="furtherinfo" ngClass.md="class1" ngClass.xs="class3" ngClass.sm="class2">
         <ul class="profile-list">
