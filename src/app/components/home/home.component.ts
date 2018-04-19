@@ -45,17 +45,6 @@ export class HomeComponent implements OnInit {
       );
   }
 
-
-  linkToUrlFunction(url){
-    window.open(url);
-  }
-
-  signout(){
-      this.afAuth.auth.signOut();
-      console.log('logged out');
-      this.router.navigateByUrl('/login');
-  }
-
   initRecenttSuscribe() {
     this.getRecentList()
       .subscribe(
@@ -86,5 +75,15 @@ export class HomeComponent implements OnInit {
 
   initUser(id) {
     return this.getUser(id);
+  }
+
+  linkToUrlFunction(url){
+    window.open(url);
+  }
+
+  signout(){
+      this.afAuth.auth.signOut();
+      console.log('logged out');
+      this.router.navigateByUrl('/login');
   }
 }

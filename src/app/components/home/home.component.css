@@ -1,3 +1,12 @@
+.wrapper style1 first #home{
+    background: url(/assets/images/background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: fixed;
+}
+
 #nav {
     display: inline-block;
     position: fixed;
@@ -12,14 +21,6 @@ nav img {
     width: 50px;
 }
 
-.wrapper style1 first #home{
-    background: url(/assets/images/background.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    position: fixed;
-}
 
 .example-container {
     background: #282828;
@@ -40,12 +41,31 @@ nav img {
   padding-top: 20%;
   padding-left: 5%;
   width: 50%;
-  height: 70%;
+  height: 80%;
   align-items: left;
   float: left;
   position: fixed;
   background: #282828;
   overflow-y: hidden;
+}
+
+.example-sidenav.example-sidenav2{
+    width: 20%;
+    overflow-y: visible;
+    height: 75%;
+}
+
+.example-sidenav.example-sidenav2 ul{
+    width: 97%;
+    position: relative;
+    left: -15em;
+    top: -7em;
+}
+
+.example-sidenav.example-sidenav2 a.aLink{
+    padding: 0.2em 0.2em 0.2em 1em;
+    margin: 0.2em 0.01em 0.2em 13em;
+    width: 60%;
 }
 
 mat-drawer a.aLink{
@@ -89,6 +109,7 @@ mat-drawer a.aLink.active:before {
     border-top: solid 0.6em #282828;
     background: #484848;
 }
+
 
 .another-sidenav {
     width: 13%;
@@ -140,5 +161,9 @@ mat-drawer a.aLink.active:before {
 }
 
 .color-black{
+    color: #FFFFF0;
+}
+
+.credit{
     color: #FFFFF0;
 }

@@ -59,7 +59,7 @@
 
 </nav>
 
-<mat-drawer #drawer class="example-sidenav" mode="side" fxHide.gt-sm="true">
+<mat-drawer #drawer class="example-sidenav" ngClass.sm="example-sidenav2" mode="side" fxHide.gt-sm="true">
   <ul class="container">
     <li>
       <a class="aLink" href="javascript:void(0)" [scrollTo]="'#home'">Home</a>
@@ -78,11 +78,14 @@
     </li>
     <li>
       <a *ngIf="!userId" class="aLink" [routerLink]="['/login']">Login or Signup</a>
-      <a *ngIf="userId" class="aLink" (click)="signout()">Sign Out</a>
-      <a *ngIf="userId" [routerLink]="['/profile', userId]">See Profile</a>
+      <a *ngIf="userId" class="aLink" (click)="signout()">Sign Out</a>      
+    </li>
+    <li>
+      <a *ngIf="userId" class="aLink"  [routerLink]="['/profile', userId]">See Profile</a>
     </li>
   </ul>
 </mat-drawer>
+
 
 <!-- Home -->
 <div id="home" class="wrapper style1 first" style="background: url(./assets/images/background.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
@@ -128,7 +131,7 @@
   <article id="recent">
     <header>
       <h2>Here’s some stuff we made recently.</h2>
-      <p>Proin odio consequat sapien vestibulum consequat lorem dolore feugiat lorem ipsum dolore.</p>
+      <p>Please contact us, if you want.</p>
     </header>
     <div class="container">
       <div class="row">
@@ -241,7 +244,7 @@
       <div class="row" id="contacto">
         <div class="12u">
           <hr />
-          <h3>Find me on ...</h3>
+          <h3>Find us on ...</h3>
           <ul class="social">
             <li>
               <a href="#" class="icon fa-twitter">
@@ -278,17 +281,6 @@
                 <span class="label">Github</span>
               </a>
             </li>
-            <!--
-                  <li><a href="#" class="icon fa-rss"><span>RSS</span></a></li>
-                  <li><a href="#" class="icon fa-instagram"><span>Instagram</span></a></li>
-                  <li><a href="#" class="icon fa-foursquare"><span>Foursquare</span></a></li>
-                  <li><a href="#" class="icon fa-skype"><span>Skype</span></a></li>
-                  <li><a href="#" class="icon fa-soundcloud"><span>Soundcloud</span></a></li>
-                  <li><a href="#" class="icon fa-youtube"><span>YouTube</span></a></li>
-                  <li><a href="#" class="icon fa-blogger"><span>Blogger</span></a></li>
-                  <li><a href="#" class="icon fa-flickr"><span>Flickr</span></a></li>
-                  <li><a href="#" class="icon fa-vimeo"><span>Vimeo</span></a></li>
-                  -->
           </ul>
           <hr />
         </div>
@@ -296,7 +288,7 @@
     </div>
     <footer>
       <ul id="copyright">
-        <li>&copy; Untitled. All rights reserved.</li>
+        <li>&copy; JoinUp. All rights reserved.</li>
         <li>Design:
           <a href="http://html5up.net">HTML5 UP</a>
         </li>

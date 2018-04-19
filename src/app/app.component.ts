@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 
 @Component({
@@ -9,9 +10,17 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  
+  isAuth =false;
 
-  constructor() { }
+  constructor(public afAuth: AngularFireAuth) {
+    this.afAuth.authState.subscribe((auth) => {
+      if(auth) {
+        this.isAuth = true;
+      }else{
+        this.isAuth = false;
+      }
+    });
+  }
 
 
 }

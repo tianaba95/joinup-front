@@ -1,3 +1,4 @@
+
 #nav {
     display: inline-block;
     position: fixed;
@@ -12,14 +13,6 @@ nav img {
     width: 50px;
 }
 
-.wrapper style1 first #home{
-    background: url(/assets/images/background.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    position: fixed;
-}
 
 .example-container {
     background: #282828;
@@ -40,12 +33,31 @@ nav img {
   padding-top: 20%;
   padding-left: 5%;
   width: 50%;
-  height: 70%;
+  height: 80%;
   align-items: left;
   float: left;
   position: fixed;
   background: #282828;
   overflow-y: hidden;
+}
+
+.example-sidenav.example-sidenav2{
+    width: 20%;
+    overflow-y: visible;
+    height: 75%;
+}
+
+.example-sidenav.example-sidenav2 ul{
+    width: 97%;
+    position: relative;
+    left: -15em;
+    top: -7em;
+}
+
+.example-sidenav.example-sidenav2 a.aLink{
+    padding: 0.2em 0.2em 0.2em 1em;
+    margin: 0.2em 0.01em 0.2em 13em;
+    width: 60%;
 }
 
 mat-drawer a.aLink{
@@ -148,6 +160,16 @@ mat-drawer a.aLink.active:before {
     color: #FFFFF0;
 }
 
+
+.wrapper style1 first #home{
+    background: url(/assets/images/background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: fixed;
+}
+  
 .a-card {
     margin: auto;
     max-width: 62%;
@@ -322,6 +344,11 @@ mat-drawer a.aLink.active:before {
     position: relative;
     left: -16em;
     top: 3.2em;
+    color: #282828;
+}
+
+.edit:hover{
+    color: #DF355B;
 }
 .edit.edit1{
     left: -13em;
@@ -336,3 +363,16 @@ mat-drawer a.aLink.active:before {
     left: -4em;
     top: 10.6em;
 }
+
+.wrapper.style4.justfooter{
+    height: 30%;
+    padding: 1em 0 4em 0;
+}
+
+.calendarbt{
+    position: relative;
+    top: -3em;
+    left: 11em;
+    padding-bottom: 0px;
+}
+

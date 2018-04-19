@@ -1629,14 +1629,39 @@
 			.wrapper.style4 form input[type=text],
 			.wrapper.style4 form input[type=password],
 			.wrapper.style4 form select,
+			.wrapper.style4 form .mat-select,
 			.wrapper.style4 form textarea {
 				border: none;
 				background: #282828;
 			}
 
+			.wrapper.style4 form .mat-select{
+				display: block;
+				padding: 0.75em;
+				border-radius: 8px;
+				font-size: 1em;
+				text-align: left;
+			}
+
+			.mat-select-value{
+				color: #bbbbbb !important;
+			}
+
+			.mat-icon-button{
+				width: 22px;
+				height: 22px
+			}
+
+			.mat-select-placeholder{
+				font-family: 'Open Sans', sans-serif;
+				text-shadow: none;
+				color: #555555 !important;
+				font-weight: 300;
+			}
 				.wrapper.style4 form input[type=text]:focus,
 				.wrapper.style4 form input[type=password]:focus,
 				.wrapper.style4 form select:focus,
+				.wrapper.style4 form .mat-select:focus,
 				.wrapper.style4 form textarea:focus {
 					background: #252525;
 				}
@@ -2476,3 +2501,4 @@ h3{
 .another-container.anothercontentsm{
     right: 15%;
 }
+

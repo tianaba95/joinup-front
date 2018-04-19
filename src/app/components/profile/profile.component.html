@@ -1,4 +1,4 @@
-<!-- Nav -->
+<!--Navbar-->
 <nav id="nav">
   <img class="logo" src="assets/images/logo.png" />
   <div fxShow="true" fxHide.lt-md="true">
@@ -25,7 +25,7 @@
     </ul>   
   </div>
 
-  <mat-drawer #profile class="another-sidenav" mode="side">
+  <mat-drawer #profile class="another-sidenav" mode="side" fxHide.lt-md="true">
     <header class="app-drawer-header primary-background">
         <img *ngIf="userObject" src="{{userObject.photo}}" class="app-avatar">
         <span *ngIf="userObject" class="color-white">{{userObject.name}}</span>
@@ -59,7 +59,7 @@
 
 </nav>
 
-<mat-drawer #drawer class="example-sidenav" mode="side" fxHide.gt-sm="true">
+<mat-drawer #drawer class="example-sidenav" ngClass.sm="example-sidenav2" mode="side" fxHide.gt-sm="true">
   <ul class="container">
     <li>
       <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#home">Home</a>
@@ -79,18 +79,21 @@
     <li>
       <a *ngIf="!userId" class="aLink" [routerLink]="['/login']">Login or Signup</a>
       <a *ngIf="userId" class="aLink" (click)="signout()">Sign Out</a>
-      <a *ngIf="userId" [routerLink]="['/profile', userId]">See Profile</a>
+    </li>
+    <li>
+      <a *ngIf="userId" class="aLink" [routerLink]="['/profile', userId]">See Profile</a>
     </li>
   </ul>
 </mat-drawer>
 
-<!-- Home -->
-<div id="home" class="wrapper style1 first" style="background: url(./assets/images/background.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch">
+
+<!-- Profile -->
+<div [hidden]="userRegisterChange" id="home" class="wrapper style1 first" style="background: url(./assets/images/background.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch">
   <mat-card class="a-card" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch">
     <mat-card-content ngClass.xs="mccsm" ngClass.sm="mccpeq">
       <h1 class="titel" ngClass.md="tclass1" ngClass.sm="tclass2" ngClass.xs="tclass3" *ngIf="userObject">{{userObject.name}} {{userObject.lastName}}</h1>
       <h2 class="subtitl" ngClass.md="stclass1" ngClass.sm="stclass2" ngClass.xs="stclass3" *ngIf="userObject">{{userObject.rol}}</h2>
-      <a href="#"><mat-icon class="edit" ngClass.md="edit1" ngClass.sm="edit2" ngClass.xs="edit3">mode edit</mat-icon></a>
+      <a (click)="register()"><mat-icon class="edit" ngClass.md="edit1" ngClass.sm="edit2" ngClass.xs="edit3">mode edit</mat-icon></a>
       <img class="userImg" ngClass.xs="peqimg" *ngIf="userObject" src="{{userObject.photo}}" alt="User picture">
       <div class="furtherinfo" ngClass.md="class1" ngClass.xs="class3" ngClass.sm="class2">
         <ul class="profile-list">
@@ -143,12 +146,12 @@
 </div>
 
 
-<!-- Contact -->
-<div class="wrapper style4">
+<!-- Formulario de registro -->
+<div class="wrapper style4" [hidden]="!userRegisterChange">
   <article id="contact" class="container 75%">
     <header>
-      <h2>Have me make stuff for you.</h2>
-      <p>Ornare nulla proin odio consequat sapien vestibulum ipsum sed lorem.</p>
+      <h2>Edit Profile</h2>
+      <p>Please fill in the corresponding forms.</p>
     </header>
     <div>
       <div class="row">
@@ -157,17 +160,44 @@
             <div>
               <div class="row">
                 <div class="6u 12u(mobile)">
-                  <input type="text" name="name" id="name" placeholder="Name" />
+                  <input type="text" name="name" [(ngModel)]="userObject.name" id="name" placeholder="Name" />
                 </div>
                 <div class="6u 12u(mobile)">
-                  <input type="text" name="email" id="email" placeholder="Email" />
+                  <input type="text" name="lastname" [(ngModel)]="userObject.lastName" id="lastname" placeholder="Last Name" />
                 </div>
               </div>
               <div class="row">
-                <div class="12u">
-                  <input type="text" name="subject" id="subject" placeholder="Subject" />
-                </div>
+                <div class="6u 12u(mobile)">
+                    <input type="text" name="email" id="email"  [(ngModel)]="userObject.email" placeholder="E-mail" />
+                  </div>
+                  <div class="6u 12u(mobile)">
+                    <input type="text" matInput [(ngModel)]="userObject.birthday" [matDatepicker]="picker" name="birthday" id="birthday" placeholder="Birth Day Date" />
+                    <mat-datepicker-toggle class="calendarbt" [for]="picker"><mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon></mat-datepicker-toggle>
+							      <mat-datepicker #picker></mat-datepicker>
+                  </div>
               </div>
+              <div class="row">
+                <div class="6u 12u(mobile)">
+                    <input type="text" name="location" id="location" [(ngModel)]="userObject.city" placeholder="Location" />
+                  </div>
+                  <div class="6u 12u(mobile)">
+                      <input type="password" name="pass" id="Password" placeholder="Password" [(ngModel)]="userObject.password" />
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="6u 12u(mobile)">
+                    <mat-select placeholder="Gender" name="gender" [(ngModel)]="userObject.gender">
+                        <mat-option value="" disabled>Select gender</mat-option>
+                        <mat-option *ngFor="let r of my_genders" [value]="r">{{ r }}</mat-option>
+                    </mat-select>
+                  </div>
+                  <div class="6u 12u(mobile)">
+                    <mat-select placeholder="Ocupation" name="ocupation">
+                        <mat-option value="" disabled>Select ocupation</mat-option>
+                        <mat-option *ngFor="let r of my_ocup" [value]="r">{{ r }}</mat-option>
+                    </mat-select>
+                  </div>
+                </div>
               <div class="row">
                 <div class="12u">
                   <textarea name="message" id="message" placeholder="Message"></textarea>
@@ -192,7 +222,7 @@
       <div class="row">
         <div class="12u">
           <hr />
-          <h3>Find me on ...</h3>
+          <h3>Find us on ...</h3>
           <ul class="social">
             <li>
               <a href="#" class="icon fa-twitter">
@@ -229,17 +259,6 @@
                 <span class="label">Github</span>
               </a>
             </li>
-            <!--
-                  <li><a href="#" class="icon fa-rss"><span>RSS</span></a></li>
-                  <li><a href="#" class="icon fa-instagram"><span>Instagram</span></a></li>
-                  <li><a href="#" class="icon fa-foursquare"><span>Foursquare</span></a></li>
-                  <li><a href="#" class="icon fa-skype"><span>Skype</span></a></li>
-                  <li><a href="#" class="icon fa-soundcloud"><span>Soundcloud</span></a></li>
-                  <li><a href="#" class="icon fa-youtube"><span>YouTube</span></a></li>
-                  <li><a href="#" class="icon fa-blogger"><span>Blogger</span></a></li>
-                  <li><a href="#" class="icon fa-flickr"><span>Flickr</span></a></li>
-                  <li><a href="#" class="icon fa-vimeo"><span>Vimeo</span></a></li>
-                  -->
           </ul>
           <hr />
         </div>
@@ -247,7 +266,68 @@
     </div>
     <footer>
       <ul id="copyright">
-        <li>&copy; Untitled. All rights reserved.</li>
+        <li>&copy; Join up. All rights reserved.</li>
+        <li>Design:
+          <a href="http://html5up.net">HTML5 UP</a>
+        </li>
+      </ul>
+    </footer>
+  </article>
+</div>
+
+
+<!-- Footer -->
+<div class="wrapper style4 justfooter" [hidden]="userRegisterChange">
+  <article id="contact" class="container 75%">
+    <div>
+      <div class="row">
+          <div class="12u">
+            <hr />
+            <h3>Find us on ...</h3>
+            <ul class="social">
+              <li>
+                <a href="#" class="icon fa-twitter">
+                  <span class="label">Twitter</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="icon fa-facebook">
+                  <span class="label">Facebook</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="icon fa-dribbble">
+                  <span class="label">Dribbble</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="icon fa-linkedin">
+                  <span class="label">LinkedIn</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="icon fa-tumblr">
+                  <span class="label">Tumblr</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="icon fa-google-plus">
+                  <span class="label">Google+</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="icon fa-github">
+                  <span class="label">Github</span>
+                </a>
+              </li>
+            </ul>
+            <hr />
+          </div>
+        </div>  
+    </div>
+    <footer>
+      <ul id="copyright">
+        <li>&copy; JoinUp. All rights reserved.</li>
         <li>Design:
           <a href="http://html5up.net">HTML5 UP</a>
         </li>

@@ -36,6 +36,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {NgxPageScrollModule} from 'ngx-page-scroll';
 import {MatCardModule} from '@angular/material/card';
+import {MatNativeDateModule} from '@angular/material';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 import { LoginComponent } from './components/authentication/login/login.component';
 import { EmailComponent } from './components/authentication/email/email.component';
@@ -44,6 +48,7 @@ import { MembersComponent } from './components/authentication/members/members.co
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ManageUsersService } from './services/manage-users.service';
 import { ProfileComponent } from './components/profile/profile.component';
+import { NavbarComponent } from './components/commons/navbar/navbar.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCW1ZSceJZ6DYFxHpYEaXcwofW7jQhI0WE",
@@ -73,7 +78,8 @@ export const firebaseConfig = {
     EmailComponent,
     SignupComponent,
     SocialDetailComponent,
-    ProfileComponent
+    ProfileComponent,
+    NavbarComponent
   ],
   imports: [
     app_routing,
@@ -84,10 +90,14 @@ export const firebaseConfig = {
     FlexLayoutModule,
     MatToolbarModule,
     MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatSidenavModule,
     MatIconModule,
     MatMenuModule,
     MatCardModule,
+    MatInputModule,
+    MatSelectModule,
     BrowserAnimationsModule,
     MdlModule,
     FormsModule,
