@@ -30,6 +30,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdlModule } from '@angular-mdl/core';
 import {MatIconModule} from '@angular/material/icon';
@@ -47,6 +48,7 @@ import { SignupComponent } from './components/authentication/signup/signup.compo
 import { MembersComponent } from './components/authentication/members/members.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ManageUsersService } from './services/manage-users.service';
+import { ObjectiveService } from './services/objective.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NavbarComponent } from './components/commons/navbar/navbar.component';
 
@@ -93,6 +95,7 @@ export const firebaseConfig = {
     MatDatepickerModule,
     MatNativeDateModule,
     MatSidenavModule,
+    MatAutocompleteModule,
     MatIconModule,
     MatMenuModule,
     MatCardModule,
@@ -107,7 +110,8 @@ export const firebaseConfig = {
   ],
   providers: [
     SocialService,
-    ManageUsersService
+    ManageUsersService,
+    ObjectiveService,
   ],
   bootstrap: [
     AppComponent
