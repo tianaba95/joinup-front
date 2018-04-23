@@ -99,46 +99,40 @@
         <ul class="profile-list">
           <li class="clearfix">
               <strong class="title">Age</strong>
-              <span class="cont">29</span>
+              <span class="cont">{{userObject.age}}</span>
           </li>
           <li class="clearfix">
               <strong class="title">Location</strong>
-              <span class="cont">Brussels</span>
+              <span class="cont">{{userObject.city}}</span>
           </li>
           <li class="clearfix">
               <strong class="title">E-mail</strong>
-              <span class="cont"><a href="mailto:robertsmith@company.com">robertsmith@company.com</a></span>
-          </li>
-          <li class="clearfix">
-              <strong class="title">Phone</strong>
-              <span class="cont"><a href="tel:+12562548456">+1 256 254 84 56</a></span>
+              <span class="cont"><a href="mailto:{{userObject.email}}">{{userObject.email}}</a></span>
           </li>
           <li class="clearfix">
             <strong class="title">Gender</strong>
-            <span class="cont">F</span>
+            <span class="cont">{{userObject.gender}}</span>
           </li>
           <li class="clearfix">
             <strong class="title">Ocupation</strong>
-            <span class="cont">Student</span>
+            <span class="cont">{{userObject.ocupation}}</span>
           </li>
           <li class="clearfix">
             <strong class="title">Credit</strong>
             <span class="cont">$0.00</span>
           </li>
         </ul>
-        <p><strong class="othertitle">Objective</strong></p>
+        <p><strong class="othertitle">Goal</strong></p>
         <p class="obj">
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
+          {{userObject.goal}}
         </p>
         <p><strong class="othertitle" id="int">Interests</strong></p>
         <p class="obj">
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+          {{userObject.interests}}
         </p>
         <p><strong class="othertitle" id="int">Activity Types</strong></p>
         <p class="obj">
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+          {{userObject.acttypes}}
         </p>
       </div>
     </mat-card-content>
@@ -194,7 +188,7 @@
                   </mat-select>
                 </div>
                 <div class="6u 12u(mobile)">
-                  <mat-select placeholder="Ocupation" name="ocupation">
+                  <mat-select placeholder="Ocupation" name="ocupation" [(ngModel)]="userObject.ocupation">
                       <mat-option value="" disabled>Select ocupation</mat-option>
                       <mat-option *ngFor="let r of my_ocup" [value]="r">{{ r }}</mat-option>
                   </mat-select>
@@ -205,14 +199,15 @@
                     <input type="text" name="email" id="email"  [(ngModel)]="userObject.email" placeholder="E-mail" />
                   </div>
                   <div class="6u 12u(mobile)" id="bday">
-                    <input type="text" matInput [(ngModel)]="userObject.birthday" [matDatepicker]="picker" name="birthday" id="birthday" placeholder="Birth Day Date" />
+                    <input type="text" matInput [matDatepicker]="picker" [ngModel]="birthday" name="birthday" id="birthday" placeholder="Birth Day Date" 
+                    (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)"/>
                     <mat-datepicker-toggle class="calendarbt" [for]="picker"><mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon></mat-datepicker-toggle>
 							      <mat-datepicker #picker></mat-datepicker>
                   </div>
               </div>
               <div class="row">
                 <div class="12u">
-                  <input type="text" placeholder="Goal" aria-label="Goal" matInput [matAutocomplete]="auto">
+                  <input type="text" placeholder="Goal" [(ngModel)]="userObject.goal"  matInput [formControl]="myControl" [matAutocomplete]="auto" maxlength="40">
                   <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let r of goals" [value]="r.name">
                       {{ r.name }}
@@ -222,19 +217,19 @@
               </div>
               <div class="row">
                 <div class="12u">
-                  <textarea name="interests" id="interests" placeholder="Interests"></textarea>
+                  <textarea name="interests" id="interests" placeholder="Interests" [(ngModel)]="userObject.interests"></textarea>
                 </div>
               </div>
               <div class="row">
                 <div class="12u">
-                  <textarea name="acttypes" id="acttypes" placeholder="Activity Types"></textarea>
+                  <textarea name="acttypes" id="acttypes" placeholder="Activity Types" [(ngModel)]="userObject.acttypes"></textarea>
                 </div>
               </div>
               <div class="row 200%">
                 <div class="12u">
                   <ul class="actions">
                     <li>
-                        <button class="buttns" id="confirmb">Confirm</button>
+                        <button class="buttns" id="confirmb" (click)="editObject()">Confirm</button>
                     </li>
                     <li>
                         <button class="buttns" id="cancelbt" (click)="cancel()">Cancel</button>

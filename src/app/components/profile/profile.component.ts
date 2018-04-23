@@ -6,6 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
 import { Upload } from '../../uploads/upload';
+import {FormControl} from '@angular/forms';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-profile',
@@ -20,7 +22,12 @@ export class ProfileComponent implements OnInit {
   userRegisterChange: any;
   my_genders: any[];
   my_ocup: any[];
+  birthday: any;
+
+  myControl: FormControl = new FormControl();
   goals: any[];
+
+
 
   selectedFile: File;
   currentUpload: Upload;
@@ -37,11 +44,17 @@ export class ProfileComponent implements OnInit {
       this.initUser(thisTemp.userId).then(function(snapshot) {
       thisTemp.userObject = (snapshot.val()) || 'Anonymous';
       console.log(thisTemp.userObject);
+      if(thisTemp.userObject.birthday)
+      {
+        thisTemp.birthday = new Date(thisTemp.userObject.birthday);
+        console.log(thisTemp.birthday);
+      }
       })
     }
     this.my_genders = ["F", "M", "O"];
     this.my_ocup = ["Engineer", "Student", "Teacher"];
     this.userRegisterChange = false;
+
   }
 
   initUserSubscribe() {
@@ -102,25 +115,35 @@ export class ProfileComponent implements OnInit {
     this.userRegisterChange = false;
   }
 
-  createObject() {
-    if (this.editing) {
-      if (this.selectedFiles) {
-        let file = this.selectedFiles.item(0)
+  editObject() {
+    if (this.userRegisterChange) {
+      if (this.selectedFile) {
+        let file = this.selectedFile;
         this.currentUpload = new Upload(file);
       }
-      this.manageUsersService.merge(this.object, this.currentUpload);
-    } else {
-      this.object.id = Date.now();
-      if (this.selectedFiles) {
-        this.uploadSingle();
-        let file = this.selectedFiles.item(0)
-        this.currentUpload = new Upload(file);
-      }
-      this.manageUsersService.merge(this.object, this.currentUpload);
-    }
+      this.manageUserService.merge(this.userObject, this.currentUpload);
+    } 
+    this.userRegisterChange = false;
+  }
 
-    this.show_form = false;
-    this.resetObject();
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+    var todayDate = new Date();
+    this.userObject.birthday = event.value.toString();
+    var birthYear = event.value.getFullYear();
+    var birthMonth = event.value.getMonth();
+    var birthDay = event.value.getDate();
+    var todayYear = todayDate.getFullYear();
+    var todayMonth = todayDate.getMonth();
+    var todayDay = todayDate.getDate();
+    var age = todayYear - birthYear;
+    if(todayMonth < birthMonth){
+      age = age - 1;
+    }
+    if (birthMonth === todayMonth && todayDay < birthDay) {
+      age--;
+      console.log(age);
+    }
+    this.userObject.age = age;
   }
 
 }

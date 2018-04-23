@@ -52,6 +52,7 @@ import { ObjectiveService } from './services/objective.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NavbarComponent } from './components/commons/navbar/navbar.component';
 
+//Test
 export const firebaseConfig = {
   apiKey: "AIzaSyCW1ZSceJZ6DYFxHpYEaXcwofW7jQhI0WE",
   authDomain: "joinuptest-495af.firebaseapp.com",
@@ -60,6 +61,15 @@ export const firebaseConfig = {
   messagingSenderId: '930553757475'
 };
 
+//Prod
+// export const firebaseConfig = {
+  // apiKey: "AIzaSyDOE-zGBdOqDX363HUd_7lUMAo-TQ-wO9M",
+  // authDomain: "joinup-prod.firebaseapp.com",
+  // databaseURL: "https://joinup-prod.firebaseio.com",
+  // projectId: "joinup-prod",
+  // storageBucket: "joinup-prod.appspot.com",
+  // messagingSenderId: "1001729495066"
+// }
 
 @NgModule({
   declarations: [
