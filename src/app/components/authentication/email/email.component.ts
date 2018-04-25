@@ -22,6 +22,9 @@ export class EmailComponent implements OnInit {
 
   state: string = '';
   error: any;
+  email: any;
+  password: any;
+  
 
   @ViewChildren('focus_input') fi;
 

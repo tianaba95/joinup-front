@@ -92,7 +92,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginGoogle() {
-    console.log("LOG WITH FB");
+    console.log("LOG WITH GOOGLE");
     var thisTemp = this;
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
     .then(

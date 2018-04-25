@@ -4,11 +4,11 @@
 	font-weight: normal;
 	font-style: normal;
 	font-family: 'codropsicons';
-	src:url('/assets/css/fonts/codropsicons/codropsicons.eot');
-	src:url('/assets/css/fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
-		url('/assets/css/fonts/codropsicons/codropsicons.woff') format('woff'),
-		url('/assets/css/fonts/codropsicons/codropsicons.ttf') format('truetype'),
-		url('/assets/css/fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+	src:url('../../../assets/css/fonts/codropsicons/codropsicons.eot');
+	src:url('../../../assets/css/fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+		url('../../../assets/css/fonts/codropsicons/codropsicons.woff') format('woff'),
+		url('../../../assets/css/fonts/codropsicons/codropsicons.ttf') format('truetype'),
+		url('../../../assets/css/fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
 }
 
 *, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
@@ -196,11 +196,11 @@ a:hover, a:focus {
 	font-weight: normal;
 	font-style: normal;
 	font-family: 'stroke7pixeden';
-	src:url('/assets/css/fonts/stroke7pixeden/stroke7pixeden.eot?u58ytb');
-	src:url('/assets/css/fonts/stroke7pixeden/stroke7pixeden.eot?#iefixu58ytb') format('embedded-opentype'),
-		url('/assets/css/fonts/stroke7pixeden/stroke7pixeden.woff?u58ytb') format('woff'),
-		url('/assets/css/fonts/stroke7pixeden/stroke7pixeden.ttf?u58ytb') format('truetype'),
-		url('/assets/css/fonts/stroke7pixeden/stroke7pixeden.svg?u58ytb#stroke7pixeden') format('svg');
+	src:url('../../../assets/css/fonts/stroke7pixeden/stroke7pixeden.eot?u58ytb');
+	src:url('../../../assets/css/fonts/stroke7pixeden/stroke7pixeden.eot?#iefixu58ytb') format('embedded-opentype'),
+		url('../../../assets/css/fonts/stroke7pixeden/stroke7pixeden.woff?u58ytb') format('woff'),
+		url('../../../assets/css/fonts/stroke7pixeden/stroke7pixeden.ttf?u58ytb') format('truetype'),
+		url('../../../assets/css/fonts/stroke7pixeden/stroke7pixeden.svg?u58ytb#stroke7pixeden') format('svg');
 }
 
 .tabs {

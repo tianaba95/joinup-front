@@ -51,6 +51,7 @@ import { ManageUsersService } from './services/manage-users.service';
 import { ObjectiveService } from './services/objective.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NavbarComponent } from './components/commons/navbar/navbar.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 //Test
 export const firebaseConfig = {
@@ -87,6 +88,7 @@ export const firebaseConfig = {
     PlanCard3Component,
     PlanCard4Component,
     LoginComponent,
+    MembersComponent,
     EmailComponent,
     SignupComponent,
     SocialDetailComponent,
@@ -116,6 +118,7 @@ export const firebaseConfig = {
     FormsModule,
     ReactiveFormsModule,
     NgxPageScrollModule,
+    AngularFontAwesomeModule,
     SlickModule.forRoot()
   ],
   providers: [
