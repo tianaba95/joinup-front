@@ -2,6 +2,7 @@
   "name": "join-up-front",
   "version": "0.0.0",
   "license": "MIT",
+  "main": "server.js",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
@@ -16,6 +17,8 @@
     "@angular-mdl/core": "^4.0.8",
     "@angular/animations": "^5.0.0",
     "@angular/cdk": "^5.2.4",
+    "@angular/cli": "1.6.1",
+    "@angular/compiler-cli": "^5.0.0",
     "@angular/common": "^5.0.0",
     "@angular/compiler": "^5.0.0",
     "@angular/core": "^5.0.0",
