@@ -144,61 +144,79 @@
 <div class="wrapper style4" [hidden]="userRegisterChange" class="wrapper style1 first" style="background: url(./assets/images/background.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
   <article id="contact" class="container 75%" style="background:white">
     <header>
-      <h1 class="titel" *ngIf="userObject">{{userObject.name}} {{userObject.lastName}}</h1>
-      <h2 class="subtitl" *ngIf="userObject">{{userObject.rol}}<a (click)="register()"><mat-icon class="edit" ngClass.md="edit1" ngClass.sm="edit2" ngClass.xs="edit3">mode edit</mat-icon></a></h2>
+      <h1 *ngIf="userObject">{{userObject.name}} {{userObject.lastName}}</h1>
+      <p *ngIf="userObject">{{userObject.rol}}<a (click)="register()"><mat-icon class="edit" ngClass.md="edit1" ngClass.sm="edit2" ngClass.xs="edit3">mode edit</mat-icon></a></p>
     </header>
     <div>
       <div class="row">
-        <div class="6u">
+        <div ngClass="6u" ngClass="12u">
           <img class="userImg" ngClass.xs="peqimg" *ngIf="userObject" src="{{userObject.photo}}" alt="User picture">
         </div>
-        <div class="6u">
+        <div ngClass="6u" ngClass="12u">
           <div class="row">
             <div class="6u">
               <strong class="title">Age</strong>
             </div>
-            <div class="6u">
+            <div class="6u" fxHide.lt-md="true">
               <span class="cont">{{userObject.age}}</span>
+            </div>
+            <div class="12u" fxHide.gt-sm="true">
+                <span class="cont small">{{userObject.age}}</span>
             </div>
           </div>
           <div class="row">
             <div class="6u">
               <strong class="title">Location</strong>
             </div>
-            <div class="6u">
+            <div class="6u" fxHide.lt-md="true">
               <span class="cont">{{userObject.city}}</span>
+            </div>
+            <div class="12u" fxHide.gt-sm="true">
+                <span class="cont small">{{userObject.city}}</span>
             </div>
           </div>
           <div class="row">
             <div class="6u">
               <strong class="title">E-mail</strong>
             </div>
-            <div class="6u">
+            <div class="6u" fxHide.lt-md="true">
               <span class="cont"><a href="mailto:{{userObject.email}}">{{userObject.email}}</a></span>
+            </div>
+            <div class="12u" fxHide.gt-sm="true">
+              <span class="cont small"><a href="mailto:{{userObject.email}}">{{userObject.email}}</a></span>
             </div>
           </div>
           <div class="row">
               <div class="6u">
                 <strong class="title">Gender</strong>
               </div>
-              <div class="6u">
+              <div class="6u" fxHide.lt-md="true">
                 <span class="cont">{{userObject.gender}}</span>
+              </div>
+              <div class="12u" fxHide.gt-sm="true">
+                <span class="cont small">{{userObject.gender}}</span>
               </div>
           </div>
           <div class="row">
             <div class="6u">
               <strong class="title">Ocupation</strong>
             </div>
-            <div class="6u">
+            <div class="6u" fxHide.lt-md="true">
               <span class="cont">{{userObject.ocupation}}</span>
+            </div>
+            <div class="12u" fxHide.gt-sm="true">
+              <span class="cont small">{{userObject.ocupation}}</span>
             </div>
           </div>
           <div class="row">
               <div class="6u">
-                  <strong class="title">Credit</strong>
+                <strong class="title">Credit</strong>
               </div>
-              <div class="6u">
-                  <span class="cont">$0.00</span>
+              <div class="6u" fxHide.lt-md="true">
+                <span class="cont">$0.00</span>
+              </div>
+              <div class="12u" fxHide.gt-sm="true">
+                <span class="cont small">$0.00</span>
               </div>
           </div>
         </div>

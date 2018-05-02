@@ -184,9 +184,9 @@ mat-drawer a.aLink.active:before {
 }
 
 .userImg.peqimg{
-    width:100%;
+    width:80%;
     margin: auto;
-    top: -3em;
+    top: -1em;
 }
 
 .titel{
@@ -225,6 +225,8 @@ mat-drawer a.aLink.active:before {
     line-height: 20px;
     text-transform: uppercase;
     text-align: left;
+    left: 1em;
+    position: relative;
 }
 
 .cont{
@@ -237,6 +239,10 @@ mat-drawer a.aLink.active:before {
     text-align: left;
     left: -4em;
     position: relative;
+}
+
+.cont.small{
+    left: 2em;
 }
 
 .othertitle{
@@ -257,14 +263,15 @@ mat-drawer a.aLink.active:before {
     text-align: justify;
     text-justify: inter-word;
     display:block;
-    width: 90%;
+    width: 80%;
     position: relative;
-    text-indent: 10%;
-    font-size: -15px;
+    text-indent: 5%;
+    font-size: 15px;
     font-weight: 400;
     line-height: 20px;
     color: #747474;
     margin-bottom: 0.2em; 
+    left: 1em;
 }
 
 #int{
