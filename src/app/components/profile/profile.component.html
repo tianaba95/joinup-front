@@ -145,8 +145,95 @@
   <article id="contact" class="container 75%" style="background:white">
     <header>
       <h1 class="titel" *ngIf="userObject">{{userObject.name}} {{userObject.lastName}}</h1>
-      <h2 class="subtitl" *ngIf="userObject">{{userObject.rol}</h2>
+      <h2 class="subtitl" *ngIf="userObject">{{userObject.rol}}<a (click)="register()"><mat-icon class="edit" ngClass.md="edit1" ngClass.sm="edit2" ngClass.xs="edit3">mode edit</mat-icon></a></h2>
     </header>
+    <div>
+      <div class="row">
+        <div class="6u">
+          <img class="userImg" ngClass.xs="peqimg" *ngIf="userObject" src="{{userObject.photo}}" alt="User picture">
+        </div>
+        <div class="6u">
+          <div class="row">
+            <div class="6u">
+              <strong class="title">Age</strong>
+            </div>
+            <div class="6u">
+              <span class="cont">{{userObject.age}}</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="6u">
+              <strong class="title">Location</strong>
+            </div>
+            <div class="6u">
+              <span class="cont">{{userObject.city}}</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="6u">
+              <strong class="title">E-mail</strong>
+            </div>
+            <div class="6u">
+              <span class="cont"><a href="mailto:{{userObject.email}}">{{userObject.email}}</a></span>
+            </div>
+          </div>
+          <div class="row">
+              <div class="6u">
+                <strong class="title">Gender</strong>
+              </div>
+              <div class="6u">
+                <span class="cont">{{userObject.gender}}</span>
+              </div>
+          </div>
+          <div class="row">
+            <div class="6u">
+              <strong class="title">Ocupation</strong>
+            </div>
+            <div class="6u">
+              <span class="cont">{{userObject.ocupation}}</span>
+            </div>
+          </div>
+          <div class="row">
+              <div class="6u">
+                  <strong class="title">Credit</strong>
+              </div>
+              <div class="6u">
+                  <span class="cont">$0.00</span>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="12u">
+          <p><strong class="othertitle">Goal</strong></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="12u">
+          <p class="obj">{{userObject.goal}}</p>
+        </div>
+      </div>
+      <div class="row">
+          <div class="12u">
+            <p><strong class="othertitle" id="int">Interests</strong></p>
+          </div>
+      </div>
+      <div class="row">
+        <div class="12u">
+          <p class="obj">{{userObject.interests}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="12u">
+          <p><strong class="othertitle" id="int">Activity Types</strong></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="12u">
+          <p class="obj">{{userObject.acttypes}}</p>
+        </div>
+      </div>
+    </div>
   </article>
 </div>
 

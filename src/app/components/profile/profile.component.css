@@ -176,10 +176,8 @@ mat-drawer a.aLink.active:before {
   }
 
 .userImg {
-    margin-left: 40%;
     background-size: cover;
-    width: 50%;
-    top: -1em;
+    width: 70%;
     display: table-column;
     align-self: right;
     position: relative;
@@ -195,10 +193,12 @@ mat-drawer a.aLink.active:before {
     font-size: 36px;
     font-weight: 700;
     margin: auto;
-    float: left;
     color: #333333;
     display: table-cell;
     position: relative;
+    top: 1em;
+    left: 50%;
+    margin-bottom: 1em;
 }
 
 
@@ -206,36 +206,19 @@ mat-drawer a.aLink.active:before {
     float: left;
     display: table-cell;
     position: relative;
-    top: 6em;
-    left: -11.4em;
+    top: 2.5em;
     margin:auto;
     color: #333333;
     font-size: 18px;
     font-weight: 400;
+    left: 35%;
+    margin-bottom: 2em;
 }
 
 
-.furtherinfo{
-    width: 40%;
-    position: relative;
-    top:-24em;
-    left: 1em;
-    display: table-cell;
-    float: left;
-    border-top: 1px solid #dedede;
-}
-
-.profile-list{
-    margin: auto;
-    padding-top: 10px;
-    padding-left: 10px;
-    list-style: none;   
-}
-
-.profile-list .title{
+.title{
     display:block;
     width: 120px;
-    float: left;
     color: #333333;
     font-size: 12px;
     font-weight: 700;
@@ -244,7 +227,7 @@ mat-drawer a.aLink.active:before {
     text-align: left;
 }
 
-.profile-list .cont{
+.cont{
     display:block;
     float: left;
     color: #747474;
@@ -257,8 +240,7 @@ mat-drawer a.aLink.active:before {
 .othertitle{
     display:block;
     width: 100%;
-    top: 0.2em;
-    left: 0.8em;
+    left: 1em;
     float: left;
     color: #333333;
     font-size: 12px;
@@ -275,7 +257,6 @@ mat-drawer a.aLink.active:before {
     display:block;
     width: 90%;
     position: relative;
-    left: 0.8em;
     text-indent: 10%;
     font-size: -15px;
     font-weight: 400;
@@ -289,26 +270,8 @@ mat-drawer a.aLink.active:before {
     position: relative;
 }
 
-.furtherinfo.class1{
-    top: -19.5em;
-}
-
-.furtherinfo.class2{
-    top: -215px;
-    font-size: 12px !important;
-}
-
-.furtherinfo.class3{
-    top: 25px;
-    font-size: 12px !important;
-    width: 100%;
-    left: -0.5em
-}
-
 .edit{
     position: relative;
-    left: -16em;
-    top: 3.2em;
     color: #282828;
 }
 
