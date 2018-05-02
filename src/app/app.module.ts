@@ -52,6 +52,7 @@ import { ObjectiveService } from './services/objective.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NavbarComponent } from './components/commons/navbar/navbar.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { WantoguideComponent } from './components/wantoguide/wantoguide.component';
 
 //Test
 export const firebaseConfig = {
@@ -93,7 +94,8 @@ export const firebaseConfig = {
     SignupComponent,
     SocialDetailComponent,
     ProfileComponent,
-    NavbarComponent
+    NavbarComponent,
+    WantoguideComponent
   ],
   imports: [
     app_routing,
