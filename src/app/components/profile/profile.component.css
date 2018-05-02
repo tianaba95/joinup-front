@@ -211,8 +211,8 @@ mat-drawer a.aLink.active:before {
     color: #333333;
     font-size: 18px;
     font-weight: 400;
-    left: 35%;
-    margin-bottom: 2em;
+    left: 30%;
+    margin-bottom: 3em;
 }
 
 
@@ -235,12 +235,14 @@ mat-drawer a.aLink.active:before {
     font-weight: 400;
     line-height: 20px;
     text-align: left;
+    left: -4em;
+    position: relative;
 }
 
 .othertitle{
     display:block;
     width: 100%;
-    left: 1em;
+    left: 3em;
     float: left;
     color: #333333;
     font-size: 12px;
@@ -273,23 +275,11 @@ mat-drawer a.aLink.active:before {
 .edit{
     position: relative;
     color: #282828;
+    left: -2em;
 }
 
 .edit:hover{
     color: #DF355B;
-}
-.edit.edit1{
-    left: -13em;
-    top: 1.9em;
-}
-.edit.edit2{
-    left: -11.3em;
-    top: 1.6em;
-}
-
-.edit.edit3{
-    left: -4em;
-    top: 10.6em;
 }
 
 .wrapper.style4.justfooter{
@@ -345,4 +335,8 @@ mat-drawer a.aLink.active:before {
 #cancelbt{
     background-color: #444444 !important;
     font-size: 1.1em;
+}
+
+#lastone{
+    margin-bottom: 3em;
 }
