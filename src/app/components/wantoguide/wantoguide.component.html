@@ -1,3 +1,244 @@
-<p>
-  wantoguide works!
-</p>
+<!--Navbar-->
+<nav id="nav">
+    <img class="logo" src="assets/images/logo.png" />
+    <div fxShow="true" fxHide.lt-md="true">
+      <ul class="container">
+        <li>
+          <a pageScroll  [routerLink]="['/home', userId]" href="#home">Home</a>
+        </li>
+        <li>
+          <a pageScroll [routerLink]="['/home', userId]" href="#social">Social Plans</a>
+        </li>
+        <li>
+          <a pageScroll [routerLink]="['/home', userId]" href="#wantguide">Recent Plans</a>
+        </li>
+        <li>
+          <a pageScroll [routerLink]="['/home', userId]" href="#contact">I want to guide</a>
+        </li>
+        <li>
+          <a pageScroll [routerLink]="['/home', userId]" href="#contacto">Contact</a>
+        </li>
+        <li>
+          <a *ngIf="!userId" [routerLink]="['/login']">Login or Signup</a>
+          <a *ngIf="userId" (click)="profile.toggle()">Me</a>     
+        </li>
+      </ul>   
+    </div>
+  
+    <mat-drawer #profile class="another-sidenav" mode="side" fxHide.lt-md="true">
+      <header class="app-drawer-header primary-background">
+          <img *ngIf="userObject" src="{{userObject.photo}}" class="app-avatar">
+          <span *ngIf="userObject" class="color-white">{{userObject.name}}</span>
+          <span *ngIf="userObject" class="color-black">{{userObject.rol}}</span>
+          <span *ngIf="userObject" class="color-black">Lv4</span>
+          <span *ngIf="userObject" class="credit">Credit: $0.00</span>
+        </header>
+      <ul class="theul">
+        <li>
+          <a href="javascript:void(0)" [routerLink]="['/profile', userId]">See Profile</a>
+        </li>
+        <li>
+          <a *ngIf="userId" (click)="signout()">Sign Out</a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" [routerLink]="['/profile', userId]">See Activities</a>
+        </li>
+      </ul>
+    </mat-drawer>
+     
+    <div fxShow="true" fxHide.gt-sm="true" class="example">    
+      <mat-drawer-container class="example-container" autosize>    
+        <div class="example-sidenav-content">
+          <a (click)="drawer.toggle()">
+            <mat-icon aria-label="Menu icon">menu</mat-icon>
+          </a>
+        </div>
+      
+      </mat-drawer-container>
+    </div>
+  
+</nav>
+  
+<mat-drawer #drawer class="example-sidenav" ngClass.sm="example-sidenav2" mode="side" fxHide.gt-sm="true">
+  <ul class="container">
+    <li>
+      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#home">Home</a>
+    </li>
+    <li>
+      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#social">Social Plans</a>
+    </li>
+    <li>
+      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#wantguide">Recent Plans</a>
+    </li>
+    <li>
+      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#contact">I want to guide</a>
+    </li>
+    <li>
+      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#contacto">Contact</a>
+    </li>
+    <li>
+      <a *ngIf="!userId" class="aLink" [routerLink]="['/login']">Login or Signup</a>
+      <a *ngIf="userId" class="aLink" (click)="signout()">Sign Out</a>
+    </li>
+    <li>
+      <a *ngIf="userId" class="aLink" [routerLink]="['/profile', userId]">See Profile</a>
+    </li>
+  </ul>
+</mat-drawer>
+
+<!-- Formulario de registro -->
+<div class="wrapper style4" [hidden]="!userRegisterChange">
+    <article id="contact" class="container 75%">
+      <header>
+        <h2>Edit Profile</h2>
+        <p>Please fill in the corresponding forms.</p>
+      </header>
+      <div>
+        <div class="row">
+          <div class="12u">
+            <form method="post" action="#">
+              <div>
+                <div class="row">
+                  <div class="12u" id="pict">
+                      <img id="profilep" class="userImg" *ngIf="userObject" src="{{userObject.photo}}" alt="User picture">
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="12u" id="inpic">
+                        <label  class="uploadfile" for="file_input_file"><mat-icon class="upicon" aria-label="file upload">publish</mat-icon></label>
+                        <input id="file_input_file" type="file" (change)="detectFiles($event)"/>
+                        <input id="failinput" matInput disabled readonly placeholder="Photo" [ngModel]="fileName" name="file" type="text">
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="6u 12u(mobile)">
+                    <input type="text" name="name" [(ngModel)]="userObject.name" id="name" placeholder="Name" />
+                  </div>
+                  <div class="6u 12u(mobile)">
+                    <input type="text" name="lastname" [(ngModel)]="userObject.lastName" id="lastname" placeholder="Last Name" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="6u 12u(mobile)">
+                      <input type="text" name="location" id="location" [(ngModel)]="userObject.city" placeholder="Location" />
+                    </div>
+                    <div class="6u 12u(mobile)">
+                        <input type="password" [disabled]="!userObject.password" name="pass" id="Password" placeholder="Password" [(ngModel)]="userObject.password" />
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="6u 12u(mobile)">
+                    <mat-select placeholder="Gender" name="gender" [(ngModel)]="userObject.gender">
+                        <mat-option value="" disabled>Select gender</mat-option>
+                        <mat-option *ngFor="let r of my_genders" [value]="r">{{ r }}</mat-option>
+                    </mat-select>
+                  </div>
+                  <div class="6u 12u(mobile)">
+                    <mat-select placeholder="Ocupation" name="ocupation" [(ngModel)]="userObject.ocupation">
+                        <mat-option value="" disabled>Select ocupation</mat-option>
+                        <mat-option *ngFor="let r of my_ocup" [value]="r">{{ r }}</mat-option>
+                    </mat-select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="6u 12u(mobile)">
+                      <input type="text" name="email" id="email"  [(ngModel)]="userObject.email" placeholder="E-mail" />
+                    </div>
+                    <div class="6u 12u(mobile)" id="bday">
+                      <input type="text" matInput [matDatepicker]="picker" [ngModel]="birthday" name="birthday" id="birthday" placeholder="Birth Day Date" 
+                      (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)"/>
+                      <mat-datepicker-toggle class="calendarbt" [for]="picker"><mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="12u">
+                    <input type="text" placeholder="Goal" [(ngModel)]="userObject.goal"  matInput [formControl]="myControl" [matAutocomplete]="auto" maxlength="40">
+                    <mat-autocomplete #auto="matAutocomplete">
+                      <mat-option *ngFor="let r of goals" [value]="r.name">
+                        {{ r.name }}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="12u">
+                    <textarea name="interests" id="interests" placeholder="Interests" [(ngModel)]="userObject.interests"></textarea>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="12u">
+                    <textarea name="acttypes" id="acttypes" placeholder="Activity Types" [(ngModel)]="userObject.acttypes"></textarea>
+                  </div>
+                </div>
+                <div class="row 200%">
+                  <div class="12u">
+                    <ul class="actions">
+                      <li>
+                          <button class="buttns" id="confirmb" (click)="editObject()">Confirm</button>
+                      </li>
+                      <li>
+                          <button class="buttns" id="cancelbt" (click)="cancel()">Cancel</button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="12u">
+            <hr />
+            <h3>Find us on ...</h3>
+            <ul class="social">
+              <li>
+                <a href="#" class="icon fa-twitter">
+                  <span class="label">Twitter</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="icon fa-facebook">
+                  <span class="label">Facebook</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="icon fa-dribbble">
+                  <span class="label">Dribbble</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="icon fa-linkedin">
+                  <span class="label">LinkedIn</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="icon fa-tumblr">
+                  <span class="label">Tumblr</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="icon fa-google-plus">
+                  <span class="label">Google+</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="icon fa-github">
+                  <span class="label">Github</span>
+                </a>
+              </li>
+            </ul>
+            <hr />
+          </div>
+        </div>
+      </div>
+      <footer>
+        <ul id="copyright">
+          <li>&copy; Join up. All rights reserved.</li>
+          <li>Design:
+            <a href="http://html5up.net">HTML5 UP</a>
+          </li>
+        </ul>
+      </footer>
+    </article>
+  </div>
