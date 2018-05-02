@@ -88,7 +88,7 @@
 
 
 <!-- Profile -->
-<div [hidden]="userRegisterChange" id="home" class="wrapper style1 first" style="background: url(./assets/images/background.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch">
+<!-- <div [hidden]="userRegisterChange" id="home" class="wrapper style1 first" style="background: url(./assets/images/background.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch">
   <mat-card class="a-card" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch">
     <mat-card-content ngClass.xs="mccsm" ngClass.sm="mccpeq">
       <h1 class="titel" ngClass.md="tclass1" ngClass.sm="tclass2" ngClass.xs="tclass3" *ngIf="userObject">{{userObject.name}} {{userObject.lastName}}</h1>
@@ -137,6 +137,17 @@
       </div>
     </mat-card-content>
   </mat-card>  
+</div> -->
+
+
+<!-- Formulario de registro -->
+<div class="wrapper style4" [hidden]="userRegisterChange" class="wrapper style1 first" style="background: url(./assets/images/background.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
+  <article id="contact" class="container 75%" style="background:white">
+    <header>
+      <h1 class="titel" *ngIf="userObject">{{userObject.name}} {{userObject.lastName}}</h1>
+      <h2 class="subtitl" *ngIf="userObject">{{userObject.rol}</h2>
+    </header>
+  </article>
 </div>
 
 

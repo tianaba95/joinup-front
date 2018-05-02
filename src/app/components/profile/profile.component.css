@@ -196,30 +196,11 @@ mat-drawer a.aLink.active:before {
     font-weight: 700;
     margin: auto;
     float: left;
-    top:2em;
-    left: 1em;
     color: #333333;
     display: table-cell;
     position: relative;
 }
 
-.titel.tclass1{
-    font-size: 34px;
-    left: 0.2em;
-    top:1.2em;
-}
-
-.titel.tclass2{
-    font-size: 30px;
-    left: 0em;
-    top:1.2em;
-}
-
-.titel.tclass3{
-    font-size: 30px;
-    left: 0.2em;
-    top:9em;
-}
 
 .subtitl{
     float: left;
@@ -233,22 +214,6 @@ mat-drawer a.aLink.active:before {
     font-weight: 400;
 }
 
-.subtitl.stclass1{
-    left: -12.2em;
-    top:4.2em;
-}
-
-.subtitl.stclass2{
-    font-size: 16px;
-    left: -12.6em;
-    top:4.2em;
-}
-
-.subtitl.stclass3{
-    font-size: 16px;
-    left: -12.2em;
-    top:19em;
-}
 
 .furtherinfo{
     width: 40%;
