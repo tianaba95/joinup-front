@@ -24,6 +24,7 @@ export class WantoguideComponent implements OnInit {
   whyguide: any;
   photo: any;
   wantoguideSent: any;
+  alreadyaguide: any;
   constructor(private router: Router, public afAuth: AngularFireAuth, private manageUserService: ManageUsersService,  private route: ActivatedRoute, private wantoguideService: WantoguideService) { 
     this.afAuth.authState.subscribe((auth) => {
       if (!auth) {
@@ -34,6 +35,7 @@ export class WantoguideComponent implements OnInit {
 
   ngOnInit() {
     this.wantoguideSent = false;
+    this.alreadyaguide = false;
     this.initUserSubscribe();
     if(this.userId){
       var thisTemp = this;
@@ -43,6 +45,9 @@ export class WantoguideComponent implements OnInit {
         thisTemp.userEmail = thisTemp.userObject.email; 
         thisTemp.photo = thisTemp.userObject.photo;
         thisTemp.userId = thisTemp.userObject.id;
+        if(thisTemp.userObject.rol == 'Guide'){
+          thisTemp.alreadyaguide = true;
+        }
         console.log(thisTemp.userObject);
       })
     }

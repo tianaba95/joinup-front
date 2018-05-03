@@ -124,7 +124,7 @@
                   <div class="12u">
                     <ul class="actions">
                       <li>
-                          <button class="buttns" id="confirmb" (click)="editObject()">Confirm</button>
+                          <button class="buttns" id="confirmb" (click)="editObject()" [disabled]="wantoguideSent||alreadyaguide">Confirm</button>
                       </li>
                       <li>
                           <button class="buttns" id="cancelbt" (click)="cancel()">Cancel</button>
@@ -139,6 +139,11 @@
         <div class="row" [hidden]="!wantoguideSent">
           <div class="12u">
             <p>Thank you for contacting us. We will get in touch ASAP!</p>
+          </div>
+        </div>
+        <div class="row" [hidden]="!alreadyaguide">
+          <div class="12u">
+            <p>You are already a GUIDE of Join Up!</p>
           </div>
         </div>
         <div class="row">
