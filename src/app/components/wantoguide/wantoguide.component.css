@@ -159,3 +159,28 @@ mat-drawer a.aLink.active:before {
 .credit{
     color: #FFFFF0;
 }
+
+#file_input_file{
+    display: none;
+}
+
+.uploadfile{
+    width: 10%;
+    position: relative;
+    top: 3.2em;
+    left: 45em;
+}
+
+.upicon:hover{
+    color: #43bff0;
+}
+
+#confirmb{
+    background-color: #43B3E0 !important;
+    font-size: 1.1em;
+}
+
+#cancelbt{
+    background-color: #444444 !important;
+    font-size: 1.1em;
+}

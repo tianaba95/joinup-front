@@ -170,10 +170,6 @@ mat-drawer a.aLink.active:before {
     position: fixed;
 }
   
-.a-card {
-    margin: auto;
-    max-width: 85%;
-  }
 
 .userImg {
     background-size: cover;
@@ -194,7 +190,6 @@ mat-drawer a.aLink.active:before {
     top: 0.5em;
 }
 
-
 .subtitl{
     float: left;
     display: table-cell;
@@ -207,7 +202,6 @@ mat-drawer a.aLink.active:before {
     left: 30%;
     margin-bottom: 3em;
 }
-
 
 .title{
     display:block;
