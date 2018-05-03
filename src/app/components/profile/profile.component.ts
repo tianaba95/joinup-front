@@ -27,8 +27,6 @@ export class ProfileComponent implements OnInit {
   myControl: FormControl = new FormControl();
   goals: any[];
 
-
-
   selectedFile: File;
   currentUpload: Upload;
   fileName = "";

@@ -87,10 +87,10 @@
 </mat-drawer>
 
 <!-- Formulario de registro -->
-<div class="wrapper style4" [hidden]="!userRegisterChange">
+<div class="wrapper style4">
     <article id="contact" class="container 75%">
       <header>
-        <h2>Edit Profile</h2>
+        <h2>Want to guide?</h2>
         <p>Please fill in the corresponding forms.</p>
       </header>
       <div>
@@ -98,11 +98,6 @@
           <div class="12u">
             <form method="post" action="#">
               <div>
-                <div class="row">
-                  <div class="12u" id="pict">
-                      <img id="profilep" class="userImg" *ngIf="userObject" src="{{userObject.photo}}" alt="User picture">
-                  </div>
-                </div>
                 <div class="row">
                     <div class="12u" id="inpic">
                         <label  class="uploadfile" for="file_input_file"><mat-icon class="upicon" aria-label="file upload">publish</mat-icon></label>

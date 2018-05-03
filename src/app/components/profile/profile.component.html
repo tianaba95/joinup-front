@@ -90,15 +90,15 @@
 <div class="wrapper style4" [hidden]="userRegisterChange" class="wrapper style1 first" style="background: url(./assets/images/background.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
   <article id="contact" class="container 75%" style="background:white">
     <header>
-      <h1 *ngIf="userObject">{{userObject.name}} {{userObject.lastName}}</h1>
+      <h1 id="titel" *ngIf="userObject">{{userObject.name}} {{userObject.lastName}}</h1>
       <p *ngIf="userObject">{{userObject.rol}}<a (click)="register()"><mat-icon class="edit" ngClass.md="edit1" ngClass.sm="edit2" ngClass.xs="edit3">mode edit</mat-icon></a></p>
     </header>
     <div>
       <div class="row">
-        <div ngClass="6u" ngClass="12u">
+        <div ngClass="6u" ngClass.lt-md="12u">
           <img class="userImg" ngClass.xs="peqimg" *ngIf="userObject" src="{{userObject.photo}}" alt="User picture">
         </div>
-        <div ngClass="6u" ngClass="12u">
+        <div ngClass="6u" ngClass.lt-md="12u">
           <div class="row">
             <div class="6u">
               <strong class="title">Age</strong>

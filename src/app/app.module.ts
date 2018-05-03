@@ -12,6 +12,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { SocialService } from './services/social.service';
+import { WantoguideService } from './services/wantoguide.service';
 import { SocialComponent } from './components/social/social.component';
 import { HomeComponent } from './components/home/home.component';
 import { SliderComponent } from './components/commons/slider/slider.component';
@@ -127,6 +128,7 @@ export const firebaseConfig = {
     SocialService,
     ManageUsersService,
     ObjectiveService,
+    WantoguideService,
   ],
   bootstrap: [
     AppComponent
