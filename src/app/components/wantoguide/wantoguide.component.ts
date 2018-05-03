@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Upload } from '../../uploads/upload';
 import { ManageUsersService } from '../../services/manage-users.service';
 import { ActivatedRoute } from '@angular/router';
+import { WantoguideService } from '../../services/wantoguide.service';
 
 @Component({
   selector: 'app-wantoguide',
@@ -16,8 +17,12 @@ export class WantoguideComponent implements OnInit {
   currentUpload: Upload;
   fileName = "";
   userObject: any;
+  userEmail: any;
   userId: any;
-  constructor(private router: Router, public afAuth: AngularFireAuth, private manageUserService: ManageUsersService,  private route: ActivatedRoute) { }
+  userWholeName: any;
+  phone: any;
+  whyguide: any;
+  constructor(private router: Router, public afAuth: AngularFireAuth, private manageUserService: ManageUsersService,  private route: ActivatedRoute, private wantoguideService: WantoguideService) { }
 
   ngOnInit() {
     this.initUserSubscribe();
@@ -25,6 +30,8 @@ export class WantoguideComponent implements OnInit {
       var thisTemp = this;
       this.initUser(thisTemp.userId).then(function(snapshot) {
         thisTemp.userObject = (snapshot.val()) || 'Anonymous';
+        thisTemp.userWholeName = thisTemp.userObject.name + ' ' + thisTemp.userObject.lastName; 
+        thisTemp.userEmail = thisTemp.userObject.email; 
         console.log(thisTemp.userObject);
       })
     }
@@ -51,19 +58,28 @@ export class WantoguideComponent implements OnInit {
   detectFiles(event) {
     this.selectedFile = event.target.files[0];
     console.log(this.selectedFile);
-    var reader = new FileReader();
-    reader.onload = function(){
-      var fileContent = reader.result;
-      document.getElementById("pict").innerHTML = '<img id="profilep" class="userImg" src="'+fileContent+'" alt="User picture">';
-    }
-    reader.readAsDataURL(this.selectedFile);
     this.fileName = this.selectedFile.name;
   }
 
   uploadSingle() {
     let file = this.selectedFile;
     this.currentUpload = new Upload(file);
-    //this.manageUserService.pushUpload(this.currentUpload, this.userObject)
+    this.wantoguideService.pushUpload(this.currentUpload, this.userObject)
+  }
+
+  cancel() {
+    this.fileName = "";
+    this.phone = "";
+    this.whyguide = "";
+  }
+
+  editObject() {
+    if (this.selectedFile) {
+      let file = this.selectedFile;
+      this.currentUpload = new Upload(file);
+    }
+    let object = { id: Date.now(), email:this.userEmail, name:this.userWholeName, phone: this.phone, whyguide: this.whyguide};
+    this.wantoguideService.merge(object, this.currentUpload);
   }
 
 }

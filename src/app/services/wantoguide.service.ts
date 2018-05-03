@@ -57,7 +57,7 @@ pushUpload(upload: Upload, object) {
     upload.name = upload.file.name
     this.saveFileData(upload)
 
-    object.photo = uploadTask.snapshot.downloadURL;
+    object.resume = uploadTask.snapshot.downloadURL;
     this.afDB.database.ref(`${this.modelPath}/` + object.id).set(object);
     }
   );

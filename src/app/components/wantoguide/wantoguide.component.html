@@ -102,68 +102,22 @@
                     <div class="12u" id="inpic">
                         <label  class="uploadfile" for="file_input_file"><mat-icon class="upicon" aria-label="file upload">publish</mat-icon></label>
                         <input id="file_input_file" type="file" (change)="detectFiles($event)"/>
-                        <input id="failinput" matInput disabled readonly placeholder="Photo" [ngModel]="fileName" name="file" type="text">
-                    </div>
-                </div>
-                <div class="row">
-                  <div class="6u 12u(mobile)">
-                    <input type="text" name="name" [(ngModel)]="userObject.name" id="name" placeholder="Name" />
-                  </div>
-                  <div class="6u 12u(mobile)">
-                    <input type="text" name="lastname" [(ngModel)]="userObject.lastName" id="lastname" placeholder="Last Name" />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="6u 12u(mobile)">
-                      <input type="text" name="location" id="location" [(ngModel)]="userObject.city" placeholder="Location" />
-                    </div>
-                    <div class="6u 12u(mobile)">
-                        <input type="password" [disabled]="!userObject.password" name="pass" id="Password" placeholder="Password" [(ngModel)]="userObject.password" />
-                    </div>
-                </div>
-                <div class="row">
-                  <div class="6u 12u(mobile)">
-                    <mat-select placeholder="Gender" name="gender" [(ngModel)]="userObject.gender">
-                        <mat-option value="" disabled>Select gender</mat-option>
-                        <mat-option *ngFor="let r of my_genders" [value]="r">{{ r }}</mat-option>
-                    </mat-select>
-                  </div>
-                  <div class="6u 12u(mobile)">
-                    <mat-select placeholder="Ocupation" name="ocupation" [(ngModel)]="userObject.ocupation">
-                        <mat-option value="" disabled>Select ocupation</mat-option>
-                        <mat-option *ngFor="let r of my_ocup" [value]="r">{{ r }}</mat-option>
-                    </mat-select>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="6u 12u(mobile)">
-                      <input type="text" name="email" id="email"  [(ngModel)]="userObject.email" placeholder="E-mail" />
-                    </div>
-                    <div class="6u 12u(mobile)" id="bday">
-                      <input type="text" matInput [matDatepicker]="picker" [ngModel]="birthday" name="birthday" id="birthday" placeholder="Birth Day Date" 
-                      (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)"/>
-                      <mat-datepicker-toggle class="calendarbt" [for]="picker"><mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon></mat-datepicker-toggle>
-                      <mat-datepicker #picker></mat-datepicker>
+                        <input id="failinput" matInput disabled readonly placeholder="Please attach your CV" [ngModel]="fileName" name="file" type="text">
                     </div>
                 </div>
                 <div class="row">
                   <div class="12u">
-                    <input type="text" placeholder="Goal" [(ngModel)]="userObject.goal"  matInput [formControl]="myControl" [matAutocomplete]="auto" maxlength="40">
-                    <mat-autocomplete #auto="matAutocomplete">
-                      <mat-option *ngFor="let r of goals" [value]="r.name">
-                        {{ r.name }}
-                      </mat-option>
-                    </mat-autocomplete>
+                    <input type="text" name="name" [(ngModel)]="userWholeName" id="name" placeholder="Name" />
                   </div>
                 </div>
                 <div class="row">
                   <div class="12u">
-                    <textarea name="interests" id="interests" placeholder="Interests" [(ngModel)]="userObject.interests"></textarea>
+                    <input type="text" name="phone" id="phone" [(ngModel)]="phone" placeholder="Phone" />
                   </div>
                 </div>
                 <div class="row">
                   <div class="12u">
-                    <textarea name="acttypes" id="acttypes" placeholder="Activity Types" [(ngModel)]="userObject.acttypes"></textarea>
+                    <textarea name="whyguide" id="whyguide" placeholder="Why do you want to guide?" [(ngModel)]="whyguide"></textarea>
                   </div>
                 </div>
                 <div class="row 200%">
