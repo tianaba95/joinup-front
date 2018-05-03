@@ -23,7 +23,13 @@ export class WantoguideComponent implements OnInit {
   phone: any;
   whyguide: any;
   wantoguideSent: any;
-  constructor(private router: Router, public afAuth: AngularFireAuth, private manageUserService: ManageUsersService,  private route: ActivatedRoute, private wantoguideService: WantoguideService) { }
+  constructor(private router: Router, public afAuth: AngularFireAuth, private manageUserService: ManageUsersService,  private route: ActivatedRoute, private wantoguideService: WantoguideService) { 
+    this.afAuth.authState.subscribe((auth) => {
+      if (!auth) {
+        this.router.navigateByUrl('/login');
+      }
+    });
+  }
 
   ngOnInit() {
     this.wantoguideSent = false;
