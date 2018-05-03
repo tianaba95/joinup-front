@@ -42,6 +42,7 @@ export class WantoguideComponent implements OnInit {
         thisTemp.userWholeName = thisTemp.userObject.name + ' ' + thisTemp.userObject.lastName; 
         thisTemp.userEmail = thisTemp.userObject.email; 
         thisTemp.photo = thisTemp.userObject.photo;
+        thisTemp.userId = thisTemp.userObject.id;
         console.log(thisTemp.userObject);
       })
     }
@@ -88,7 +89,7 @@ export class WantoguideComponent implements OnInit {
       let file = this.selectedFile;
       this.currentUpload = new Upload(file);
     }
-    let object = { id: Date.now(), email:this.userEmail, name:this.userWholeName, phone: this.phone, whyguide: this.whyguide, photo: this.photo};
+    let object = { id: Date.now(), email:this.userEmail, name:this.userWholeName, phone: this.phone, whyguide: this.whyguide, photo: this.photo, userId: this.userId};
     this.wantoguideService.merge(object, this.currentUpload);
     this.wantoguideSent = true;
     setTimeout(this.cancel(), 400000);
