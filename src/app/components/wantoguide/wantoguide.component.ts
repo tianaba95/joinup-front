@@ -22,9 +22,11 @@ export class WantoguideComponent implements OnInit {
   userWholeName: any;
   phone: any;
   whyguide: any;
+  wantoguideSent: any;
   constructor(private router: Router, public afAuth: AngularFireAuth, private manageUserService: ManageUsersService,  private route: ActivatedRoute, private wantoguideService: WantoguideService) { }
 
   ngOnInit() {
+    this.wantoguideSent = false;
     this.initUserSubscribe();
     if(this.userId){
       var thisTemp = this;
@@ -80,6 +82,8 @@ export class WantoguideComponent implements OnInit {
     }
     let object = { id: Date.now(), email:this.userEmail, name:this.userWholeName, phone: this.phone, whyguide: this.whyguide};
     this.wantoguideService.merge(object, this.currentUpload);
+    this.wantoguideSent = true;
+    setTimeout(this.cancel(), 400000);
   }
 
 }
