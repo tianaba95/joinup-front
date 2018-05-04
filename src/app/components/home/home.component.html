@@ -13,6 +13,9 @@
         <a href="javascript:void(0)" [scrollTo]="'#recent'">Recent Plans</a>
       </li>
       <li>
+        <a href="javascript:void(0)" *ngIf="userId" [scrollTo]="'#guides'">Guides</a>
+      </li>
+      <li>
         <a href="javascript:void(0)"  [scrollTo]="'#wantguide'">I want to guide</a>
       </li>
       <li>
@@ -71,6 +74,9 @@
       <a class="aLink" href="javascript:void(0)" [scrollTo]="'#recent'">Recent Plans</a>
     </li>
     <li>
+      <a class="aLink" href="javascript:void(0)" *ngIf="userId" [scrollTo]="'#guides'">Guides</a>
+    </li>
+    <li>
       <a class="aLink" href="javascript:void(0)"  [scrollTo]="'#wantguide'">I want to guide</a>
     </li>
     <li>
@@ -125,7 +131,6 @@
   </article>
 </div>
 
-
 <!-- Recent -->
 <div class="wrapper style3" id="recente">
   <article id="recent">
@@ -171,6 +176,33 @@
       <p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
       <a href="#contact" class="button big scrolly">View more</a>
     </footer>
+  </article>
+</div>
+
+<!-- Guides -->
+<div class="wrapper style2" id="guides" *ngIf="userId">
+  <article id="guides">
+    <header >
+      <h2 >Meet our guides</h2>
+    </header>
+    <div class="container">
+
+      <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
+        <div ngxSlickItem *ngFor="let p of planes" class="slide">
+          <article class="box style2">
+            <a href="javascript:void(0)" [routerLink]="['/social-detail', p.id]" class="image featured">
+              <div class="img-wrapper">
+                <img src="{{p.image}}" alt="" />
+              </div>
+            </a>
+            <h3>
+              <a  href="javascript:void(0)" [routerLink]="['/social-detail', p.id]">{{p.title}}</a>
+            </h3>
+            <p>{{p.descriptionShort}}</p>
+          </article>
+        </div>
+      </ngx-slick>
+    </div>
   </article>
 </div>
 
