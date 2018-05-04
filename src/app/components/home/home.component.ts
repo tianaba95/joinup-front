@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   planesRecent: any;
   userId: any;
   userObject: any;
+  my_guides: any;
 
   constructor(public afAuth: AngularFireAuth, private socialService: SocialService, private route: ActivatedRoute, private router: Router, private manageUserService: ManageUsersService) { }
 
@@ -27,6 +28,7 @@ export class HomeComponent implements OnInit {
     this.initPlansSuscribe();
     this.initRecenttSuscribe();
     this.initUserSubscribe();
+    this.initGuidesSuscribe();
     if(this.userId){
       var thisTemp = this;
       this.initUser(thisTemp.userId).then(function(snapshot) {
@@ -34,6 +36,19 @@ export class HomeComponent implements OnInit {
       console.log(thisTemp.userObject);
       })
     }
+  }
+
+  getGuidesList() {
+    return this.manageUserService.getUsersByRol('Guide');
+  }
+
+  initGuidesSuscribe() {
+    this.getGuidesList()
+      .subscribe(
+      objects => {
+        this.my_guides = objects;
+      }
+      );
   }
 
   initPlansSuscribe() {

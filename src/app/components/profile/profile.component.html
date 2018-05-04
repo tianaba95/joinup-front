@@ -10,7 +10,10 @@
         <a pageScroll [routerLink]="['/home', userId]" href="#social">Social Plans</a>
       </li>
       <li>
-        <a pageScroll [routerLink]="['/home', userId]" href="#wantguide">Recent Plans</a>
+        <a pageScroll [routerLink]="['/home', userId]" href="#guides">Recent Plans</a>
+      </li>
+      <li>
+        <a pageScroll [routerLink]="['/home', userId]" href="#wantguide" *ngIf="userId">Guides</a>
       </li>
       <li>
         <a pageScroll [routerLink]="['/home', userId]" href="#contact">I want to guide</a>
@@ -68,7 +71,10 @@
       <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#social">Social Plans</a>
     </li>
     <li>
-      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#wantguide">Recent Plans</a>
+      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#guides">Recent Plans</a>
+    </li>
+    <li>
+      <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#wantguide" *ngIf="userId">Guides</a>
     </li>
     <li>
       <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#contact">I want to guide</a>

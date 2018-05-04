@@ -92,7 +92,6 @@
   </ul>
 </mat-drawer>
 
-
 <!-- Home -->
 <div id="home" class="wrapper style1 first" style="background: url(./assets/images/background.jpg) no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
   <app-slider></app-slider>
@@ -188,17 +187,17 @@
     <div class="container">
 
       <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
-        <div ngxSlickItem *ngFor="let p of planes" class="slide">
+        <div ngxSlickItem *ngFor="let g of my_guides" class="slide">
           <article class="box style2">
-            <a href="javascript:void(0)" [routerLink]="['/social-detail', p.id]" class="image featured">
+            <a href="javascript:void(0)" class="image featured">
               <div class="img-wrapper">
-                <img src="{{p.image}}" alt="" />
+                <img src="{{g.photo}}" alt="" />
               </div>
             </a>
             <h3>
-              <a  href="javascript:void(0)" [routerLink]="['/social-detail', p.id]">{{p.title}}</a>
+              <a  href="javascript:void(0)">{{g.name}}</a>
             </h3>
-            <p>{{p.descriptionShort}}</p>
+            <p>{{g.whyguide}}</p>
           </article>
         </div>
       </ngx-slick>
