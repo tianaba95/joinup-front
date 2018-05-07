@@ -2,6 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SocialService } from '../../services/social.service';
 import { ActivatedRoute } from '@angular/router';
 
+import { ManageUsersService } from '../../services/manage-users.service';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-social-detail',
   templateUrl: './social-detail.component.html',
@@ -10,8 +14,10 @@ import { ActivatedRoute } from '@angular/router';
 export class SocialDetailComponent implements OnInit {
 
   plan = null;
+  userId: any;
+  userObject: any;
 
-  constructor(private socialService: SocialService, private route: ActivatedRoute) { }
+  constructor(public afAuth: AngularFireAuth, private socialService: SocialService, private route: ActivatedRoute, private router: Router, private manageUserService: ManageUsersService) { }
 
   slideConfig = {"slidesToShow": 3, "slidesToScroll": 3};
 
@@ -29,6 +35,19 @@ export class SocialDetailComponent implements OnInit {
 
   ngOnInit() {
     this.initObjectPlanSubscribe();
+    this.initUserSubscribe();
+    if(this.userId){
+      var thisTemp = this;
+      this.initUser(thisTemp.userId).then(function(snapshot) {
+      thisTemp.userObject = (snapshot.val()) || 'Anonymous';
+      console.log(thisTemp.userObject);
+      })
+    }
+  }
+
+  initUserSubscribe() {
+    this.userId = this.route.snapshot.params['userid'];
+    console.log("THIS ID", this.userId);
   }
 
   initObjectPlanSubscribe() {
@@ -46,6 +65,22 @@ export class SocialDetailComponent implements OnInit {
     return this.socialService.getPlanById(id);
   }
 
+  getUser(id) {
+    return this.manageUserService.getUser(id);
+  }
 
+  initUser(id) {
+    return this.getUser(id);
+  }
+
+  linkToUrlFunction(url){
+    window.open(url);
+  }
+
+  signout(){
+      this.afAuth.auth.signOut();
+      console.log('logged out');
+      this.router.navigateByUrl('/login');
+  }
 
 }

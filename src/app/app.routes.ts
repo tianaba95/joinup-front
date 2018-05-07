@@ -15,6 +15,7 @@ const app_routes: Routes = [
     { path: 'home/:id', component: HomeComponent},
     { path: 'social', component: SocialComponent },
     { path: 'social-detail/:id', component: SocialDetailComponent },
+    { path: 'social-detail/:id/:userid', component: SocialDetailComponent },
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'loginemail', component: EmailComponent },

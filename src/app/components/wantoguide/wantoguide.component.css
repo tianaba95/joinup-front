@@ -102,7 +102,6 @@ mat-drawer a.aLink.active:before {
     background: #484848;
 }
 
-
 .another-sidenav {
     width: 13%;
     height: 60%;
@@ -115,7 +114,7 @@ mat-drawer a.aLink.active:before {
     overflow-x: hidden;
   }
 
-  .app-drawer-header {
+.app-drawer-header {
     box-sizing: border-box;
     display: -webkit-flex;
     display: -ms-flexbox;
