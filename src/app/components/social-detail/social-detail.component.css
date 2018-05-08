@@ -235,5 +235,13 @@ mat-drawer a.aLink.active:before {
 }
 
 #wrapper{
-    margin-top: 15px;
+    padding: 6em !important;
+}
+
+.byline{
+    padding-top: 0 !important;
+}
+
+.title{
+    margin-bottom: 0.5em !important;
 }
