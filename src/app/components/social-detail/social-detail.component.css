@@ -245,3 +245,7 @@ mat-drawer a.aLink.active:before {
 .title{
     margin-bottom: 0.5em !important;
 }
+
+#listofplans{
+    overflow-y: visible !important;
+}

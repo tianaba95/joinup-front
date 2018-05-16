@@ -123,7 +123,7 @@
           </a>
         </div>
       </header>
-      <a href="#" class="image featured">
+      <a class="image featured">
         <img src="{{plan?.image}}" alt="" />
       </a>
       <p>{{plan?.descriptionLong}}</p>
@@ -241,21 +241,54 @@
       </header>
     </section>
     <!-- Posts List -->
-    <section>
+    <section id="listofplans">
       <ul class="posts">
-        <li>
+        <h3>Future Plans</h3>
+        <li *ngFor="let p of futureplans">
           <article>
             <header>
               <h3>
-                <a href="#">Lorem ipsum fermentum ut nisl vitae</a>
+                <a href="javascript:void(0)">{{p?.title}}</a>
               </h3>
-              <time class="published" datetime="2015-10-20">October 20, 2015</time>
+              <time class="published" datetime="2015-10-20">{{p?.date}}</time>
             </header>
-            <a href="#" class="image">
-              <img src="../../../assets/images/future/pic08.jpg" alt="" />
+            <a href="javascript:void(0)" class="image">
+              <img src="{{p?.image}}" alt="" />
             </a>
           </article>
         </li>
+      </ul>
+      <ul class="posts">
+          <h3>Recurrent Plans</h3>
+          <li *ngFor="let p of recurrentplans">
+            <article>
+              <header>
+                <h3>
+                  <a href="javascript:void(0)">{{p?.title}}</a>
+                </h3>
+                <time class="published" datetime="2015-10-20">{{p?.date}}</time>
+              </header>
+              <a href="javascript:void(0)" class="image">
+                <img src="{{p?.image}}" alt="" />
+              </a>
+            </article>
+          </li>
+      </ul>
+      <ul class="posts">
+          <h3>Past Plans</h3>
+          <li *ngFor="let p of pastplans">
+            <article>
+              <header>
+                <h3>
+                  <a (click)="onLinkClick(p.id)" routerLinkActive="active">{{p?.title}}</a>
+                </h3>
+                <time class="published" datetime="2015-10-20">{{p?.date}}</time>
+              </header>
+              <a href="javascript:void(0)" class="image">
+                <img src="{{p?.image}}" alt="" />
+              </a>
+            </article>
+          </li>
       </ul>
     </section>
     <!-- Footer -->
@@ -294,6 +327,9 @@
   </section>
 
 </div>
+
+
+
 
 <!-- Scripts -->
 <script src="../../../assets/js/jquery.min.js"></script>
