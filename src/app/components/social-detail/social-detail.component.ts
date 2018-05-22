@@ -20,7 +20,8 @@ export class SocialDetailComponent implements OnInit {
   pastplans = [];
   futureplans = [];
   recurrentplans = [];
-
+  likes: any;
+  loves: any;
   constructor(public afAuth: AngularFireAuth, private socialService: SocialService, private route: ActivatedRoute, private router: Router, private manageUserService: ManageUsersService) { }
 
   slideConfig = {"slidesToShow": 3, "slidesToScroll": 3};
@@ -38,8 +39,8 @@ export class SocialDetailComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.initPlansSuscribe();
     this.initObjectPlanSubscribe();
+    this.initPlansSuscribe();
     this.initUserSubscribe();
     if(this.userId){
       var thisTemp = this;
@@ -47,6 +48,7 @@ export class SocialDetailComponent implements OnInit {
       thisTemp.userObject = (snapshot.val()) || 'Anonymous';
       })
     }
+
   }
 
   initUserSubscribe() {
@@ -59,10 +61,11 @@ export class SocialDetailComponent implements OnInit {
     console.log("THIS ID", id)
     this.getPlanById(id)
       .subscribe(
-      objects => {
-        this.plan = objects;
-      }
+        objects => {
+          this.plan = objects;
+        }
       );
+    
   }
 
   getPlanById(id) {
@@ -112,9 +115,23 @@ export class SocialDetailComponent implements OnInit {
       );
   }
 
-  onLinkClick(id){
-    this.router.navigateByUrl('/social-detail/'+id+'/1520460260348');
-    location.reload(); 
+  onLinkClick(id, userid){
+    var current = location.href;
+    var firstpart = current.substring(0,36);
+    if(userid === undefined){
+      var newpage = firstpart + id;
+    } else {
+      var newpage = firstpart + id + '/' + userid;
+    }
+    location.replace(newpage);
+  }
+
+  onLikeClick(plan, userId){
+    this.socialService.setLikes(plan, userId);
+  }
+
+  onLoveClick(id){
+    this.socialService.setWouldLoveTo(id);
   }
 
 }

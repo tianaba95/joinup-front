@@ -155,20 +155,23 @@
           </time>
         </p>
 
+        <p>
+          <span class="date infoTitle">Max Assistants: </span>
+          <span>{{plan?.maxAsisstant}}</span>
+        </p>
+
       </div>
 
       <footer>
-        <ul class="actions">
-          <li>
-            <a href="#" class="button big">Continue Reading</a>
-          </li>
-        </ul>
         <ul class="stats">
           <li>
             <a href="#">{{plan?.category}}</a>
           </li>
           <li>
-            <a href="#" class="icon fa-heart">28</a>
+            <a (click)="onLikeClick(plan?.id, userId)" class="icon fa-thumbs-up">{{plan?.likes.likesCount}}</a>
+          </li>
+          <li>
+            <a (click)="onLoveClick(plan?.id)" class="icon fa-heart">{{plan?.wouldLove}}</a>
           </li>
           <li>
             <a href="#" class="icon fa-comment">128</a>
@@ -197,10 +200,6 @@
         <img src="../../../assets/images/future/pic02.jpg" alt="" />
       </a>
 
-
-
-      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus
-        porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper.</p>
       <footer>
         <ul class="actions">
           <li>
@@ -209,7 +208,7 @@
         </ul>
         <ul class="stats">
           <li>
-            <a href="#">General</a>
+            <a href="#" class="icon fa-thumbs-up">28</a>
           </li>
           <li>
             <a href="#" class="icon fa-heart">28</a>
@@ -248,7 +247,7 @@
           <article>
             <header>
               <h3>
-                <a href="javascript:void(0)">{{p?.title}}</a>
+                <a (click)="onLinkClick(p?.id, userId)" href="javascript:void(0)">{{p?.title}}</a>
               </h3>
               <time class="published" datetime="2015-10-20">{{p?.date}}</time>
             </header>
@@ -264,7 +263,7 @@
             <article>
               <header>
                 <h3>
-                  <a href="javascript:void(0)">{{p?.title}}</a>
+                  <a (click)="onLinkClick(p?.id, userId)" href="javascript:void(0)">{{p?.title}}</a>
                 </h3>
                 <time class="published" datetime="2015-10-20">{{p?.date}}</time>
               </header>
@@ -276,16 +275,16 @@
       </ul>
       <ul class="posts">
           <h3>Past Plans</h3>
-          <li *ngFor="let p of pastplans">
+          <li *ngFor="let pl of pastplans">
             <article>
               <header>
                 <h3>
-                  <a (click)="onLinkClick(p.id)" routerLinkActive="active">{{p?.title}}</a>
+                  <a (click)="onLinkClick(pl?.id, userId)" routerLinkActive="active">{{pl?.title}}</a>
                 </h3>
-                <time class="published" datetime="2015-10-20">{{p?.date}}</time>
+                <time class="published" datetime="2015-10-20">{{pl?.date}}</time>
               </header>
               <a href="javascript:void(0)" class="image">
-                <img src="{{p?.image}}" alt="" />
+                <img src="{{pl?.image}}" alt="" />
               </a>
             </article>
           </li>
