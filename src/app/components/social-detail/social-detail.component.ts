@@ -21,6 +21,8 @@ export class SocialDetailComponent implements OnInit {
   futureplans = [];
   recurrentplans = [];
   likes: any[];
+  comentarioOn: any;
+
   constructor(public afAuth: AngularFireAuth, private socialService: SocialService, private route: ActivatedRoute, private router: Router, private manageUserService: ManageUsersService) { }
 
   slideConfig = {"slidesToShow": 3, "slidesToScroll": 3};
@@ -41,6 +43,7 @@ export class SocialDetailComponent implements OnInit {
     this.initObjectPlanSubscribe();
     this.initPlansSuscribe();
     this.initUserSubscribe();
+    this.comentarioOn = false;
     if(this.userId){
       var thisTemp = this;
       this.initUser(thisTemp.userId).then(function(snapshot) {
@@ -166,6 +169,10 @@ export class SocialDetailComponent implements OnInit {
 
   onLoveClick(id){
     this.socialService.setWouldLoveTo(id);
+  }
+
+  wantCommentClick(id){
+    this.comentarioOn = true;
   }
 
 }
