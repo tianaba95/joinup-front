@@ -168,10 +168,11 @@
             <a href="#">{{plan?.category}}</a>
           </li>
           <li>
-            <a (click)="onLikeClick(plan?.id, userId)" class="icon fa-thumbs-up">{{plan?.likes.likesCount}}</a>
+            <a *ngIf="userId" id="link" (click)="onLikeClick(plan?.id, userId)" class="icon fa-thumbs-up">{{plan?.likes? plan?.likes.likesCount: 0}}</a>
+            <a *ngIf="!userId" href="javascript:void(0)" class="icon fa-thumbs-up">{{plan?.likes? plan?.likes.likesCount: 0}}</a>
           </li>
           <li>
-            <a (click)="onLoveClick(plan?.id)" class="icon fa-heart">{{plan?.wouldLove}}</a>
+            <a (click)="onLoveClick(plan?.id)" class="icon fa-heart">{{plan?.wouldLove ? plan?.wouldLove:0 }}</a>
           </li>
           <li>
             <a href="#" class="icon fa-comment">128</a>

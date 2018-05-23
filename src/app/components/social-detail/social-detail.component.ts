@@ -20,8 +20,7 @@ export class SocialDetailComponent implements OnInit {
   pastplans = [];
   futureplans = [];
   recurrentplans = [];
-  likes: any;
-  loves: any;
+  likes: any[];
   constructor(public afAuth: AngularFireAuth, private socialService: SocialService, private route: ActivatedRoute, private router: Router, private manageUserService: ManageUsersService) { }
 
   slideConfig = {"slidesToShow": 3, "slidesToScroll": 3};
@@ -63,6 +62,17 @@ export class SocialDetailComponent implements OnInit {
       .subscribe(
         objects => {
           this.plan = objects;
+          var thisTemp = this;
+          this.getLikes(this.plan.id).then(function(snapshot) {
+            thisTemp.likes = (snapshot.val()) || [];
+            var keys = Object.keys(thisTemp.likes);
+            keys.forEach(element => {
+              if(element == thisTemp.userId){
+                var link = document.getElementById('link');
+                link.classList.add('slidingTag-modifier')
+              } 
+            });
+          })
         }
       );
     
@@ -127,7 +137,31 @@ export class SocialDetailComponent implements OnInit {
   }
 
   onLikeClick(plan, userId){
-    this.socialService.setLikes(plan, userId);
+    var userdiolike = false;
+    var thisTemp = this;
+    this.getLikes(plan).then(function(snapshot) {
+      thisTemp.likes = (snapshot.val()) || [];
+      var keys = Object.keys(thisTemp.likes);
+      keys.forEach(element => {
+        if(element == userId){
+          userdiolike = true;
+        } 
+      });
+      console.log(userdiolike)
+      if(!userdiolike){
+        thisTemp.socialService.setLikes(plan, userId);
+        var link = document.getElementById('link');
+        link.classList.add('slidingTag-modifier')
+      }else{
+        thisTemp.socialService.removeLike(plan, userId);
+        var link = document.getElementById('link');
+        link.classList.remove('slidingTag-modifier');
+      }
+    })
+  }
+
+  getLikes(id){
+    return this.socialService.getLikes(id);
   }
 
   onLoveClick(id){

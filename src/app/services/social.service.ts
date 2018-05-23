@@ -110,7 +110,7 @@ export class SocialService {
 
   setLikes(id, userId){
     let _this = this;
-    _this.afDB.database.ref(`${_this.modelPath}/`).child(id).child('likes/'+ Date.now()).
+    _this.afDB.database.ref(`${_this.modelPath}/`).child(id).child('likes/'+ userId).
     set({'persona':userId});
     console.log("A like by: "+ userId);
 
@@ -122,8 +122,21 @@ export class SocialService {
     });         
   }
 
+  removeLike(id, userId){
+    let _this = this;
+    _this.afDB.database.ref(`${_this.modelPath}/`).child(id).child('likes/'+ userId).remove();
+    console.log("Deleted like by: "+ userId);
+
+    var ref = _this.afDB.database.ref(`${_this.modelPath}/`);
+    ref.child(id).child('likes/likesCount').once('value', function(likesCount) {
+      var updates = {likesCount : 0};
+      updates.likesCount = likesCount.val() - 1;
+      ref.child(id).child('likes').update(updates);
+    });   
+  }
+
   getLikes(id){
-    return this.afDB.database.ref(`${this.modelPath}/`).child(id).child('likes/likesCount').once('value');
+    return this.afDB.database.ref(`${this.modelPath}/`).child(id).child('likes').once('value');
   }
 
   setWouldLoveTo(id){

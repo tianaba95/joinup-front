@@ -249,3 +249,7 @@ mat-drawer a.aLink.active:before {
 #listofplans{
     overflow-y: visible !important;
 }
+
+.icon.slidingTag-modifier::before {
+   color:#2ebaae !important
+ }
