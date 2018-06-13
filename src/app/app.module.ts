@@ -42,6 +42,7 @@ import {MatNativeDateModule} from '@angular/material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { LoginComponent } from './components/authentication/login/login.component';
 import { EmailComponent } from './components/authentication/email/email.component';
@@ -113,6 +114,7 @@ export const firebaseConfig = {
     MatAutocompleteModule,
     MatIconModule,
     MatMenuModule,
+    MatTooltipModule,
     MatCardModule,
     MatInputModule,
     MatSelectModule,
