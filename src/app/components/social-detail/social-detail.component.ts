@@ -1,10 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SocialService } from '../../services/social.service';
 import { ActivatedRoute } from '@angular/router';
-
+import { Upload } from '../../uploads/upload';
 import { ManageUsersService } from '../../services/manage-users.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
+import {timeAgo} from '../../../assets/js/time-ago'
 
 @Component({
   selector: 'app-social-detail',
@@ -22,10 +23,16 @@ export class SocialDetailComponent implements OnInit {
   recurrentplans = [];
   likes: any[];
   comentarioOn: any;
+  comment: any;
+  losComentarios: any;
+  photosON: any;
 
+  selectedFile: File;
+  currentUpload: Upload;
+  fileName = "";
   constructor(public afAuth: AngularFireAuth, private socialService: SocialService, private route: ActivatedRoute, private router: Router, private manageUserService: ManageUsersService) { }
 
-  slideConfig = {"slidesToShow": 3, "slidesToScroll": 3};
+  slideConfig = {"slidesToShow": 1, "slidesToScroll": 1};
 
   plan_photos = [
     {img: "http://placehold.it/350x150/000000"},
@@ -39,11 +46,14 @@ export class SocialDetailComponent implements OnInit {
     {img: "http://placehold.it/350x150/666666"}
   ];
 
+  picturesofplan: any;
+
   ngOnInit() {
     this.initObjectPlanSubscribe();
     this.initPlansSuscribe();
     this.initUserSubscribe();
     this.comentarioOn = false;
+    this.photosON = false;
     if(this.userId){
       var thisTemp = this;
       this.initUser(thisTemp.userId).then(function(snapshot) {
@@ -66,6 +76,19 @@ export class SocialDetailComponent implements OnInit {
         objects => {
           this.plan = objects;
           var thisTemp = this;
+          var fecha = new Date(this.plan.date);
+          if(fecha <= new Date()){
+            this.photosON = true;
+          } else  {
+            this.comentarioOn = false;
+          }
+          this.getComments(this.plan.id).then(function(snapshot) {
+            var comentarios = (snapshot.val()) || [];
+            thisTemp.losComentarios = Object.keys(comentarios).map(function(key) {
+              return comentarios[key];
+            });
+            thisTemp.treatingLosComentarios();
+          });
           this.getLikes(this.plan.id).then(function(snapshot) {
             thisTemp.likes = (snapshot.val()) || [];
             var keys = Object.keys(thisTemp.likes);
@@ -75,7 +98,13 @@ export class SocialDetailComponent implements OnInit {
                 link.classList.add('slidingTag-modifier')
               } 
             });
-          })
+          });
+          this.getPhotos(this.plan.id).then(function(snapshot) {
+            var pictures = (snapshot.val()) || [];
+            thisTemp.picturesofplan = Object.keys(pictures).map(function(key) {
+              return pictures[key];
+            });
+          });
         }
       );
     
@@ -171,8 +200,56 @@ export class SocialDetailComponent implements OnInit {
     this.socialService.setWouldLoveTo(id);
   }
 
-  wantCommentClick(id){
-    this.comentarioOn = true;
+  wantCommentClick(id, date){
+    var thedate = new Date(date);
+    if(thedate <= new Date()){
+      this.comentarioOn = true;
+    } else  {
+      this.comentarioOn = false;
+    }
+    
+  }
+
+  MakeComment(id){
+    console.log(this.comment);
+    this.socialService.setComment(id, this.userId, this.comment);
+  }
+
+  getComments(id) {
+    return this.socialService.getComments(id);
+  }
+
+  getPhotos(id) {
+    return this.socialService.getPhotos(id);
+  }
+
+  treatingLosComentarios(){
+    var thisTemp = this;
+    this.losComentarios.forEach(function(element){
+      console.log(element.persona);
+      thisTemp.initUser(element.persona).then(function(snapshot) {
+        var thispersona = (snapshot.val()) || 'Anonymous';
+        element.persona = thispersona.name + ' ' + thispersona.lastName;
+        element.avatar = thispersona.photo;
+        var date = new Date(element.id);
+        element.tiempo = timeAgo(date);
+      })
+    })
+    
+  }
+
+  
+  detectFiles(event) {
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
+    this.fileName = this.selectedFile.name;
+    this.uploadSingle();
+  }
+
+  uploadSingle() {
+    let file = this.selectedFile;
+    this.currentUpload = new Upload(file);
+    this.socialService.pushUpload(this.currentUpload, this.plan)
   }
 
 }

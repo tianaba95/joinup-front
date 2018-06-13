@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { Upload } from '../uploads/upload';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
@@ -12,6 +12,8 @@ export class SocialService {
 
   private modelPath: string = 'social';
   private assistPath: string = 'plan_asistentes';
+  private basePath:string = '/uploads';
+  uploads: FirebaseListObservable<Upload[]>;
 
   getPlansHome() {
     return this.afDB.list(`/${this.modelPath}`, {
@@ -153,4 +155,59 @@ export class SocialService {
     return this.afDB.database.ref(`${this.modelPath}/`).child(id).child('wouldLove').once('value');
   }
 
+  setComment(id, userId, commentario){
+    let _this = this;
+    let commentId = Date.now();
+
+    _this.afDB.database.ref(`${_this.modelPath}/`).child(id).child('comments/comentarios/'+ commentId).
+    set({'id': commentId,'persona':userId, 'comment': commentario});
+    console.log("A comment by: "+ userId);
+
+    var ref = _this.afDB.database.ref(`${_this.modelPath}/`);
+    ref.child(id).child('comments/commentCount').once('value', function(commentCount) {
+      var updates = {commentCount : 0};
+      updates.commentCount = commentCount.val() + 1;
+      ref.child(id).child('comments').update(updates);
+    });  
+  }
+
+  getComments(id){
+    return this.afDB.database.ref(`${this.modelPath}/`).child(id).child('comments/comentarios').once('value');
+  }
+
+ //------UPLOAD------
+  pushUpload(upload: Upload, object) {
+    let pictureId = Date.now();     
+    let storageRef = firebase.storage().ref();
+    let uploadTask = storageRef.child(`${this.basePath}/${upload.file.name}`).put(upload.file);
+    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+      (snapshot) =>  {
+        upload.progress = Math.round((uploadTask.snapshot.bytesTransferred / uploadTask.snapshot.totalBytes) * 100);
+        console.log(upload.progress);
+      },
+      (error) => {
+      // upload failed
+      console.log(error)
+      },
+      () => {
+        // upload success
+        upload.url = uploadTask.snapshot.downloadURL
+        upload.name = upload.file.name
+        this.saveFileData(upload)
+
+        var photo = uploadTask.snapshot.downloadURL;
+        this.afDB.database.ref(`${this.modelPath}/` + object.id).child('pictures/' + pictureId). set({'id': pictureId,'photo': photo});      
+      }
+    );
+  }
+
+  // Writes the file details to the realtime db
+  private saveFileData(upload: Upload) {
+   this.afDB.list(`${this.basePath}/`).push(upload);
+  }
+//------END UPLOAD------
+
+  getPhotos(id){
+    return this.afDB.database.ref(`${this.modelPath}/`).child(id).child('pictures/').once('value');
+  }
 }

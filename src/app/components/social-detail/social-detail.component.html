@@ -119,7 +119,7 @@
           </time> 
           <a href="#" class="author">
             <span class="name">{{plan?.guide}}</span>
-            <img src="../../../assets/images/future/avatar.jpg" alt="" />
+            <img src="{{plan?.guidepic}}" alt="" />
           </a>
         </div>
       </header>
@@ -175,85 +175,66 @@
             <a (click)="onLoveClick(plan?.id)" class="icon fa-heart">{{plan?.wouldLove ? plan?.wouldLove:0 }}</a>
           </li>
           <li>
-            <a (click)="wantCommentClick(plan?.id)" class="icon fa-comment">128</a>
+            <a (click)="wantCommentClick(plan?.id, plan?.date)" class="icon fa-comment">{{plan?.comments? plan?.comments.commentCount: 0}}</a>
           </li>
         </ul>
       </footer>
     </article>
+
     <!-- Comments -->
     <ul class="comment-section" *ngIf="comentarioOn">
-      <li class="comment user-comment">
+      <li class="comment user-comment" *ngFor="let c of losComentarios">
           <div class="info">
-              <a href="#">Anie Silverston</a>
-              <span>4 hours ago</span>
+              <a href="#">{{c.persona}}</a>
+              <span>{{c.tiempo}}</span>
           </div>
           <a class="avatar" href="#">
-              <img src="images/avatar_user_1.jpg" width="35" alt="Profile Avatar" title="Anie Silverston" />
+            <img src="{{c.avatar}}" width="35" alt="Profile Avatar" title="Anie Silverston" />
           </a>
-          <p>Suspendisse gravida sem?</p>
+          <p>{{c.comment}}</p>
       </li>
-      <!-- More comments -->
+
       <li class="write-new">
 
           <form action="#" method="post">
-              <textarea placeholder="Write your comment here" name="comment"></textarea>
+              <textarea placeholder="Write your comment here" name="comment" [(ngModel)]="comment"></textarea>
               <div>
-                  <img src="images/avatar_user_2.jpg" width="35" alt="Profile of Bradley Jones" title="Bradley Jones" />
-                  <button type="submit">Submit</button>
+                  <button class="cmtbutton" type="submit" (click)="MakeComment(plan?.id)">Submit</button>
               </div>
           </form>
 
       </li>
     </ul>
-    <!-- Post -->
-    <article class="post">
+
+    <!-- Pictures -->
+    <article class="post" *ngIf ="photosON">
       <header>
-        <div class="title">
+        <div class="title" id="pictitle">
           <h2>
-            <a href="#">Check out the pics we took</a>
+            <a href="#">Check out the pics we took </a>
+            <label  class="uploadfile" for="file_input_file"><mat-icon class="upicon" aria-label="file upload">publish</mat-icon></label>
+            <input id="file_input_file" type="file" (change)="detectFiles($event)"/>
           </h2>
           <!-- p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p -->
         </div>
-        <div class="meta">
+        <!-- <div class="meta">
           <time class="published" datetime="2015-10-25">October 25, 2015</time>
           <a href="#" class="author">
             <span class="name">Jane Doe</span>
             <img src="../../../assets/images/future/avatar.jpg" alt="" />
           </a>
-        </div>
+        </div> -->
       </header>
-      <a href="#" class="image featured">
-        <img src="../../../assets/images/future/pic02.jpg" alt="" />
-      </a>
+      <div class="image" id="planim" *ngIf ="plan?.pictures">
+        <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
+          <div ngxSlickItem *ngFor="let p of picturesofplan">
+            <img src="{{p.photo}}" alt="">
+          </div>
+        </ngx-slick>
+      </div>
 
-      <footer>
-        <ul class="actions">
-          <li>
-            <a href="#" class="button big">Continue Reading</a>
-          </li>
-        </ul>
-        <ul class="stats">
-          <li>
-            <a href="#" class="icon fa-thumbs-up">28</a>
-          </li>
-          <li>
-            <a href="#" class="icon fa-heart">28</a>
-          </li>
-          <li>
-            <a href="#" class="icon fa-comment">128</a>
-          </li>
-        </ul>
-      </footer>
     </article>
     <!-- Pagination -->
-    <ul class="actions pagination">
-      <li>
-        <a href="" class="disabled button big previous">Previous Page</a>
-      </li>
-      <li>
-        <a href="#" class="button big next">Next Page</a>
-      </li>
-    </ul>
   </div>
 
   <!-- Sidebar -->
