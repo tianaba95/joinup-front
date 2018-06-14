@@ -523,4 +523,9 @@ mat-drawer a.aLink.active:before {
     color: #43bff0;
 }
 
+.register{
+    padding: 0.1em !important;
+    border: none !important;
+}
+
 

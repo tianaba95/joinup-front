@@ -210,4 +210,23 @@ export class SocialService {
   getPhotos(id){
     return this.afDB.database.ref(`${this.modelPath}/`).child(id).child('pictures/').once('value');
   }
+
+  registerUser(id, iduser, idmax){
+    let _this = this;
+
+    _this.afDB.database.ref(`${_this.modelPath}/`).child(id).child('registro/registerlist/'+ iduser).
+    set({'id': iduser});
+    console.log(iduser + " se ha registrado");
+
+    var ref = _this.afDB.database.ref(`${_this.modelPath}/`);
+    ref.child(id).child('registro/registerCount').once('value', function(registerCount) {
+      var updates = {registerCount : 0};
+      updates.registerCount = registerCount.val() + 1;
+      ref.child(id).child('registro').update(updates);
+    });  
+  }
+
+  getRegisteredUsers(id, iduser){
+    return this.afDB.database.ref(`${this.modelPath}/`).child(id).child('registro/registerlist/'+ iduser).once('value');
+  }
 }

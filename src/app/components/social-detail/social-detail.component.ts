@@ -252,4 +252,23 @@ export class SocialDetailComponent implements OnInit {
     this.socialService.pushUpload(this.currentUpload, this.plan)
   }
 
+  getRegisteredPeople(id) {
+    return this.socialService.getRegisteredUsers(id, this.userId);
+  }
+
+  register(id, maxAssistents){
+    console.log("do you want to join the plan???")
+
+    this.getRegisteredPeople(id).then(function(snapshot) {
+      var exists = (snapshot.val() !== null);
+      if(!exists){
+        this.socialService.registerUser(id, this.userId, maxAssistents);
+      } else {
+        console.log("user is already registered")
+      }
+    });
+
+    //
+  }
+
 }
