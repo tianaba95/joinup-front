@@ -229,4 +229,8 @@ export class SocialService {
   getRegisteredUsers(id, iduser){
     return this.afDB.database.ref(`${this.modelPath}/`).child(id).child('registro/registerlist/'+ iduser).once('value');
   }
+
+  getRegisteredCount(id){
+    return this.afDB.database.ref(`${this.modelPath}/`).child(id).child('registro/registerCount/').once('value');
+  }
 }

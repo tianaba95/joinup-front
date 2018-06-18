@@ -109,7 +109,7 @@
         <div class="title">
           <h2>
             <a href="javascript:void(0)">{{plan?.title}}</a> 
-            <a (click)="register(plan?.id, plan?.maxAsisstant)"><mat-icon class="register">person_add</mat-icon></a>
+            <a (click)="register(plan?.id, plan?.maxAsisstant)" *ngIf ="!photosON"><mat-icon class="register">person_add</mat-icon></a>
           </h2>
           <p>{{plan?.descriptionShort}}</p>
         </div>
@@ -335,6 +335,12 @@
 
 </div>
 
+<mdl-layout-content class="mdl-color--grey-100">
+  <div class="app-content mdl-grid">
+    <router-outlet></router-outlet>
+    <dialog-outlet></dialog-outlet>
+  </div>
+</mdl-layout-content>
 
 
 

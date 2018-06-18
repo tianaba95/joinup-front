@@ -6,6 +6,7 @@ import { ManageUsersService } from '../../services/manage-users.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
 import {timeAgo} from '../../../assets/js/time-ago'
+import { MdlDialogService } from '@angular-mdl/core';
 
 @Component({
   selector: 'app-social-detail',
@@ -30,7 +31,8 @@ export class SocialDetailComponent implements OnInit {
   selectedFile: File;
   currentUpload: Upload;
   fileName = "";
-  constructor(public afAuth: AngularFireAuth, private socialService: SocialService, private route: ActivatedRoute, private router: Router, private manageUserService: ManageUsersService) { }
+  
+  constructor(public afAuth: AngularFireAuth, private socialService: SocialService, private route: ActivatedRoute, private router: Router, private manageUserService: ManageUsersService, private dialogService: MdlDialogService,) { }
 
   slideConfig = {"slidesToShow": 1, "slidesToScroll": 1};
 
@@ -256,19 +258,42 @@ export class SocialDetailComponent implements OnInit {
     return this.socialService.getRegisteredUsers(id, this.userId);
   }
 
+  getRegisteredPeopleCount(id) {
+    return this.socialService.getRegisteredCount(id);
+  }
+
   register(id, maxAssistents){
     console.log("do you want to join the plan???")
-
-    this.getRegisteredPeople(id).then(function(snapshot) {
-      var exists = (snapshot.val() !== null);
-      if(!exists){
-        this.socialService.registerUser(id, this.userId, maxAssistents);
-      } else {
-        console.log("user is already registered")
+    var thisTemp = this;
+    let result = this.dialogService.confirm('Do you want to register to the plan?', 'No', 'Yes');
+    result.subscribe(() => {
+      console.log('confirmed');
+      thisTemp.getRegisteredPeopleCount(id).then(function(snapshot) {
+        var thisTempo = thisTemp;
+        var count = snapshot.val();
+        if(count == maxAssistents){
+          alert("Esta actividad ha alcanzado el numero maximo de personas")
+          return;
+        } else {
+          thisTempo.getRegisteredPeople(id).then(function(snapshot) {
+            var exists = (snapshot.val() !== null);
+            if(!exists){
+              thisTempo.socialService.registerUser(id, thisTempo.userId, maxAssistents);
+              thisTempo.manageUserService.registerActivity(thisTempo.userId, id);
+            } else {
+              alert("Sorry, you are already registered!!");
+            }
+          });
+        }
+      })
+    },
+      (err: any) => {
+        console.log('declined');
       }
-    });
+    );
 
-    //
+    // 
+
   }
 
 }

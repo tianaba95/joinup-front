@@ -94,5 +94,14 @@ export class ManageUsersService {
     }
 //------END UPLOAD------
 
+//Activities!
+  registerActivity(userId, planId){
+    let _this = this;
+
+    _this.afDB.database.ref(`${_this.modelPath}/`).child(userId).child('registro/activititesList/'+ planId).
+    set({'id': planId});
+    console.log("El usuario se ha registrado a la actividad: " + planId);
+
+  }
 }
 

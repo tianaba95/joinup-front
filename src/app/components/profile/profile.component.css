@@ -224,7 +224,7 @@ mat-drawer a.aLink.active:before {
     font-weight: 400;
     line-height: 20px;
     text-align: left;
-    left: -4em;
+    left: -5em;
     position: relative;
 }
 
