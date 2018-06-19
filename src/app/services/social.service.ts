@@ -233,4 +233,17 @@ export class SocialService {
   getRegisteredCount(id){
     return this.afDB.database.ref(`${this.modelPath}/`).child(id).child('registro/registerCount/').once('value');
   }
+
+  removeRegister(id, userId){
+    let _this = this;
+    _this.afDB.database.ref(`${_this.modelPath}/`).child(id).child('registro/registerlist/'+ userId).remove();
+    console.log("Deleted register by: "+ userId);
+
+    var ref = _this.afDB.database.ref(`${_this.modelPath}/`);
+    ref.child(id).child('registro/registerCount').once('value', function(registerCount) {
+      var updates = {registerCount : 0};
+      updates.registerCount = registerCount.val() - 1;
+      ref.child(id).child('registro').update(updates);
+    });   
+  }
 }

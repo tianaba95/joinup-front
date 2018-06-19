@@ -43,9 +43,6 @@
       <li>
         <a *ngIf="userId" (click)="signout()">Sign Out</a>
       </li>
-      <li>
-        <a href="javascript:void(0)" [routerLink]="['/profile', userId]">See Activities</a>
-      </li>
     </ul>
   </mat-drawer>
    
@@ -200,7 +197,22 @@
       </div>
       <div class="row">
         <div class="12u">
-          <p class="obj" id="lastone">{{userObject.acttypes}}</p>
+          <p class="obj">{{userObject.acttypes}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="12u">
+          <p><strong class="othertitle" id="int">Registered Activities</strong></p>
+        </div>
+      </div>
+      <div class="row" *ngIf="activities">
+        <div class="12u">
+          <!-- <p class="obj" id="lastone">{{userObject.acttypes}}</p> -->
+          <ul class="obj" id="lastone">
+            <li *ngFor="let act of activities">
+              <a href="javascript:void(0)" [routerLink]="['/social-detail', act?.id, userId]">{{act?.planName}}</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

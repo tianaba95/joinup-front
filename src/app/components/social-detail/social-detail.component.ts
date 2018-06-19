@@ -27,6 +27,7 @@ export class SocialDetailComponent implements OnInit {
   comment: any;
   losComentarios: any;
   photosON: any;
+  userExist: any;
 
   selectedFile: File;
   currentUpload: Upload;
@@ -51,6 +52,7 @@ export class SocialDetailComponent implements OnInit {
   picturesofplan: any;
 
   ngOnInit() {
+    this.initUserSubscribe();
     this.initObjectPlanSubscribe();
     this.initPlansSuscribe();
     this.initUserSubscribe();
@@ -106,6 +108,11 @@ export class SocialDetailComponent implements OnInit {
             thisTemp.picturesofplan = Object.keys(pictures).map(function(key) {
               return pictures[key];
             });
+          });
+          this.getRegisteredPeople(this.plan.id).then(function(snapshot) {
+            var exists = (snapshot.val() !== null);
+            console.log('does exist? ' + exists); 
+            thisTemp.userExist = exists;
           });
         }
       );
@@ -262,7 +269,7 @@ export class SocialDetailComponent implements OnInit {
     return this.socialService.getRegisteredCount(id);
   }
 
-  register(id, maxAssistents){
+  register(id, maxAssistents, planName){
     console.log("do you want to join the plan???")
     var thisTemp = this;
     let result = this.dialogService.confirm('Do you want to register to the plan?', 'No', 'Yes');
@@ -279,7 +286,7 @@ export class SocialDetailComponent implements OnInit {
             var exists = (snapshot.val() !== null);
             if(!exists){
               thisTempo.socialService.registerUser(id, thisTempo.userId, maxAssistents);
-              thisTempo.manageUserService.registerActivity(thisTempo.userId, id);
+              thisTempo.manageUserService.registerActivity(thisTempo.userId, id, planName);
             } else {
               alert("Sorry, you are already registered!!");
             }
@@ -294,6 +301,12 @@ export class SocialDetailComponent implements OnInit {
 
     // 
 
+  }
+
+  unregister(id){
+    this.socialService.removeRegister(id, this.userId);
+    this.manageUserService.removeRegister(id, this.userId);
+    this.userExist = false;
   }
 
 }

@@ -95,13 +95,23 @@ export class ManageUsersService {
 //------END UPLOAD------
 
 //Activities!
-  registerActivity(userId, planId){
+  registerActivity(userId, planId, planName){
     let _this = this;
 
     _this.afDB.database.ref(`${_this.modelPath}/`).child(userId).child('registro/activititesList/'+ planId).
-    set({'id': planId});
+    set({'id': planId, 'planName': planName});
     console.log("El usuario se ha registrado a la actividad: " + planId);
 
+  }
+
+  getRegisteredActivities(id){
+    return this.afDB.database.ref(`${this.modelPath}/`).child(id).child('registro/activititesList').once('value');
+  }
+
+  removeRegister(id, userId){
+    let _this = this;
+    _this.afDB.database.ref(`${_this.modelPath}/`).child(userId).child('registro/activititesList/'+ id).remove();
+    console.log("Deleted plan: "+ id);  
   }
 }
 

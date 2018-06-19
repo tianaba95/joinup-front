@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
   my_genders: any[];
   my_ocup: any[];
   birthday: any;
+  activities:any;
 
   myControl: FormControl = new FormControl();
   goals: any[];
@@ -40,13 +41,20 @@ export class ProfileComponent implements OnInit {
     if(this.userId){
       var thisTemp = this;
       this.initUser(thisTemp.userId).then(function(snapshot) {
-      thisTemp.userObject = (snapshot.val()) || 'Anonymous';
-      console.log(thisTemp.userObject);
-      if(thisTemp.userObject.birthday)
-      {
-        thisTemp.birthday = new Date(thisTemp.userObject.birthday);
-        console.log(thisTemp.birthday);
-      }
+        thisTemp.userObject = (snapshot.val()) || 'Anonymous';
+        console.log(thisTemp.userObject);        
+        if(thisTemp.userObject.birthday)
+        {
+          thisTemp.birthday = new Date(thisTemp.userObject.birthday);
+          console.log(thisTemp.birthday);
+        }
+      });
+      this.getRegisteredActivities(thisTemp.userId).then(function(snapshot) {
+        var activities = (snapshot.val()) || null;
+        thisTemp.activities = Object.keys(activities).map(function(key) {
+          return activities[key];
+        });
+        console.log(thisTemp.activities[0].planName); 
       })
     }
     this.my_genders = ["F", "M", "O"];
@@ -143,5 +151,10 @@ export class ProfileComponent implements OnInit {
     }
     this.userObject.age = age;
   }
+
+  getRegisteredActivities(id) {
+    return this.manageUserService.getRegisteredActivities(id);
+  }
+
 
 }

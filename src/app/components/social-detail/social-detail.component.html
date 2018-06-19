@@ -45,9 +45,6 @@
       <li>
         <a *ngIf="userId" (click)="signout()">Sign Out</a>
       </li>
-      <li>
-        <a href="javascript:void(0)" [routerLink]="['/profile', userId]">See Activities</a>
-      </li>
     </ul>
   </mat-drawer>
    
@@ -109,7 +106,8 @@
         <div class="title">
           <h2>
             <a href="javascript:void(0)">{{plan?.title}}</a> 
-            <a (click)="register(plan?.id, plan?.maxAsisstant)" *ngIf ="!photosON"><mat-icon class="register">person_add</mat-icon></a>
+            <a (click)="register(plan?.id, plan?.maxAsisstant, plan?.title)" *ngIf ="!photosON && !userExist"><mat-icon class="register">person_add</mat-icon></a>
+            <a (click)="unregister(plan?.id)" *ngIf ="!photosON && userExist"><mat-icon class="register">person_outline</mat-icon></a>
           </h2>
           <p>{{plan?.descriptionShort}}</p>
         </div>
