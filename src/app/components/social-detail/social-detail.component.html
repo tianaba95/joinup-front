@@ -164,7 +164,7 @@
       <footer>
         <ul class="stats">
           <li>
-            <a href="#">{{plan?.category}}</a>
+            <a>{{plan?.category}}</a>
           </li>
           <li>
             <a *ngIf="userId" id="link" (click)="onLikeClick(plan?.id, userId)" class="icon fa-thumbs-up">{{plan?.likes? plan?.likes.likesCount: 0}}</a>

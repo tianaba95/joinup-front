@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SocialService } from '../../services/social.service';
 import { forEach } from '@angular/router/src/utils/collection';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { ManageUsersService } from '../../services/manage-users.service';
 
 @Component({
   selector: 'app-social',
@@ -15,6 +18,8 @@ export class SocialComponent implements OnInit {
 
   my_list: any[];
   tab_filter: any;
+  userId:any;
+  userObject: any;
 
   listaComentarios = [
     { id: 1, name: 'Mr. Nice' },
@@ -33,11 +38,23 @@ export class SocialComponent implements OnInit {
 
   @ViewChild("myLabel") lab;
 
-  constructor(private socialService: SocialService) { }
+  constructor(private socialService: SocialService, private route: ActivatedRoute, private manageUserService: ManageUsersService) { }
 
   ngOnInit() {
     this.tab_filter = "";
+    this.initUserSubscribe();
     this.initObjectCategorySuscribe();
+    if(this.userId){
+      var thisTemp = this;
+      this.initUser(thisTemp.userId).then(function(snapshot) {
+      thisTemp.userObject = (snapshot.val()) || 'Anonymous';
+      })
+    }
+  }
+
+  initUserSubscribe() {
+    this.userId = this.route.snapshot.params['id'];
+    console.log("THIS USER ID", this.userId);
   }
 
   initObjectCategorySuscribe() {
@@ -50,6 +67,14 @@ export class SocialComponent implements OnInit {
         //this.socialService.getAllPlanByCatAssisting(objects)
       }
       );
+  }
+
+  getUser(id) {
+    return this.manageUserService.getUser(id);
+  }
+
+  initUser(id) {
+    return this.getUser(id);
   }
 
   getTabList() {

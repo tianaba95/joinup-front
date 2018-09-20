@@ -33,7 +33,7 @@ export class SocialDetailComponent implements OnInit {
   currentUpload: Upload;
   fileName = "";
   
-  constructor(public afAuth: AngularFireAuth, private socialService: SocialService, private route: ActivatedRoute, private router: Router, private manageUserService: ManageUsersService, private dialogService: MdlDialogService,) { }
+  constructor(public afAuth: AngularFireAuth, private socialService: SocialService, private route: ActivatedRoute, private router: Router, private manageUserService: ManageUsersService, private dialogService: MdlDialogService) { }
 
   slideConfig = {"slidesToShow": 1, "slidesToScroll": 1};
 
@@ -56,8 +56,7 @@ export class SocialDetailComponent implements OnInit {
     this.initObjectPlanSubscribe();
     this.initPlansSuscribe();
     this.initUserSubscribe();
-    this.comentarioOn = false;
-    this.photosON = false;
+    this.comentarioOn = false;   
     if(this.userId){
       var thisTemp = this;
       this.initUser(thisTemp.userId).then(function(snapshot) {
@@ -211,7 +210,7 @@ export class SocialDetailComponent implements OnInit {
 
   wantCommentClick(id, date){
     var thedate = new Date(date);
-    if(thedate <= new Date()){
+    if(thedate <= new Date() && this.userExist){
       this.comentarioOn = true;
     } else  {
       this.comentarioOn = false;

@@ -213,9 +213,9 @@ export class SocialService {
 
   registerUser(id, iduser, idmax){
     let _this = this;
-
+    var today = new Date();
     _this.afDB.database.ref(`${_this.modelPath}/`).child(id).child('registro/registerlist/'+ iduser).
-    set({'id': iduser});
+    set({'id': iduser, 'time': today.toUTCString()});
     console.log(iduser + " se ha registrado");
 
     var ref = _this.afDB.database.ref(`${_this.modelPath}/`);

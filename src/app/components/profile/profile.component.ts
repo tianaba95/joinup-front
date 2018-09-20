@@ -41,20 +41,22 @@ export class ProfileComponent implements OnInit {
     if(this.userId){
       var thisTemp = this;
       this.initUser(thisTemp.userId).then(function(snapshot) {
-        thisTemp.userObject = (snapshot.val()) || 'Anonymous';
-        console.log(thisTemp.userObject);        
+        thisTemp.userObject = (snapshot.val()) || 'Anonymous';     
         if(thisTemp.userObject.birthday)
         {
           thisTemp.birthday = new Date(thisTemp.userObject.birthday);
-          console.log(thisTemp.birthday);
         }
       });
       this.getRegisteredActivities(thisTemp.userId).then(function(snapshot) {
         var activities = (snapshot.val()) || null;
         thisTemp.activities = Object.keys(activities).map(function(key) {
           return activities[key];
+        }); 
+        thisTemp.activities = thisTemp.activities.sort(function(a,b){
+          var dateA = new Date(a.time); 
+          var dateB = new Date(b.time);
+          return dateB.getTime() - dateA.getTime();         
         });
-        console.log(thisTemp.activities[0].planName); 
       })
     }
     this.my_genders = ["F", "M", "O"];

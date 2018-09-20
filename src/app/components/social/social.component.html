@@ -1,12 +1,93 @@
-<!-- Nav -->
+<!--Navbar-->
 <nav id="nav">
-  <img class="logo" src="../../../assets/images/logo.png" />
-  <ul class="container">
-    <li>
-      <a routerLink="/home">Home</a>
-    </li>
-  </ul>
+  <img class="logo" src="assets/images/logo.png" />
+  <div fxShow="true" fxHide.lt-md="true">
+    <ul class="container">
+      <li>
+        <a pageScroll [routerLink]="userId ? ['/home', userId] : ['/home']" href="#home">Home</a>
+      </li>
+      <li>
+        <a pageScroll [routerLink]="userId ? ['/home', userId] : ['/home']" href="#social">Social Plans</a>
+      </li>
+      <li>
+        <a pageScroll [routerLink]="userId ? ['/home', userId] : ['/home']" href="#guides">Recent Plans</a>
+      </li>
+      <li>
+        <a pageScroll [routerLink]="['/home', userId]" href="#wantguide" *ngIf="userId">Guides</a>
+      </li>
+      <li>
+        <a pageScroll [routerLink]="userId ? ['/home', userId] : ['/home']" href="#contact">I want to guide</a>
+      </li>
+      <li>
+        <a pageScroll [routerLink]="userId ? ['/home', userId] : ['/home']" href="#contacto">Contact</a>
+      </li>
+      <li>
+        <a *ngIf="!userId" [routerLink]="['/login']">Login or Signup</a>
+        <a *ngIf="userId" (click)="profile.toggle()">Me</a>     
+      </li>
+    </ul>   
+  </div>
+
+  <mat-drawer #profile class="another-sidenav" mode="side" fxHide.lt-md="true">
+    <header class="app-drawer-header primary-background">
+        <img *ngIf="userObject" src="{{userObject.photo}}" class="app-avatar">
+        <span *ngIf="userObject" class="color-white">{{userObject.name}}</span>
+        <span *ngIf="userObject" class="color-black">{{userObject.rol}}</span>
+        <span *ngIf="userObject" class="color-black">Lv4</span>
+        <span *ngIf="userObject" class="credit">Credit: $0.00</span>
+      </header>
+    <ul class="theul">
+      <li>
+        <a href="javascript:void(0)" [routerLink]="['/profile', userId]">See Profile</a>
+      </li>
+      <li>
+        <a *ngIf="userId" (click)="signout()">Sign Out</a>
+      </li>
+    </ul>
+  </mat-drawer>
+   
+  <div fxShow="true" fxHide.gt-sm="true" class="example">    
+    <mat-drawer-container class="example-container" autosize>    
+      <div class="example-sidenav-content">
+        <a (click)="drawer.toggle()">
+          <mat-icon aria-label="Menu icon">menu</mat-icon>
+        </a>
+      </div>
+    
+    </mat-drawer-container>
+  </div>
+
 </nav>
+
+<mat-drawer #drawer class="example-sidenav" ngClass.sm="example-sidenav2" mode="side" fxHide.gt-sm="true">
+<ul class="container">
+  <li>
+    <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#home">Home</a>
+  </li>
+  <li>
+    <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#social">Social Plans</a>
+  </li>
+  <li>
+    <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#guides">Recent Plans</a>
+  </li>
+  <li>
+    <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#wantguide" *ngIf="userId">Guides</a>
+  </li>
+  <li>
+    <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#contact">I want to guide</a>
+  </li>
+  <li>
+    <a class="aLink" pageScroll [routerLink]="['/home', userId]" href="#contacto">Contact</a>
+  </li>
+  <li>
+    <a *ngIf="!userId" class="aLink" [routerLink]="['/login']">Login or Signup</a>
+    <a *ngIf="userId" class="aLink" (click)="signout()">Sign Out</a>
+  </li>
+  <li>
+    <a *ngIf="userId" class="aLink" [routerLink]="['/profile', userId]">See Profile</a>
+  </li>
+</ul>
+</mat-drawer>
 
 <div class="wrapper style2">
   <!-- tabs -->

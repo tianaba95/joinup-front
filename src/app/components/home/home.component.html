@@ -123,7 +123,8 @@
 
     <footer>
       <p>Want to learn more?</p>
-      <a routerLink="/social" class="button big scrolly">See all Social Plans</a>
+      <a *ngIf="userId" href="javascript:void(0)" [routerLink]="['/social', userId]" class="button big scrolly">See all Social Plans</a>
+      <a *ngIf="!userId" href="javascript:void(0)" [routerLink]="['/social']"  class="button big scrolly" >See all Social Plans</a>
     </footer>
   </article>
 </div>

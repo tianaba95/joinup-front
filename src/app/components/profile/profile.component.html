@@ -107,10 +107,10 @@
               <strong class="title">Age</strong>
             </div>
             <div class="6u" fxHide.lt-md="true">
-              <span class="cont">{{userObject.age}}</span>
+              <span *ngIf="userObject" class="cont">{{userObject.age}}</span>
             </div>
             <div class="12u" fxHide.gt-sm="true">
-                <span class="cont small">{{userObject.age}}</span>
+                <span *ngIf="userObject" class="cont small">{{userObject.age}}</span>
             </div>
           </div>
           <div class="row">
@@ -118,10 +118,10 @@
               <strong class="title">Location</strong>
             </div>
             <div class="6u" fxHide.lt-md="true">
-              <span class="cont">{{userObject.city}}</span>
+              <span *ngIf="userObject" class="cont">{{userObject.city}}</span>
             </div>
             <div class="12u" fxHide.gt-sm="true">
-                <span class="cont small">{{userObject.city}}</span>
+                <span *ngIf="userObject" class="cont small">{{userObject.city}}</span>
             </div>
           </div>
           <div class="row">
@@ -129,10 +129,10 @@
               <strong class="title">E-mail</strong>
             </div>
             <div class="6u" fxHide.lt-md="true">
-              <span class="cont"><a href="mailto:{{userObject.email}}">{{userObject.email}}</a></span>
+              <span *ngIf="userObject" class="cont"><a href="mailto:{{userObject.email}}">{{userObject.email}}</a></span>
             </div>
             <div class="12u" fxHide.gt-sm="true">
-              <span class="cont small"><a href="mailto:{{userObject.email}}">{{userObject.email}}</a></span>
+              <span *ngIf="userObject" class="cont small"><a href="mailto:{{userObject.email}}">{{userObject.email}}</a></span>
             </div>
           </div>
           <div class="row">
@@ -140,10 +140,10 @@
                 <strong class="title">Gender</strong>
               </div>
               <div class="6u" fxHide.lt-md="true">
-                <span class="cont">{{userObject.gender}}</span>
+                <span *ngIf="userObject" class="cont">{{userObject.gender}}</span>
               </div>
               <div class="12u" fxHide.gt-sm="true">
-                <span class="cont small">{{userObject.gender}}</span>
+                <span *ngIf="userObject" class="cont small">{{userObject.gender}}</span>
               </div>
           </div>
           <div class="row">
@@ -151,10 +151,10 @@
               <strong class="title">Ocupation</strong>
             </div>
             <div class="6u" fxHide.lt-md="true">
-              <span class="cont">{{userObject.ocupation}}</span>
+              <span class="cont" *ngIf="userObject">{{userObject.ocupation}}</span>
             </div>
             <div class="12u" fxHide.gt-sm="true">
-              <span class="cont small">{{userObject.ocupation}}</span>
+              <span class="cont small" *ngIf="userObject">{{userObject.ocupation}}</span>
             </div>
           </div>
           <div class="row">
@@ -177,7 +177,7 @@
       </div>
       <div class="row">
         <div class="12u">
-          <p class="obj">{{userObject.goal}}</p>
+          <p class="obj" *ngIf="userObject">{{userObject.goal}}</p>
         </div>
       </div>
       <div class="row">
@@ -187,7 +187,7 @@
       </div>
       <div class="row">
         <div class="12u">
-          <p class="obj">{{userObject.interests}}</p>
+          <p class="obj" *ngIf="userObject">{{userObject.interests}}</p>
         </div>
       </div>
       <div class="row">
@@ -197,7 +197,7 @@
       </div>
       <div class="row">
         <div class="12u">
-          <p class="obj">{{userObject.acttypes}}</p>
+          <p class="obj" *ngIf="userObject">{{userObject.acttypes}}</p>
         </div>
       </div>
       <div class="row">
@@ -241,7 +241,7 @@
                   <div class="12u" id="inpic">
                       <label  class="uploadfile" for="file_input_file"><mat-icon class="upicon" aria-label="file upload">publish</mat-icon></label>
                       <input id="file_input_file" type="file" (change)="detectFiles($event)"/>
-                      <input id="failinput" matInput disabled readonly placeholder="Photo" [ngModel]="fileName" name="file" type="text">
+                      <input *ngIf="userObject" id="failinput" matInput disabled readonly placeholder="Photo" [ngModel]="fileName" name="file" type="text">
                   </div>
               </div>
               <div class="row">
