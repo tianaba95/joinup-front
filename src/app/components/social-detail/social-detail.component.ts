@@ -268,7 +268,7 @@ export class SocialDetailComponent implements OnInit {
     return this.socialService.getRegisteredCount(id);
   }
 
-  register(id, maxAssistents, planName){
+  register(id, maxAssistants, planName, payingLink){
     console.log("do you want to join the plan???")
     var thisTemp = this;
     let result = this.dialogService.confirm('Do you want to register to the plan?', 'No', 'Yes');
@@ -277,15 +277,22 @@ export class SocialDetailComponent implements OnInit {
       thisTemp.getRegisteredPeopleCount(id).then(function(snapshot) {
         var thisTempo = thisTemp;
         var count = snapshot.val();
-        if(count == maxAssistents){
+        if(count == maxAssistants){
           alert("Esta actividad ha alcanzado el numero maximo de personas")
           return;
         } else {
           thisTempo.getRegisteredPeople(id).then(function(snapshot) {
             var exists = (snapshot.val() !== null);
             if(!exists){
-              thisTempo.socialService.registerUser(id, thisTempo.userId, maxAssistents);
+              thisTempo.socialService.registerUser(id, thisTempo.userId, maxAssistants);
               thisTempo.manageUserService.registerActivity(thisTempo.userId, id, planName);
+              if (!payingLink){
+                var win = window.open("https://www.mercadopago.com/mco/checkout/start?pref_id=246141217-71c062ce-29b5-436f-b365-4bb9ec46f2fd","_blank");
+                win.focus();
+              } else {
+                var win = window.open(payingLink, '_blank');
+                win.focus();
+              }
             } else {
               alert("Sorry, you are already registered!!");
             }

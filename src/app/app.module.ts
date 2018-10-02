@@ -57,6 +57,7 @@ import { NavbarComponent } from './components/commons/navbar/navbar.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { WantoguideComponent } from './components/wantoguide/wantoguide.component';
 
+
 //Test
 export const firebaseConfig = {
   apiKey: "AIzaSyCW1ZSceJZ6DYFxHpYEaXcwofW7jQhI0WE",
@@ -75,6 +76,10 @@ export const firebaseConfig = {
 //   storageBucket: "joinup-prod.appspot.com",
 //   messagingSenderId: "1001729495066"
 // }
+
+// export const mercadopago = mercadopago.configure({
+//     access_token: ' TEST-2766445244641008-092710-c43b46d59d039212333a017943fdcea7-358070273'
+// });
 
 @NgModule({
   declarations: [

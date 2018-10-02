@@ -106,7 +106,7 @@
         <div class="title">
           <h2>
             <a href="javascript:void(0)">{{plan?.title}}</a> 
-            <a (click)="register(plan?.id, plan?.maxAsisstant, plan?.title)" *ngIf ="!photosON && !userExist"><mat-icon class="register">person_add</mat-icon></a>
+            <a (click)="register(plan?.id, plan?.maxAssistants, plan?.title, plan?.payingLink)" *ngIf ="!photosON && !userExist"><mat-icon class="register">person_add</mat-icon></a>
             <a (click)="unregister(plan?.id)" *ngIf ="!photosON && userExist"><mat-icon class="register">person_outline</mat-icon></a>
           </h2>
           <p>{{plan?.descriptionShort}}</p>
@@ -156,7 +156,7 @@
 
         <p>
           <span class="date infoTitle">Max Assistants: </span>
-          <span>{{plan?.maxAsisstant}}</span>
+          <span>{{plan?.maxAssistants}}</span>
         </p>
 
       </div>

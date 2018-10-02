@@ -39,8 +39,7 @@ export class SocialService {
     //Search is made by revertAverage so it organize max to min average
     return this.afDB.list(`/${this.modelPath}`, {
       query: {
-        orderByChild: 'rate/revertAverageXVotes',
-        startAt: !null,
+        orderByChild: 'wouldLove',
         limitToFirst: 100
       }
     })
